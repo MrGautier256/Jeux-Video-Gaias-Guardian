@@ -1,0 +1,37 @@
+name: Unity Build Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Vérifier le code source
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # 2. Configurer Unity
+    - name: Setup Unity
+      uses: game-ci/unity-builder@v2
+      with:
+        unityVersion: 2021.3.16f1 # Remplacez par votre version Unity
+
+    # 3. Construire le projet
+    - name: Build Unity project
+      uses: game-ci/unity-builder@v2
+      with:
+        targetPlatform: StandaloneWindows64 # Windows x64 (modifiez selon vos besoins)
+
+    # 4. Télécharger les artefacts du build
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: Build
+        path: build

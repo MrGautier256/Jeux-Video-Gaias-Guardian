@@ -1,38 +1,114 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class Player : MonoBehaviour
 {
+    [Header("Components")]
     public Rigidbody2D rb;
-    public float speed;
-    public float jumpingPower;
-    public LayerMask groundLayer;
-    public Transform groundCheck;
-    float horizontal;
     SpriteRenderer sr;
 
-    private void Start()
+    [Header("Movement")]
+    public float speed = 2f;
+    public float jumpingPower = 3f;
+    int facingDirection = 1;
+
+    [Header("Dash")]
+    public float dashSpeed = 10;
+    public float dashDuration  = 0.2f;
+
+    bool isDashing = false;
+    float dashTime;
+
+    [Header("Jumping")]
+    bool canDoubleJump;
+
+    [Header("Checks")]
+    public Transform groundCheck;
+    public Transform wallCheck; 
+    public LayerMask groundLayer;
+    public LayerMask wallLayer; 
+    public float groundCheckRadius = 0.2f;
+    float horizontal;
+    bool canDash = true;
+
+
+    void Start()
     {
         sr = GetComponent<SpriteRenderer>();
     }
-    private void FixedUpdate()
+
+    void Update()
     {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+
+        if (isDashing)
+        {
+            if (Time.time >= dashTime)
+            {
+                isDashing = false;
+            }
+            else
+            {
+                rb.linearVelocity = new Vector2(facingDirection * dashSpeed, 0);
+                return;
+            }
+        }
     }
+
+    void FixedUpdate()
+    {
+        if (IsGrounded() && !isDashing)
+        {
+            canDash = true;
+        }
+        if (!isDashing)
+        {
+            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
+    }
+
     public void Move(InputAction.CallbackContext context)
     {
         horizontal = context.ReadValue<Vector2>().x;
-        sr.flipX = horizontal < 0 ? true : false;
+
+        if (horizontal != 0)
+        {
+            facingDirection = (int)Mathf.Sign(horizontal); // -1 ou 1
+            sr.flipX = horizontal < 0;
+        }
     }
+
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed && IsGrounded())
+        if (context.performed)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+            if (IsGrounded())
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+                canDoubleJump = true;
+            }
+            else if (canDoubleJump)
+            {
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+                canDoubleJump = false;
+            }
         }
     }
-    bool IsGrounded()
+
+    public void Dash(InputAction.CallbackContext context)
     {
-        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, .1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        if (context.performed && canDash && !isDashing)
+        {
+            isDashing = true;
+            dashTime = Time.time + dashDuration;
+            canDash = false;
+        }
+    }
+
+
+    private bool IsGrounded()
+    {
+        Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
+        return groundCollider != null;
     }
 }

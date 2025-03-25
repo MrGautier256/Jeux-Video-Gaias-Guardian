@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-    } 
+    }
     private void FixedUpdate()
     {
         rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);

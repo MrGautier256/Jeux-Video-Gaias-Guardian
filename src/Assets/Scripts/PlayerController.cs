@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     bool canDash = true;
 
 
+
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();

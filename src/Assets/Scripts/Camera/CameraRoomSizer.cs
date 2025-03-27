@@ -2,6 +2,9 @@
 
 public class CameraRoomSizer : MonoBehaviour
 {
+    [Header("Taille fixe de la caméra")]
+    public float targetSize = 5.715f;
+
     private Transform currentRoom;
 
     public void SetRoom(Transform room)
@@ -12,7 +15,7 @@ public class CameraRoomSizer : MonoBehaviour
             Vector3 newPosition = new Vector3(
                 room.position.x,
                 room.position.y,
-                transform.position.z // garde la profondeur caméra
+                transform.position.z
             );
 
             transform.position = newPosition;
@@ -21,6 +24,13 @@ public class CameraRoomSizer : MonoBehaviour
 
     private void Start()
     {
+        // Forcer la taille de la caméra orthographique
+        Camera cam = GetComponent<Camera>();
+        if (cam != null)
+        {
+            cam.orthographicSize = targetSize;
+        }
+
         if (currentRoom != null)
         {
             SetRoom(currentRoom);

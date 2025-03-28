@@ -40,7 +40,7 @@ jobs:
         unityVersion: 2021.3.16f1
         targetPlatform: StandaloneWindows64
         projectPath: /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src        
-        customParameters: -logFile /dev/stdout -debugCodeOptimization -buildScenes /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src/Assets/Scenes/Level_1/Level_1.unity
+        customParameters: -logFile /dev/stdout -debugCodeOptimization
       env:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}

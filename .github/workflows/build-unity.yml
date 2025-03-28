@@ -23,6 +23,11 @@ jobs:
         key: Library-${{ runner.os }}-${{ hashFiles('src/**/*.cs') }}
         restore-keys: |
           Library-${{ runner.os }}-
+    - name: Check system resources
+      run: |
+        free -h
+        df -h
+        ulimit -a
 
     - name: Build Unity project
       uses: game-ci/unity-builder@v4

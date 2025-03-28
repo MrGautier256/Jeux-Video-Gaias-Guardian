@@ -18,4 +18,5 @@ jobs:
 
     - name: List files at root
       run: |
+        pwd
         ls -la # Sur Linux

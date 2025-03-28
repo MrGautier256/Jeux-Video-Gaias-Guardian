@@ -25,7 +25,7 @@ jobs:
           Library-${{ runner.os }}-
 
     - name: Build Unity project
-      uses: game-ci/unity-builder@v2
+      uses: game-ci/unity-builder@v3
       with:
         unityVersion: 2021.3.16f1
         targetPlatform: StandaloneWindows64

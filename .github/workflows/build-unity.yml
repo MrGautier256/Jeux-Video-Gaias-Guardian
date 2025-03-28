@@ -24,6 +24,10 @@ jobs:
         restore-keys: |
           Library-${{ runner.os }}-
 
+    - name: Run Unity in batch mode
+      run: |
+        unity -batchmode -nographics -projectPath $(pwd) -executeMethod UnityEditor.SyncVS -quit
+
     - name: Build Unity project
       uses: game-ci/unity-builder@v2
       with:

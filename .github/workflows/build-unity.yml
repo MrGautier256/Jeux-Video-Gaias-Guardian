@@ -39,7 +39,8 @@ jobs:
       with:
         unityVersion: 2021.3.16f1
         targetPlatform: StandaloneWindows64
-        customParameters: -logFile /dev/stdout -debugCodeOptimization -projectPath src
+        projectPath: /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src        
+        customParameters: -logFile /dev/stdout -debugCodeOptimization
       env:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}

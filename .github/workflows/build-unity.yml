@@ -16,6 +16,23 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+      # Installs the Unity Editor based on your project version text file
+      # sets -> env.UNITY_EDITOR_PATH
+      # sets -> env.UNITY_PROJECT_PATH
+    - uses: buildalon/unity-setup@v1
+      with:
+        build-targets: ${{ matrix.build-target }}
+        version-file: 'src/ProjectSettings/ProjectVersion.txt'
+
+      # Activates the installation with the provided credentials
+      # https://github.com/XRTK/activate-unity-license
+    - uses: buildalon/activate-unity-license@v1
+      with:
+        # license: 'Personal' # Chooses license type to use [ Personal, Professional ]
+        username: ${{ secrets.UNITY_USERNAME }}
+        password: ${{ secrets.UNITY_PASSWORD }}
+        serial: ${{ secrets.UNITY_SERIAL }} # Used for pro license activations
+
     - name: List files at root
       run: |
         pwd

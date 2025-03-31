@@ -2,16 +2,15 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerCollision : MonoBehaviour
 {
     [Header("Stats")]
     public int maxHealth = 3;
-    private int currentHealth;
-
-    public int remainingLives = 3;
+    public int initialLives = 3;
     public int apples = 0;
 
-    [Header("Invulnerabilite")]
+    [Header("Invulnérabilité")]
     public float invulnerabilityDuration = 0.85f;
 
     [Header("Audio")]
@@ -20,6 +19,8 @@ public class PlayerCollision : MonoBehaviour
     public AudioClip hitSound;
 
     private AudioSource audioSource;
+    private HealthSystem healthSystem;
+
     private bool isDead = false;
     private bool isInvulnerable = false;
     private bool shouldLoseLife = true;
@@ -27,9 +28,9 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        currentHealth = maxHealth;
+        healthSystem = new HealthSystem(maxHealth, initialLives);
+        healthSystem.OnDeath += HandleDeath;
     }
-
 
     public bool IsInvulnerable() => isInvulnerable;
 
@@ -39,18 +40,13 @@ public class PlayerCollision : MonoBehaviour
         if (appleCollectSound && audioSource) audioSource.PlayOneShot(appleCollectSound);
     }
 
-
     public void TakeDamages(int damage, Vector2 knockbackDirection)
     {
         if (isDead || isInvulnerable) return;
 
-        currentHealth -= damage;
+        healthSystem.TakeDamage(damage);
 
-        if (currentHealth <= 0)
-        {
-            Kill(); 
-        }
-        else
+        if (!isDead) 
         {
             if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
             StartCoroutine(TemporaryKnockback());
@@ -82,24 +78,37 @@ public class PlayerCollision : MonoBehaviour
         Invoke(nameof(RestartLogic), 2f);
     }
 
+    private void HandleDeath()
+    {
+        Kill(); 
+    }
+
     private void RestartLogic()
     {
-        if (shouldLoseLife) remainingLives--;
-
-        if (remainingLives > 0)
+        if (shouldLoseLife)
         {
-            currentHealth = maxHealth; // on r�g�n�re les HP
-            Transform spawn = RespawnManager.Instance?.GetRespawnPoint();
+            healthSystem.LoseLife(); 
 
-            if (spawn != null)
+            if (!healthSystem.HasLivesLeft())
             {
-                StartCoroutine(RespawnAt(spawn.position));
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 return;
             }
+
+            healthSystem.ResetHealth();
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Transform spawn = RespawnManager.Instance?.GetRespawnPoint();
+        if (spawn != null)
+        {
+            StartCoroutine(RespawnAt(spawn.position));
+        }
+        else
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
+
 
     private IEnumerator RespawnAt(Vector3 position)
     {

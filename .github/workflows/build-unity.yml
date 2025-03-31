@@ -37,7 +37,7 @@ jobs:
     - name: Debug scenes list
       run: |
         echo "Scenes in EditorBuildSettings:"
-        grep -A 1 path src/ProjectSettings/EditorBuildSettings.asset
+        cat src/ProjectSettings/EditorBuildSettings.asset | grep -A 1 path
 
     - name: Build Unity project
       uses: game-ci/unity-builder@v4

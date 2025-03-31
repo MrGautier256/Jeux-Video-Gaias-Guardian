@@ -1,0 +1,692 @@
+fileFormatVersion: 2
+guid: 94e368229781b474282e2bad03cb0c6c
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2417168102908115537
+    second: robot1chargeeffect-Sheet[32height32wide]_0
+  - first:
+      213: 5750096737123283385
+    second: robot1chargeeffect-Sheet[32height32wide]_1
+  - first:
+      213: -6105029786958309355
+    second: robot1chargeeffect-Sheet[32height32wide]_2
+  - first:
+      213: -8534811612606767572
+    second: robot1chargeeffect-Sheet[32height32wide]_3
+  - first:
+      213: 689079253625980702
+    second: robot1chargeeffect-Sheet[32height32wide]_4
+  - first:
+      213: -6678322749187864313
+    second: robot1chargeeffect-Sheet[32height32wide]_5
+  - first:
+      213: -7224403407289030057
+    second: robot1chargeeffect-Sheet[32height32wide]_6
+  - first:
+      213: 2317191226752448696
+    second: robot1chargeeffect-Sheet[32height32wide]_7
+  - first:
+      213: 4361355708769185139
+    second: robot1chargeeffect-Sheet[32height32wide]_8
+  - first:
+      213: 4632787343240959861
+    second: robot1chargeeffect-Sheet[32height32wide]_9
+  - first:
+      213: -5776910169177618227
+    second: robot1chargeeffect-Sheet[32height32wide]_10
+  - first:
+      213: 6604545614933359243
+    second: robot1chargeeffect-Sheet[32height32wide]_11
+  - first:
+      213: 6555824319598736376
+    second: robot1chargeeffect-Sheet[32height32wide]_12
+  - first:
+      213: -656135841081723036
+    second: robot1chargeeffect-Sheet[32height32wide]_13
+  - first:
+      213: -827143430490305972
+    second: robot1chargeeffect-Sheet[32height32wide]_14
+  - first:
+      213: -1079153001629224250
+    second: robot1chargeeffect-Sheet[32height32wide]_15
+  - first:
+      213: -4519811230062817225
+    second: robot1chargeeffect-Sheet[32height32wide]_16
+  - first:
+      213: 3874347801575117735
+    second: robot1chargeeffect-Sheet[32height32wide]_17
+  - first:
+      213: 3084518594516985564
+    second: robot1chargeeffect-Sheet[32height32wide]_18
+  - first:
+      213: 850311162548828378
+    second: robot1chargeeffect-Sheet[32height32wide]_19
+  - first:
+      213: -3371991028567625445
+    second: robot1chargeeffect-Sheet[32height32wide]_20
+  - first:
+      213: 5637566009006568678
+    second: robot1chargeeffect-Sheet[32height32wide]_21
+  - first:
+      213: 5074549293400066234
+    second: robot1chargeeffect-Sheet[32height32wide]_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 45
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fa5c1c7ca6e747ed0800000000000000
+      internalID: -2417168102908115537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_1
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 10
+        width: 15
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b1bd5064827ccf40800000000000000
+      internalID: 5750096737123283385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 14
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 518db2d21c3964ba0800000000000000
+      internalID: -6105029786958309355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_3
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 20
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2ed1b5ce024e8980800000000000000
+      internalID: -8534811612606767572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_4
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 3
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e17c7762ee9109900800000000000000
+      internalID: 689079253625980702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_5
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 13
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7094f37c7d4d153a0800000000000000
+      internalID: -6678322749187864313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_6
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 4
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75a6a6aa063cdbb90800000000000000
+      internalID: -7224403407289030057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_7
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 2
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b83b3bc421582020800000000000000
+      internalID: 2317191226752448696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_8
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 6
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37d2f40e8e5a68c30800000000000000
+      internalID: 4361355708769185139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_9
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 4
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5779dc90b87fa4040800000000000000
+      internalID: 4632787343240959861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_10
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 12
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc883dafeca44dfa0800000000000000
+      internalID: -5776910169177618227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_11
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 5
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8a77f09e3f08ab50800000000000000
+      internalID: 6604545614933359243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_12
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 4
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f3bc830c77fafa50800000000000000
+      internalID: 6555824319598736376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_13
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 9
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 467fbebcdefe4e6f0800000000000000
+      internalID: -656135841081723036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_14
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 6
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ac35fae656584f0800000000000000
+      internalID: -827143430490305972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_15
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c2f79700141601f0800000000000000
+      internalID: -1079153001629224250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_16
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 7
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 730d84c12a76641c0800000000000000
+      internalID: -4519811230062817225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_17
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 8
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a353316cc274c530800000000000000
+      internalID: 3874347801575117735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_18
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 9
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd6a549b1596eca20800000000000000
+      internalID: 3084518594516985564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_19
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 7
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad8b5484f79eccb00800000000000000
+      internalID: 850311162548828378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_20
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 3
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b113c6c66084431d0800000000000000
+      internalID: -3371991028567625445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_21
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 3
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e437a48a68ac3e40800000000000000
+      internalID: 5637566009006568678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: robot1chargeeffect-Sheet[32height32wide]_22
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 4
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab8025c32bb6c6640800000000000000
+      internalID: 5074549293400066234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

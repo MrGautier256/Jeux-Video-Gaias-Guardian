@@ -46,6 +46,7 @@ jobs:
         targetPlatform: StandaloneWindows64
         projectPath: /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src        
         customParameters: -logFile /dev/stdout -debugCodeOptimization
+        buildMethod: ""
       env:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}

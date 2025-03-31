@@ -21,7 +21,7 @@ jobs:
       # sets -> env.UNITY_PROJECT_PATH
     - uses: buildalon/unity-setup@v1
       with:
-        build-targets: ${{ matrix.build-target }}
+        build-targets: StandaloneWindows64 # Build a Windows 64-bit standalone.
         version-file: 'src/ProjectSettings/ProjectVersion.txt'
 
       # Activates the installation with the provided credentials

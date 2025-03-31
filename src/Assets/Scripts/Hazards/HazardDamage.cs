@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SpikeDamage : MonoBehaviour
+public class HazardDamage : MonoBehaviour
 {
     public int damage = 1;
 

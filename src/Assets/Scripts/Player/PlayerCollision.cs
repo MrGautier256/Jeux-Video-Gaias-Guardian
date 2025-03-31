@@ -2,111 +2,130 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-
 public class PlayerCollision : MonoBehaviour
 {
-    public int life = 3;
+    [Header("Stats")]
+    public int maxHealth = 3;
+    private int currentHealth;
+
+    public int remainingLives = 3;
     public int apples = 0;
-    private bool isDead = false;
-    private bool isInvulnerable = false;
+
+    [Header("Invulnerabilite")]
     public float invulnerabilityDuration = 0.85f;
+
+    [Header("Audio")]
     public AudioClip deathSound;
     public AudioClip appleCollectSound;
     public AudioClip hitSound;
+
     private AudioSource audioSource;
-
-
+    private bool isDead = false;
+    private bool isInvulnerable = false;
+    private bool shouldLoseLife = true;
 
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        currentHealth = maxHealth;
     }
 
-    public bool IsInvulnerable()
-    {
-        return isInvulnerable;
-    }
 
+    public bool IsInvulnerable() => isInvulnerable;
 
     public void CollectApple()
     {
         apples++;
-
-        if (appleCollectSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(appleCollectSound);
-        }
+        if (appleCollectSound && audioSource) audioSource.PlayOneShot(appleCollectSound);
     }
 
 
     public void TakeDamages(int damage, Vector2 knockbackDirection)
-
     {
-        if (isDead || isInvulnerable) return; // Ignore si déjà mort
-        life -= damage;
+        if (isDead || isInvulnerable) return;
 
-        if (life <= 0)
+        currentHealth -= damage;
+
+        if (currentHealth <= 0)
         {
-            Die();
+            Kill(); 
         }
         else
         {
-            if (hitSound != null && audioSource != null)
-            {
-                audioSource.PlayOneShot(hitSound);
-            }
+            if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
             StartCoroutine(TemporaryKnockback());
             StartCoroutine(InvulnerabilityRoutine());
             ApplyKnockback(knockbackDirection);
         }
     }
 
-    public void Die()
+    public void Kill(bool loseLife = true)
     {
         if (isDead) return;
 
         isDead = true;
-        GetComponent<Player>().enabled = false;
+        shouldLoseLife = loseLife;
 
+        GetComponent<Player>().enabled = false;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
-        rb.AddForce(new Vector2(0, 110f));
+        rb.AddForce(Vector2.up * 110f);
 
-        if (deathSound != null && audioSource != null)
-        {
-            audioSource.PlayOneShot(deathSound);
-        }
+        if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
 
         foreach (Collider2D col in GetComponents<Collider2D>())
-        {
             col.isTrigger = true;
-        }
 
         StartCoroutine(FakeDeathEffect());
 
-        Invoke("RestartLevel", 2);
+        Invoke(nameof(RestartLogic), 2f);
+    }
+
+    private void RestartLogic()
+    {
+        if (shouldLoseLife) remainingLives--;
+
+        if (remainingLives > 0)
+        {
+            currentHealth = maxHealth; // on rï¿½gï¿½nï¿½re les HP
+            Transform spawn = RespawnManager.Instance?.GetRespawnPoint();
+
+            if (spawn != null)
+            {
+                StartCoroutine(RespawnAt(spawn.position));
+                return;
+            }
+        }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    private IEnumerator RespawnAt(Vector3 position)
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        transform.position = position;
+        isDead = false;
+
+        foreach (Collider2D col in GetComponents<Collider2D>())
+            col.isTrigger = false;
+
+        GetComponent<Player>().enabled = true;
     }
 
     private void ApplyKnockback(Vector2 direction)
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
-        rb.AddForce(direction.normalized * 120f); // Force ajustable selon besoin
+        rb.AddForce(direction.normalized * 120f);
     }
-
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
 
     private IEnumerator FakeDeathEffect()
     {
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
         Color originalColor = sr.color;
 
-        // Petit clignotement rouge
         sr.color = Color.red;
         yield return new WaitForSeconds(0.1f);
         sr.color = originalColor;
@@ -135,9 +154,7 @@ public class PlayerCollision : MonoBehaviour
     private IEnumerator TemporaryKnockback()
     {
         GetComponent<Player>().enabled = false;
-
-        yield return new WaitForSeconds(0.25f); // Durée du knockback
-
+        yield return new WaitForSeconds(0.25f);
         GetComponent<Player>().enabled = true;
     }
 }

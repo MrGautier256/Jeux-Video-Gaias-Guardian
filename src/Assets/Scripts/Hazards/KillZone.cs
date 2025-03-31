@@ -9,7 +9,7 @@ public class KillZone : MonoBehaviour
             PlayerCollision pc = collision.GetComponent<PlayerCollision>();
             if (pc != null)
             {
-                pc.Die();
+                pc.Kill();
             }
         }
     }

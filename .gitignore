@@ -54,3 +54,6 @@ ExportedObj/
 
 # Crashlytics
 crashlytics-build.properties
+
+tree.py
+output.txt

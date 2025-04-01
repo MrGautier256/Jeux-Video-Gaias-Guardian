@@ -15,7 +15,7 @@ public class SceneTransitionManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persiste entre scènes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {

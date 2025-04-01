@@ -3,10 +3,10 @@ name: Unity Build Pipeline
 on:
   push:
     branches:
-      - develop
+      - testjppci
   pull_request:
     branches:
-      - develop
+      - testjppci
 
 jobs:
   build:

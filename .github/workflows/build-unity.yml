@@ -3,11 +3,12 @@ name: Unity Build Pipeline
 on:
   push:
     branches:
-      - develop
+      - testjppci
   pull_request:
     branches:
-      - develop
-
+      - testjppci
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest 
@@ -16,6 +17,11 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - name: List files at root
+      run: |
+        pwd
+        ls -la # Sur Linux
+
     - name: Cache Unity Library
       uses: actions/cache@v3
       with:
@@ -23,13 +29,24 @@ jobs:
         key: Library-${{ runner.os }}-${{ hashFiles('src/**/*.cs') }}
         restore-keys: |
           Library-${{ runner.os }}-
+    - name: Check system resources
+      run: |
+        free -h
+        df -h
+        ulimit -a
+
+    - name: Debug scenes list
+      run: |
+        echo "Scenes in EditorBuildSettings:"
+        cat src/ProjectSettings/EditorBuildSettings.asset | grep -A 1 path
+        cd /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src
 
     - name: Build Unity project
       uses: game-ci/unity-builder@v4
       with:
         unityVersion: 2021.3.16f1
         targetPlatform: StandaloneWindows64
-        projectPath: src
+        projectPath: ${{ github.workspace }}/src     
         customParameters: -logFile /dev/stdout -debugCodeOptimization
       env:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}

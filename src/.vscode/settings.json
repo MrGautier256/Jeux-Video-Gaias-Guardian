@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "ProjetTest2D.sln"
+    "dotnet.defaultSolution": "src.sln"
 }

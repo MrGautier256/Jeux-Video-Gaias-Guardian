@@ -1,11 +1,43 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad = "Level_1";
+    [Header("UI")]
+    [SerializeField] private GameObject continueButton;
+    [SerializeField] private GameObject deleteSaveButton;
 
-    public void StartGame()
+    private void Start()
     {
-        SceneTransitionManager.Instance.LoadSceneWithFade(sceneToLoad);
+        if (SaveManager.Instance.CurrentSave.hasSave)
+        {
+            continueButton.SetActive(true);
+            deleteSaveButton.SetActive(true);
+        }
+        else
+        {
+            continueButton.SetActive(false);
+            deleteSaveButton.SetActive(false);
+        }
     }
+
+    public void StartNewGame()
+    {
+        Debug.Log("[MainMenuManager] Nouvelle partie lancée.");
+        SaveManager.Instance.ResetSave();
+        SaveManager.Instance.SaveGame();
+
+        SceneTransitionManager.Instance.LoadSceneWithFade("Level_1");
+    }
+
+
+    public void ContinueGame()
+    {
+        Debug.Log("[MainMenuManager] Nouvelle partie lancée.");
+
+        string levelToLoad = SaveManager.Instance.CurrentSave.progression.currentLevel;
+        SceneTransitionManager.Instance.LoadSceneWithFade(levelToLoad);
+    }
+
 }

@@ -3,11 +3,12 @@ name: Unity Build Pipeline
 on:
   push:
     branches:
-      - develop
+      - testjppci
   pull_request:
     branches:
-      - develop
-
+      - testjppci
+  workflow_dispatch:
+  
 jobs:
   build:
     runs-on: ubuntu-latest 

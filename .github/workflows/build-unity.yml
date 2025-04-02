@@ -79,7 +79,7 @@ jobs:
 
     - name: Clean untracked files
       run: |
-        git clean -fdX
+        #git clean -fdX
         git status
 
     - name: Build Unity project

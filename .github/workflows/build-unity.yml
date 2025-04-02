@@ -17,6 +17,33 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+#SonarQube steps Part 1 start
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: 'zulu' # Alternative distribution options are available.
+    - name: Cache SonarQube Cloud packages
+      uses: actions/cache@v4
+      with:
+        path: ~\sonar\cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+    - name: Cache SonarQube Cloud scanner
+      id: cache-sonar-scanner
+      uses: actions/cache@v4
+      with:
+        path: .\.sonar\scanner
+        key: ${{ runner.os }}-sonar-scanner
+        restore-keys: ${{ runner.os }}-sonar-scanner
+    - name: Install SonarQube Cloud scanner
+      if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      shell: powershell
+      run: |
+        New-Item -Path .\.sonar\scanner -ItemType Directory
+        dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+#SonarQube steps Part 1 end
+
     - name: List files at root
       run: |
         pwd
@@ -54,6 +81,17 @@ jobs:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+
+#SonarQube steps Part 2 start
+    - name: Build and analyze
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      shell: powershell
+      run: |
+        .\.sonar\scanner\dotnet-sonarscanner begin /k:"MrGautier256_Jeux-Video-Gaias-Guardian" /o:"mrgautier256" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+        dotnet build
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
+#SonarQube steps Part 2 end
 
     - name: Upload Editor Log
       if: always()

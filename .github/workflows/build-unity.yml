@@ -77,6 +77,11 @@ jobs:
         .sonar/scanner/dotnet-sonarscanner begin /k:"MrGautier256_Jeux-Video-Gaias-Guardian" /o:"mrgautier256" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
 #SonarQube steps Part 2 end
 
+    - name: Clean untracked files
+      run: |
+        #git clean -fdX
+        git status
+
     - name: Build Unity project
       uses: game-ci/unity-builder@v4.3.0
       with:

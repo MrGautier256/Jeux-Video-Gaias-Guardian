@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      robot1dash-Sheet[32height32wide]_0: -3710505395765134660
+      robot1dash-Sheet[32height32wide]_1: 4595225109354874754
+      robot1dash-Sheet[32height32wide]_2: -8546189729558122178
+      robot1dash-Sheet[32height32wide]_3: 3778150628217972571
+      robot1dash-Sheet[32height32wide]_4: -1450759254275021106
+      robot1dash-Sheet[32height32wide]_5: -3174121638465383590
+      robot1dash-Sheet[32height32wide]_6: -3452597465632998314
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

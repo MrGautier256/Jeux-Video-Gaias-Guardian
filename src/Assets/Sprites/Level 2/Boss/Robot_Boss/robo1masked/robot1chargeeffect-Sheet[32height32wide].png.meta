@@ -684,7 +684,30 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      robot1chargeeffect-Sheet[32height32wide]_0: -2417168102908115537
+      robot1chargeeffect-Sheet[32height32wide]_1: 5750096737123283385
+      robot1chargeeffect-Sheet[32height32wide]_10: -5776910169177618227
+      robot1chargeeffect-Sheet[32height32wide]_11: 6604545614933359243
+      robot1chargeeffect-Sheet[32height32wide]_12: 6555824319598736376
+      robot1chargeeffect-Sheet[32height32wide]_13: -656135841081723036
+      robot1chargeeffect-Sheet[32height32wide]_14: -827143430490305972
+      robot1chargeeffect-Sheet[32height32wide]_15: -1079153001629224250
+      robot1chargeeffect-Sheet[32height32wide]_16: -4519811230062817225
+      robot1chargeeffect-Sheet[32height32wide]_17: 3874347801575117735
+      robot1chargeeffect-Sheet[32height32wide]_18: 3084518594516985564
+      robot1chargeeffect-Sheet[32height32wide]_19: 850311162548828378
+      robot1chargeeffect-Sheet[32height32wide]_2: -6105029786958309355
+      robot1chargeeffect-Sheet[32height32wide]_20: -3371991028567625445
+      robot1chargeeffect-Sheet[32height32wide]_21: 5637566009006568678
+      robot1chargeeffect-Sheet[32height32wide]_22: 5074549293400066234
+      robot1chargeeffect-Sheet[32height32wide]_3: -8534811612606767572
+      robot1chargeeffect-Sheet[32height32wide]_4: 689079253625980702
+      robot1chargeeffect-Sheet[32height32wide]_5: -6678322749187864313
+      robot1chargeeffect-Sheet[32height32wide]_6: -7224403407289030057
+      robot1chargeeffect-Sheet[32height32wide]_7: 2317191226752448696
+      robot1chargeeffect-Sheet[32height32wide]_8: 4361355708769185139
+      robot1chargeeffect-Sheet[32height32wide]_9: 4632787343240959861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

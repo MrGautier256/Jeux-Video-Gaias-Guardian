@@ -159,7 +159,9 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shootattackseffect-Sheet[32height32wide]_0: 473081250230454936
+      shootattackseffect-Sheet[32height32wide]_1: -5663287352158966702
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

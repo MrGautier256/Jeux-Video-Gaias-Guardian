@@ -57,3 +57,6 @@ crashlytics-build.properties
 
 tree.py
 output.txt
+
+.sonar/
+.sonarqube/

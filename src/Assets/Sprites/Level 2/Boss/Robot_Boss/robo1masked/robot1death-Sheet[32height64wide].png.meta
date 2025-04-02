@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      robot1death-Sheet[32height64wide]_0: -8944356046926417657
+      robot1death-Sheet[32height64wide]_1: 1848502194668273784
+      robot1death-Sheet[32height64wide]_2: -5291068498882641022
+      robot1death-Sheet[32height64wide]_3: 5208953999099385181
+      robot1death-Sheet[32height64wide]_4: 5328262175463416401
+      robot1death-Sheet[32height64wide]_5: -8091293099919832615
+      robot1death-Sheet[32height64wide]_6: 1743368441411423970
+      robot1death-Sheet[32height64wide]_7: -8232167446495482682
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

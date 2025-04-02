@@ -10,16 +10,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void Start()
     {
-        //if (SaveManager.Instance.CurrentSave.hasSave)
-        //{
-        //    continueButton.SetActive(true);
-        //    deleteSaveButton.SetActive(true);
-        //}
-        //else
-        //{
-        //    continueButton.SetActive(false);
-        //    deleteSaveButton.SetActive(false);
-        //}
+       
     }
 
     public void StartNewGame()

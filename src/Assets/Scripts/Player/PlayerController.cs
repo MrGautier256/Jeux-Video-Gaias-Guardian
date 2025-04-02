@@ -6,21 +6,24 @@ public class Player : MonoBehaviour
 {
     [Header("Components")]
     public Rigidbody2D rb;
-    SpriteRenderer sr;
+    private SpriteRenderer sr;
+    private PlayerAbilities abilities;
 
     [Header("Movement")]
     public float speed = 2f;
     public float jumpingPower = 3f;
-    int facingDirection = 1;
+    private int facingDirection = 1;
+    private float horizontal;
 
     [Header("Dash")]
-    public float dashSpeed = 10;
+    public float dashSpeed = 10f;
     public float dashDuration = 0.2f;
-    bool isDashing = false;
-    float dashTime;
+    private bool isDashing = false;
+    private float dashTime;
+    private bool canDash = true;
 
     [Header("Jumping")]
-    bool canDoubleJump;
+    private bool doubleJumpAvailable;
 
     [Header("Checks")]
     public Transform groundCheck;
@@ -28,8 +31,7 @@ public class Player : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask wallLayer;
     public float groundCheckRadius = 0.2f;
-    float horizontal;
-    bool canDash = true;
+
 
     [Header("Attack")]
     public float attackRange = 1f;
@@ -45,6 +47,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        abilities = GetComponent<PlayerAbilities>();
     }
 
     void Update()
@@ -68,7 +71,13 @@ public class Player : MonoBehaviour
         if (IsGrounded() && !isDashing)
         {
             canDash = true;
+
+            if (abilities != null && abilities.CanDoubleJump)
+            {
+                doubleJumpAvailable = true;
+            }
         }
+
 
         if (!isDashing)
         {
@@ -89,29 +98,39 @@ public class Player : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (!context.performed) return;
+
+        if (IsGrounded())
         {
-            if (IsGrounded())
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-                canDoubleJump = true;
-            }
-            else if (canDoubleJump)
-            {
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-                canDoubleJump = false;
-            }
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+            doubleJumpAvailable = abilities != null && abilities.CanDoubleJump;
+        }
+        else if (doubleJumpAvailable)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
+            doubleJumpAvailable = false;
         }
     }
 
     public void Dash(InputAction.CallbackContext context)
     {
-        if (context.performed && canDash && !isDashing)
+        if (!context.performed || !canDash || isDashing) return;
+
+        if (abilities == null)
         {
-            isDashing = true;
-            dashTime = Time.time + dashDuration;
-            canDash = false;
+            abilities = GetComponent<PlayerAbilities>();
+            if (abilities == null)
+            {
+                Debug.LogWarning("[Player] PlayerAbilities est manquant !");
+                return;
+            }
         }
+
+        if (!abilities.CanDash) return;
+
+        isDashing = true;
+        dashTime = Time.time + dashDuration;
+        canDash = false;
     }
 
     public void Attack(InputAction.CallbackContext context)

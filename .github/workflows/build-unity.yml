@@ -65,7 +65,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Build
-        path: src/Builds/StandaloneWindows64/**
+        path: build/**
         
     - name: Vérifier les fichiers générés
       run: ls -laR src

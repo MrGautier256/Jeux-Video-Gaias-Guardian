@@ -284,7 +284,14 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      robo1jumpattack-Sheet[48height32wide]_0: 7729782092707089951
+      robo1jumpattack-Sheet[48height32wide]_1: 7028172451701333973
+      robo1jumpattack-Sheet[48height32wide]_2: 9035354828751842864
+      robo1jumpattack-Sheet[48height32wide]_3: -4714858052774087790
+      robo1jumpattack-Sheet[48height32wide]_4: 2122426114142076258
+      robo1jumpattack-Sheet[48height32wide]_5: 2339133617341031554
+      robo1jumpattack-Sheet[48height32wide]_6: 4795504793025849268
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

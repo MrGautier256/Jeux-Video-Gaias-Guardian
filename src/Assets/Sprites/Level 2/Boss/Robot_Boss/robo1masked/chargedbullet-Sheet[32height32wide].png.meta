@@ -309,7 +309,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      chargedbullet-Sheet[32height32wide]_0: -6204655129191838962
+      chargedbullet-Sheet[32height32wide]_1: -3354925178327116484
+      chargedbullet-Sheet[32height32wide]_2: 7760996676262980999
+      chargedbullet-Sheet[32height32wide]_3: -3139794892819683468
+      chargedbullet-Sheet[32height32wide]_4: -7032350221771258930
+      chargedbullet-Sheet[32height32wide]_5: -8903373676073758001
+      chargedbullet-Sheet[32height32wide]_6: 401080923546936610
+      chargedbullet-Sheet[32height32wide]_7: -4880740907131173731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

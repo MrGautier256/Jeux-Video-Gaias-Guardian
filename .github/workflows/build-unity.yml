@@ -69,7 +69,7 @@ jobs:
         cd /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src
 
 #SonarQube steps Part 2 start
-    - name: Build and analyze
+    - name: Sonar analyze start
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: bash
@@ -77,7 +77,7 @@ jobs:
         .sonar/scanner/dotnet-sonarscanner begin /k:"MrGautier256_Jeux-Video-Gaias-Guardian" /o:"mrgautier256" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
 #SonarQube steps Part 2 end
 
-    - name: Clean untracked files
+    - name: Git status
       run: |
         #git clean -fdX
         git status
@@ -97,7 +97,7 @@ jobs:
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
 
 #SonarQube steps Part 3 start
-    - name: Build and analyze
+    - name: Sonar analyze end
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
       shell: bash

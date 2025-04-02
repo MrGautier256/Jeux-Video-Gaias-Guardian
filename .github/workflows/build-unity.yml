@@ -3,10 +3,10 @@ name: Unity Build Pipeline
 on:
   push:
     branches:
-      - testjppci
+      - develop
   pull_request:
     branches:
-      - testjppci
+      - develop
   workflow_dispatch:
   
 jobs:
@@ -42,7 +42,7 @@ jobs:
         cd /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src
 
     - name: Build Unity project
-      uses: game-ci/unity-builder@v4
+      uses: game-ci/unity-builder@v4.3.0
       with:
         unityVersion: 6000.0.40f1
           # 2021.3.16f1

@@ -93,13 +93,6 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
 #SonarQube steps Part 2 end
 
-    - name: Upload Editor Log
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-        name: EditorLog
-        path: ~/.config/unity3d/Editor.log
-
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:

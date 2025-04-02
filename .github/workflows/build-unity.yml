@@ -59,10 +59,14 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: EditorLog
-        path: /github/workspace/src/Editor.log
+        path: ~/.config/unity3d/Editor.log
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
         name: Build
-        path: src/build/**
+        path: src/Builds/StandaloneWindows64/**
+        
+    - name: Vérifier les fichiers générés
+      run: ls -laR src
+        

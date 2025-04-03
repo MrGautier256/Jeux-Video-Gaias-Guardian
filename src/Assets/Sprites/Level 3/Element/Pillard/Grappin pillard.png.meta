@@ -259,7 +259,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Grappin pillard_0: -6249279449878477678
+      Grappin pillard_1: -7209991866369507451
+      Grappin pillard_2: -3288242446092440200
+      Grappin pillard_3: -4233577091688550393
+      Grappin pillard_4: -2822481372005115088
+      Grappin pillard_5: 1985561453939059980
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

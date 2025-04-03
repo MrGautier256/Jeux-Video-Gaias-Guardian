@@ -1,11 +1,30 @@
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad = "Level_1";
+    [Header("UI")]
+    [SerializeField] private GameObject continueButton;
+    [SerializeField] private GameObject deleteSaveButton;
 
-    public void StartGame()
+    private void Start()
     {
-        SceneTransitionManager.Instance.LoadSceneWithFade(sceneToLoad);
+       
     }
+
+    public void StartNewGame()
+    {
+        SaveManager.Instance.ResetSave();
+        SaveManager.Instance.SaveGame();
+        SceneTransitionManager.Instance.LoadSceneWithFade("Level_1");
+    }
+
+
+    public void ContinueGame()
+    {
+        string levelToLoad = SaveManager.Instance.CurrentSave.progression.currentLevel;
+        SceneTransitionManager.Instance.LoadSceneWithFade(levelToLoad);
+    }
+
 }

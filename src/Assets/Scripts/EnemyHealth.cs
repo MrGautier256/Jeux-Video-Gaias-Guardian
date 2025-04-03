@@ -9,12 +9,16 @@ public class EnemyHealth : MonoBehaviour
     public AudioClip deathSound;
     private AudioSource audioSource;
     private SpriteRenderer sr;
+    private Animator animator;
+
 
     private void Start()
     {
         currentHealth = maxHealth;
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponent<Animator>();
+
 
     }
 
@@ -56,6 +60,21 @@ public class EnemyHealth : MonoBehaviour
         if (deathSound != null && audioSource != null)
             audioSource.PlayOneShot(deathSound);
 
+        if (animator != null)
+        {
+            animator.SetTrigger("deathTrigger");
+            StartCoroutine(WaitForDeathAnimation());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private IEnumerator WaitForDeathAnimation()
+    {
+        yield return new WaitForSeconds(2f);
         Destroy(gameObject);
     }
+
 }

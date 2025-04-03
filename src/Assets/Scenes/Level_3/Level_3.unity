@@ -119,148 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &24064502
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 24064505}
-  - component: {fileID: 24064504}
-  - component: {fileID: 24064503}
-  m_Layer: 0
-  m_Name: MusicManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &24064503
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24064502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79870db5c416db944859f69945612136, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!82 &24064504
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24064502}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4401f930ee5ea0449b2a2a895a96fd1f, type: 3}
-  m_Resource: {fileID: 8300000, guid: 4401f930ee5ea0449b2a2a895a96fd1f, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 0.5
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
---- !u!4 &24064505
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 24064502}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.5, y: 5.64, z: -0.0012680956}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &29105519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,7 +4399,6 @@ GameObject:
   m_Component:
   - component: {fileID: 157233911}
   - component: {fileID: 157233913}
-  - component: {fileID: 157233912}
   - component: {fileID: 157233914}
   m_Layer: 0
   m_Name: RoomTransition_1_3_to_1_4
@@ -4565,18 +4422,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856480694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &157233912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 157233910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b346aa75676d4bb88cac9b7ec7317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &157233913
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17330,7 +17175,6 @@ GameObject:
   m_Component:
   - component: {fileID: 976715761}
   - component: {fileID: 976715763}
-  - component: {fileID: 976715762}
   - component: {fileID: 976715764}
   m_Layer: 0
   m_Name: RoomTransition_1_4_to_1_4_Annexe
@@ -17354,18 +17198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856480694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 75}
---- !u!114 &976715762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 976715760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b346aa75676d4bb88cac9b7ec7317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &976715763
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21678,7 +21510,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1241763394}
   - component: {fileID: 1241763396}
-  - component: {fileID: 1241763395}
   - component: {fileID: 1241763397}
   m_Layer: 0
   m_Name: RoomTransition_1_7_to_1_8
@@ -21702,18 +21533,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856480694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1241763395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1241763393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b346aa75676d4bb88cac9b7ec7317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1241763396
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -21789,7 +21608,7 @@ GameObject:
   - component: {fileID: 1242445979}
   - component: {fileID: 1242445978}
   m_Layer: 0
-  m_Name: LevelTransitionTrigger
+  m_Name: LevelTransitionTrigger_LvL4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25146,7 +24965,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1654629393}
   - component: {fileID: 1654629395}
-  - component: {fileID: 1654629394}
   - component: {fileID: 1654629396}
   m_Layer: 0
   m_Name: RoomTransition_1_5_to_1_6
@@ -25170,18 +24988,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856480694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1654629394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1654629392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b346aa75676d4bb88cac9b7ec7317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1654629395
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25395,7 +25201,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1742573568}
   - component: {fileID: 1742573570}
-  - component: {fileID: 1742573569}
   - component: {fileID: 1742573571}
   m_Layer: 0
   m_Name: RoomTransition_1_6_to_1_7
@@ -25419,18 +25224,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856480694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1742573569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1742573567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b346aa75676d4bb88cac9b7ec7317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1742573570
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -28820,7 +28613,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1893651119}
   - component: {fileID: 1893651121}
-  - component: {fileID: 1893651120}
   - component: {fileID: 1893651122}
   m_Layer: 0
   m_Name: RoomTransition_1_4_to_1_5
@@ -28844,18 +28636,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1856480694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1893651120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1893651118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d4b346aa75676d4bb88cac9b7ec7317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1893651121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -29905,7 +29685,7 @@ GameObject:
   - component: {fileID: 2128264852}
   - component: {fileID: 2128264851}
   m_Layer: 0
-  m_Name: LevelTransitionTrigger
+  m_Name: LevelTransitionTrigger_LvL2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30116,7 +29896,6 @@ SceneRoots:
   - {fileID: 66097953}
   - {fileID: 1491620009}
   - {fileID: 1250956325}
-  - {fileID: 24064505}
   - {fileID: 1856480694}
   - {fileID: 2128264853}
   - {fileID: 1242445980}

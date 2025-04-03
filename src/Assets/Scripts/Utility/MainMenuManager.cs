@@ -15,18 +15,14 @@ public class MainMenuManager : MonoBehaviour
 
     public void StartNewGame()
     {
-        Debug.Log("[MainMenuManager] Nouvelle partie lancée.");
         SaveManager.Instance.ResetSave();
         SaveManager.Instance.SaveGame();
-
         SceneTransitionManager.Instance.LoadSceneWithFade("Level_1");
     }
 
 
     public void ContinueGame()
     {
-        Debug.Log("[MainMenuManager] Nouvelle partie lancée.");
-
         string levelToLoad = SaveManager.Instance.CurrentSave.progression.currentLevel;
         SceneTransitionManager.Instance.LoadSceneWithFade(levelToLoad);
     }

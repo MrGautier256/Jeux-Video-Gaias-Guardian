@@ -25,8 +25,5 @@ public class PlayerAbilities : MonoBehaviour
         CanDash = abilities.hasDash;
         CanGrapple = abilities.hasGrapple;
         CanUseSword = abilities.hasSword;
-
-        Debug.Log("[PlayerAbilities] Abilities chargées : " +
-                  $"DoubleJump={CanDoubleJump}, Dash={CanDash}, Grapple={CanGrapple}, Sword={CanUseSword}");
     }
 }

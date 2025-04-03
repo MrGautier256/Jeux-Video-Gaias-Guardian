@@ -135,39 +135,37 @@ public class Player : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (context.performed && canAttack)
+        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
+
+        canAttack = false;
+        StartCoroutine(AttackFlash());
+
+        Vector2 attackOrigin = (Vector2)transform.position + Vector2.right * GetFacingDirection() * attackRange * 0.5f;
+        Vector2 boxSize = new Vector2(attackRange, attackWidth);
+
+        // Visual prefab instantiation
+        if (attackHitboxPrefab != null)
         {
-            canAttack = false;
-            StartCoroutine(AttackFlash());
-
-            Vector2 attackOrigin = (Vector2)transform.position + Vector2.right * GetFacingDirection() * attackRange * 0.5f;
-            Vector2 boxSize = new Vector2(attackRange, attackWidth);
-
-            // Visual prefab instantiation
-            if (attackHitboxPrefab != null)
-            {
-                GameObject vis = Instantiate(attackHitboxPrefab);
-                vis.transform.position = attackOrigin;
-                vis.transform.rotation = Quaternion.identity;
-                vis.transform.localScale = new Vector3(boxSize.x, boxSize.y, 1f);
-
-                // On peut aussi y ajouter un sprite flip si tu veux visuellement indiquer la direction
-                Destroy(vis, 0.1f);
-            }
-
-            Collider2D[] hits = Physics2D.OverlapBoxAll(attackOrigin, boxSize, 0f, enemyLayer);
-
-            foreach (Collider2D hit in hits)
-            {
-                if (hit.TryGetComponent(out EnemyHitbox hitbox))
-                {
-                    hitbox.ReceiveHit(attackDamage);
-                }
-            }
-
-            Invoke(nameof(ResetAttack), attackCooldown);
+            GameObject vis = Instantiate(attackHitboxPrefab);
+            vis.transform.position = attackOrigin;
+            vis.transform.rotation = Quaternion.identity;
+            vis.transform.localScale = new Vector3(boxSize.x, boxSize.y, 1f);
+            Destroy(vis, 0.1f);
         }
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(attackOrigin, boxSize, 0f, enemyLayer);
+
+        foreach (Collider2D hit in hits)
+        {
+            if (hit.TryGetComponent(out EnemyHitbox hitbox))
+            {
+                hitbox.ReceiveHit(attackDamage);
+            }
+        }
+
+        Invoke(nameof(ResetAttack), attackCooldown);
     }
+
 
     private void ResetAttack()
     {
@@ -176,7 +174,7 @@ public class Player : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, groundLayer);
+        Collider2D groundCollider = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
         return groundCollider != null;
     }
 

@@ -49,7 +49,6 @@ public class SaveManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
             savePath = Application.persistentDataPath + "/save.json";
             LoadGame();
-            Debug.Log("[SaveManager] Chargé. Niveau actuel : " + CurrentSave.progression.currentLevel);
 
         }
         else

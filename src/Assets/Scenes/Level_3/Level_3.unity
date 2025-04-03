@@ -20924,7 +20924,7 @@ GameObject:
   - component: {fileID: 1242445979}
   - component: {fileID: 1242445978}
   m_Layer: 0
-  m_Name: LevelTransitionTriggerToLevel4
+  m_Name: LevelTransitionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29431,7 +29431,7 @@ GameObject:
   - component: {fileID: 2128264852}
   - component: {fileID: 2128264851}
   m_Layer: 0
-  m_Name: LevelTransitionTriggerToLevel2
+  m_Name: LevelTransitionTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

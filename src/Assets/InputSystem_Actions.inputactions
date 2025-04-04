@@ -243,7 +243,7 @@
                 {
                     "name": "",
                     "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
@@ -287,7 +287,7 @@
                 {
                     "name": "",
                     "id": "26fd9357-5882-4409-939e-271158a5fed8",
-                    "path": "<Keyboard>/j",
+                    "path": "<Keyboard>/semicolon",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",

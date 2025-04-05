@@ -1,3 +1,6 @@
+# Ce build permet de compiler le jeu avec Unity (job build)
+# Et il lance un second job (sonar) pour l'analyse SonarCloud
+
 name: Unity Build Pipeline
 
 on:
@@ -12,16 +15,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest 
-
     steps:
+    - name: Generate build version number
+      id: version
+      run: |
+        VERSION="1.0.0.${{ github.run_number }}"
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "::notice title=Build Version::$VERSION"       
     - name: Checkout repository
       uses: actions/checkout@v3
-
-    - name: List files at root
-      run: |
-        pwd
-        ls -la # Sur Linux
-
     - name: Cache Unity Library
       uses: actions/cache@v3
       with:
@@ -29,28 +31,10 @@ jobs:
         key: Library-${{ runner.os }}-${{ hashFiles('src/**/*.cs') }}
         restore-keys: |
           Library-${{ runner.os }}-
-    - name: Check system resources
-      run: |
-        free -h
-        df -h
-        ulimit -a
-
-    - name: Debug scenes list
-      run: |
-        echo "Scenes in EditorBuildSettings:"
-        cat src/ProjectSettings/EditorBuildSettings.asset | grep -A 1 path
-        cd /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src
-
-    - name: Git status
-      run: |
-        #git clean -fdX
-        git status
-
     - name: Build Unity project
       uses: game-ci/unity-builder@v4.3.0
       with:
         unityVersion: 6000.0.40f1
-          # 2021.3.16f1
         targetPlatform: StandaloneWindows64
         projectPath: src  
         buildName: GaiasGuardian
@@ -59,13 +43,60 @@ jobs:
         UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Build
-        path: build/**
-        
-    - name: Vérifier les fichiers générés
-      run: ls -laR src
-        
+        name: Build-${{ env.VERSION }}
+        path: build/StandaloneWindows64/**
+    - name: Set build summary
+      run: |
+        echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+# Librement inspiré du workflow suivant :  https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
+  sonar:
+    runs-on: ubuntu-latest
+    container: unityci/editor:ubuntu-6000.0.41f1-linux-il2cpp-3
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      - name: Cache Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-lint-
+      - name: Activate Unity
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: unity-editor -nographics -logFile /dev/stdout -quit -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -serial "$UNITY_SERIAL"
+      - name: Generate Solution
+        run: unity-editor -nographics -logFile /dev/stdout -customBuildName jpp -projectPath src -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -quit
+      - name: SonarQube Analysis
+        env:
+          FrameworkPathOverride: /opt/unity/Editor/Data/MonoBleedingEdge/
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+          chmod +x ./dotnet-install.sh
+          ./dotnet-install.sh --version latest
+          apt-get update
+          apt-get install -y openjdk-17-jre-headless
+          apt-get install -y dotnet-sdk-6.0
+          dotnet tool install dotnet-sonarscanner --tool-path .
+          ./dotnet-sonarscanner begin \
+            /o:"mrgautier256" \
+            /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.host.url=https://sonarcloud.io \
+            /d:sonar.exclusions=**/Plugins/**
+          dotnet build src/src.sln
+          ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+      # - name: SonarQube Quality Gate Check
+        # uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
+        # with:
+          # scanMetadataReportFile: ../.sonarqube/out/.sonar/report-task.txt
+        # env:
+          # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+          

@@ -14,9 +14,9 @@
 [Ll]ibrary/ShaderCache/
 
 # Fichiers Unity générés
-*.csproj
+#*.csproj
 *.unityproj
-*.sln
+#*.sln
 *.suo
 *.tmp
 *.user

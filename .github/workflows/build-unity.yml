@@ -77,6 +77,7 @@ jobs:
           FrameworkPathOverride: /opt/unity/Editor/Data/MonoBleedingEdge/
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
+          cd src
           wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
           chmod +x ./dotnet-install.sh
           ./dotnet-install.sh --version latest
@@ -88,11 +89,10 @@ jobs:
             /o:"mrgautier256" \
             /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
             /d:sonar.token="$SONAR_TOKEN" \
-            /d:sonar.host.url=https://sonarcloud.io \
-            /d:sonar.inclusions=src/Assets/Scripts/**/*.cs,**/*.csproj,**/*.sln \
-            /d:sonar.sources=src
-          dotnet build src/src.sln
+            /d:sonar.host.url=https://sonarcloud.io
+          dotnet build src.sln
           ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+          cd ..
       # - name: SonarQube Quality Gate Check
         # uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
         # with:

@@ -89,9 +89,7 @@ jobs:
             /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
             /d:sonar.token="$SONAR_TOKEN" \
             /d:sonar.host.url=https://sonarcloud.io \
-            /d:sonar.inclusions=src/Assets/Scripts/**/*.cs \
-            /d:sonar.inclusions=**/*.csproj \
-            /d:sonar.inclusions=**/*.sln \
+            /d:sonar.inclusions=src/Assets/Scripts/**/*.cs,**/*.csproj,**/*.sln \
             /d:sonar.sources=src
           dotnet build src/src.sln
           ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"

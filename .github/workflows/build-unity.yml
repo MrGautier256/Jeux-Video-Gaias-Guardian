@@ -80,7 +80,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           cd src
-          sed -i '/<\/Project>/i\  <PropertyGroup>\n    <IsTestProject>false</IsTestProject>\n  </PropertyGroup>' Assembly-CSharp.csproj
+          sed -i '/<\/Project>/i\  <PropertyGroup>\n    <SonarQubeTestProject>false</SonarQubeTestProject>\n  </PropertyGroup>' Assembly-CSharp.csproj
           wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
           chmod +x ./dotnet-install.sh
           ./dotnet-install.sh --version latest

@@ -98,11 +98,11 @@ jobs:
           dotnet build src.sln
           ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
           cd ..
-      # - name: SonarQube Quality Gate Check
-        # uses: SonarSource/sonarqube-quality-gate-action@v1.1.0
-        # with:
-          # scanMetadataReportFile: ../.sonarqube/out/.sonar/report-task.txt
-        # env:
-          # SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          
-          
+    - name: Upload Build Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: src
+        path: |
+          src/**/*.sln
+          src/**/*.csproj
+          src/Assets/Scripts/**/*.cs

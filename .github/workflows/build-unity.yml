@@ -51,6 +51,7 @@ jobs:
     - name: Set build summary
       run: |
         echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY
+
 # Librement inspiré du workflow suivant :  https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
   sonar:
     runs-on: ubuntu-latest

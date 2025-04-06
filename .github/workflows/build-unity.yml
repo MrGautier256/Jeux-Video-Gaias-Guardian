@@ -112,6 +112,6 @@ jobs:
         with:
           name: src
           path: |
-            src/**/*.sln              # Sauvegarde les fichiers .sln générés
-            src/**/*.csproj           # Sauvegarde les fichiers projet C#
-            src/Assets/Scripts/**/*.cs  # Sauvegarde les fichiers C# du dossier Scripts
+            src/**/*.sln
+            src/**/*.csproj
+            src/Assets/Scripts/**/*.cs

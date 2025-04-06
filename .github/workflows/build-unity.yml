@@ -94,14 +94,18 @@ jobs:
           # Installe dotnet-sonarscanner localement
           dotnet tool install dotnet-sonarscanner --tool-path .
           # Démarre l’analyse SonarCloud
+          #   /o: Organisation SonarCloud
+          #   /k: Clé du projet
           ./dotnet-sonarscanner begin \
-            /o:"mrgautier256" \                     # Organisation SonarCloud
-            /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \  # Clé du projet
-            /d:sonar.token="$SONAR_TOKEN" \        # Jeton d’authentification
-            /d:sonar.exclusions=**/TextMesh*/**,**/Plugins/**,**/*.json,**/*.asmdef \  # Exclusions personnalisées
+            /o:"mrgautier256" \
+            /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.exclusions=**/TextMesh*/**,**/Plugins/**,**/*.json,**/*.asmdef \
             /d:sonar.host.url=https://sonarcloud.io
-          dotnet build src.sln                     # Compilation du projet .sln généré par Unity
-          ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"  # Fin de l’analyse
+          # Compilation du projet .sln généré par Unity
+          dotnet build src.sln                     
+          # Fin de l’analyse
+          ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
           cd ..
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4

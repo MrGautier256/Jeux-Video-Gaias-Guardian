@@ -21,7 +21,7 @@ jobs:
       run: |
         VERSION="1.0.0.${{ github.run_number }}"
         echo "VERSION=$VERSION" >> $GITHUB_ENV
-        echo "::notice title=Build Version::$VERSION"       
+        echo "::notice title=Build Version::$VERSION"
     - name: Checkout repository
       uses: actions/checkout@v3
     - name: Cache Unity Library
@@ -51,9 +51,7 @@ jobs:
     - name: Set build summary
       run: |
         echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY
-
-# Librement inspiré du workflow suivant :  https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
-  sonar:
+  sonar: # Librement inspiré du workflow suivant :  https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
     runs-on: ubuntu-latest
     container: unityci/editor:ubuntu-6000.0.41f1-linux-il2cpp-3
     steps:
@@ -99,11 +97,11 @@ jobs:
           dotnet build src.sln
           ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
           cd ..
-    - name: Upload Build Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: src
-        path: |
-          src/**/*.sln
-          src/**/*.csproj
-          src/Assets/Scripts/**/*.cs
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: src
+          path: |
+            src/**/*.sln
+            src/**/*.csproj
+            src/Assets/Scripts/**/*.cs

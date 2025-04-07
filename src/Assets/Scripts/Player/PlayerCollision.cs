@@ -140,6 +140,9 @@ public class PlayerCollision : MonoBehaviour
         sr.color = originalColor;
         yield return new WaitForSeconds(0.1f);
         sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+
+        sr.color = originalColor;
     }
 
     private IEnumerator InvulnerabilityRoutine()

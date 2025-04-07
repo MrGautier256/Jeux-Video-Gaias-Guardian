@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
     public LayerMask enemyLayer;
 
     public GameObject attackHitboxPrefab;
+    private Animator animator;
+    private float jumpBuffer = 0f;
+
 
     private bool canAttack = true;
 
@@ -48,10 +51,28 @@ public class Player : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         abilities = GetComponent<PlayerAbilities>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+
+        if (animator != null)
+        {
+            animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        }
+
+
+        if (jumpBuffer > 0f)
+        {
+            jumpBuffer -= Time.deltaTime;
+        }
+        else if (animator.GetBool("Isjumping") && IsGrounded())
+        {
+            Debug.Log("Reset Isjumping");
+            animator.SetBool("Isjumping", false);
+        }
+
         if (isDashing)
         {
             if (Time.time >= dashTime)
@@ -100,15 +121,22 @@ public class Player : MonoBehaviour
     {
         if (!context.performed) return;
 
+
         if (IsGrounded())
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
             doubleJumpAvailable = abilities != null && abilities.CanDoubleJump;
+            animator.SetBool("Isjumping", true);
+            Debug.Log("Jumping anim déclenchée");
+            jumpBuffer = 0.15f;
+
+
         }
         else if (doubleJumpAvailable)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
             doubleJumpAvailable = false;
+            animator.SetBool("Isjumping", true);
         }
     }
 

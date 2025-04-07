@@ -7287,13 +7287,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 609603908}
   m_SourcePrefab: {fileID: 100100000, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
 --- !u!4 &609603906 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
   m_PrefabInstance: {fileID: 609603905}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &609603907 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+  m_PrefabInstance: {fileID: 609603905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &609603908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609603907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c49331f3024da4691bbed95a4d980d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  stopDistance: 0.05
+  waitTimeAtPoint: 0.5
+  initialDelayRandomRange: 1.5
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  isMoving: 0
+  projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
+  projectileSpeed: 5
+  shootCooldown: 1.5
+  spriteFacesLeftByDefault: 1
+  rangeLeft: 7.09
+  rangeRight: 9
+  rangeUp: 5.67
+  rangeDown: 4.37
+  detectionOffset: {x: 0, y: 0}
 --- !u!1 &615563357
 GameObject:
   m_ObjectHideFlags: 0

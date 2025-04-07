@@ -5254,11 +5254,11 @@ Transform:
   m_GameObject: {fileID: 96733799}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.45, y: -1.7460011, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.4999998, z: 1}
+  m_LocalPosition: {x: 19.449997, y: -1.7460011, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.4999995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 323004845}
+  m_Father: {fileID: 1935870713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &98476399
 GameObject:
@@ -7586,7 +7586,7 @@ GameObject:
   m_Component:
   - component: {fileID: 323004845}
   m_Layer: 0
-  m_Name: Ennemies
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7606,8 +7606,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1935870713}
-  - {fileID: 96733800}
-  - {fileID: 1244602106}
   - {fileID: 491521423}
   m_Father: {fileID: 581263126}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8168,6 +8166,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1611210089}
+    - targetCorrespondingSourceObject: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1611210096}
   m_SourcePrefab: {fileID: 100100000, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
 --- !u!4 &361914701 stripped
 Transform:
@@ -16624,6 +16625,16 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1702634706}
   pointB: {fileID: 404050583}
+  isMoving: 1
+  projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
+  projectileSpeed: 5
+  shootCooldown: 3
+  spriteFacesLeftByDefault: 1
+  rangeLeft: 9
+  rangeRight: 9
+  rangeUp: 5
+  rangeDown: 2.5
+  detectionOffset: {x: 0, y: 0}
 --- !u!1 &870386093
 GameObject:
   m_ObjectHideFlags: 0
@@ -24352,11 +24363,11 @@ Transform:
   m_GameObject: {fileID: 1244602105}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 21.15, y: -1.7460011, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.4999998, z: 1}
+  m_LocalPosition: {x: 21.150002, y: -1.7460011, z: 0}
+  m_LocalScale: {x: 2.5, y: 2.4999995, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 323004845}
+  m_Father: {fileID: 1935870713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1250956321
 GameObject:
@@ -25447,6 +25458,16 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 96733800}
   pointB: {fileID: 1244602106}
+  isMoving: 1
+  projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
+  projectileSpeed: 5
+  shootCooldown: 3
+  spriteFacesLeftByDefault: 1
+  rangeLeft: 14
+  rangeRight: 12
+  rangeUp: 5
+  rangeDown: 2.5
+  detectionOffset: {x: 0, y: 0}
 --- !u!1 &1336304354
 GameObject:
   m_ObjectHideFlags: 0
@@ -27406,6 +27427,16 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 969132369}
   pointB: {fileID: 1166934642}
+  isMoving: 1
+  projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
+  projectileSpeed: 5
+  shootCooldown: 3
+  spriteFacesLeftByDefault: 1
+  rangeLeft: 9
+  rangeRight: 12
+  rangeUp: 5
+  rangeDown: 2.5
+  detectionOffset: {x: 0, y: 0}
 --- !u!1 &1490368525
 GameObject:
   m_ObjectHideFlags: 0
@@ -28754,6 +28785,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1611210096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1611210083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84c49331f3024da4691bbed95a4d980d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  stopDistance: 0.05
+  waitTimeAtPoint: 0.5
+  initialDelayRandomRange: 1.5
+  pointA: {fileID: 0}
+  pointB: {fileID: 0}
+  isMoving: 1
+  projectilePrefab: {fileID: 0}
+  projectileSpeed: 5
+  shootCooldown: 2
+  spriteFacesLeftByDefault: 1
+  rangeLeft: 9
+  rangeRight: 8
+  rangeUp: 5
+  rangeDown: 2
+  detectionOffset: {x: 0, y: 0}
 --- !u!1 &1617107805
 GameObject:
   m_ObjectHideFlags: 0
@@ -33850,7 +33909,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753972619}
   m_Layer: 0
-  m_Name: Ennemies
+  m_Name: Enemies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54385,6 +54444,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 762988052}
+  - {fileID: 96733800}
+  - {fileID: 1244602106}
   m_Father: {fileID: 323004845}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1964125778
@@ -56339,6 +56400,16 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1701403439}
   pointB: {fileID: 1336304355}
+  isMoving: 1
+  projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
+  projectileSpeed: 5
+  shootCooldown: 3
+  spriteFacesLeftByDefault: 1
+  rangeLeft: 9
+  rangeRight: 12
+  rangeUp: 5
+  rangeDown: 2.5
+  detectionOffset: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

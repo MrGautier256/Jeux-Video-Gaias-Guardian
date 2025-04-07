@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class FlyingChaserAI : EnemyAI
 {
@@ -6,7 +6,8 @@ public class FlyingChaserAI : EnemyAI
     public float speed = 3f;
     public float detectionRadius = 5f;
     public float swoopArcHeight = 1.5f;
-    public float cooldownBetweenAttacks = 2f;
+    public float cooldownBetweenAttacks = 1f;
+    public LayerMask playerLayer;
 
     private Vector2 targetPosition;
     private bool hasLockedTarget = false;
@@ -14,42 +15,65 @@ public class FlyingChaserAI : EnemyAI
     private float swoopProgress = 0f;
     private Vector2 swoopStartPos;
 
+    private bool hasDealtDamage = false;
+
     protected override void Start()
     {
         base.Start();
-        //attackCooldown = Random.Range(0f, 1f); // pour désynchroniser les crânes
     }
 
     public override void Act()
     {
         if (player == null) return;
 
-        //attackCooldown -= Time.deltaTime;
+        attackCooldown -= Time.deltaTime;
 
-        // Si en cooldown ou en vol
-        if (!hasLockedTarget && Vector2.Distance(transform.position, player.position) < detectionRadius)
+        if (!hasLockedTarget && attackCooldown <= 0f)
         {
-            hasLockedTarget = true;
-            swoopStartPos = transform.position;
-            targetPosition = player.position; //  lock la position du joueur
-            swoopProgress = 0f;
+            float dist = Vector2.Distance(transform.position, player.position);
+            if (dist < detectionRadius)
+            {
+                hasLockedTarget = true;
+                swoopStartPos = transform.position;
+                targetPosition = player.position;
+                swoopProgress = 0f;
+                hasDealtDamage = false;
+            }
         }
 
         if (hasLockedTarget)
         {
+            // Avance du swoop dans le temps
             swoopProgress += Time.deltaTime * (speed / Vector2.Distance(swoopStartPos, targetPosition));
 
             Vector2 direction = Vector2.Lerp(swoopStartPos, targetPosition, swoopProgress);
             float arc = Mathf.Sin(Mathf.PI * swoopProgress) * swoopArcHeight;
-
-            // Ajoute l’arc en Y pour un effet de courbe (comme un oiseau)
             Vector2 curvedTarget = new Vector2(direction.x, direction.y + arc);
+
             transform.position = Vector2.Lerp(transform.position, curvedTarget, Time.deltaTime * speed);
 
-            // Flip sprite
-            if ((curvedTarget - (Vector2)transform.position).x != 0)
-                transform.localScale = new Vector3(Mathf.Sign(curvedTarget.x - transform.position.x), 1f, 1f);
+            // Flip visuel
+            Vector2 dir = curvedTarget - (Vector2)transform.position;
+            if (dir.x != 0)
+            {
+                Vector3 scale = transform.localScale;
+                scale.x = Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
+                transform.localScale = scale;
+            }
 
+            // Collision (mais seulement une fois par attaque)
+            if (!hasDealtDamage)
+            {
+                Collider2D hit = Physics2D.OverlapCircle(transform.position, 0.4f, playerLayer);
+                if (hit != null && hit.TryGetComponent(out PlayerCollision player))
+                {
+                    Vector2 knockback = (player.transform.position - transform.position).normalized;
+                    player.TakeDamages(1, knockback);
+                    hasDealtDamage = true;
+                }
+            }
+
+            // Fin de lâ€™attaque
             if (swoopProgress >= 1f)
             {
                 hasLockedTarget = false;
@@ -62,6 +86,7 @@ public class FlyingChaserAI : EnemyAI
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, 0.4f);
     }
-
 }

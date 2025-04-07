@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask enemyLayer;
 
+    public GameObject attackHitboxPrefab;
     private Animator animator;
     private float jumpBuffer = 0f;
 
@@ -158,7 +159,7 @@ public class Player : MonoBehaviour
                 rb.MovePosition(newPos);
             }
 
-            //Déblocage automatique si bloqué
+            //Dï¿½blocage automatique si bloquï¿½
             if (Vector2.Distance(rb.position, lastPosition) < 0.01f)
             {
                 stuckTimer += Time.fixedDeltaTime;
@@ -235,7 +236,7 @@ public class Player : MonoBehaviour
 
         if (!context.performed || isGrappling || !abilities.CanGrapple) return;
 
-        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized; 
+        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized;
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
 
         // Visuel direct pour feedback

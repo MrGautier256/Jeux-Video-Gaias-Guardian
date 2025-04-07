@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -36,11 +37,10 @@ public class Player : MonoBehaviour
     [Header("Attack")]
     public float attackRange = 1f;
     public float attackWidth = 0.5f;
-    public float attackCooldown = 0.3f;
+    public float attackCooldown = 0.5f;
     public int attackDamage = 1;
     public LayerMask enemyLayer;
 
-    public GameObject attackHitboxPrefab;
     private Animator animator;
     private float jumpBuffer = 0f;
 
@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
             if (Time.time >= dashTime)
             {
                 isDashing = false;
+                animator.SetBool("IsDashing", false);
             }
             else
             {
@@ -127,7 +128,6 @@ public class Player : MonoBehaviour
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
             doubleJumpAvailable = abilities != null && abilities.CanDoubleJump;
             animator.SetBool("Isjumping", true);
-            Debug.Log("Jumping anim déclenchée");
             jumpBuffer = 0.15f;
 
 
@@ -156,7 +156,10 @@ public class Player : MonoBehaviour
 
         if (!abilities.CanDash) return;
 
+
         isDashing = true;
+        animator.SetTrigger("DashTrigger");
+        animator.SetBool("IsDashing", true);
         dashTime = Time.time + dashDuration;
         canDash = false;
     }
@@ -166,20 +169,16 @@ public class Player : MonoBehaviour
         if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
 
         canAttack = false;
-        StartCoroutine(AttackFlash());
+
+        if (animator != null)
+        {
+            animator.SetTrigger("AttackTrigger");
+            animator.SetBool("IsAttacking", true);
+
+        }
 
         Vector2 attackOrigin = (Vector2)transform.position + Vector2.right * GetFacingDirection() * attackRange * 0.5f;
         Vector2 boxSize = new Vector2(attackRange, attackWidth);
-
-        // Visual prefab instantiation
-        if (attackHitboxPrefab != null)
-        {
-            GameObject vis = Instantiate(attackHitboxPrefab);
-            vis.transform.position = attackOrigin;
-            vis.transform.rotation = Quaternion.identity;
-            vis.transform.localScale = new Vector3(boxSize.x, boxSize.y, 1f);
-            Destroy(vis, 0.1f);
-        }
 
         Collider2D[] hits = Physics2D.OverlapBoxAll(attackOrigin, boxSize, 0f, enemyLayer);
 
@@ -190,7 +189,11 @@ public class Player : MonoBehaviour
                 hitbox.ReceiveHit(attackDamage);
             }
         }
+        float attackDuration = animator.runtimeAnimatorController.animationClips
+    .FirstOrDefault(clip => clip.name == "attack")?.length ?? 0.5f;
 
+
+        attackCooldown = attackDuration;
         Invoke(nameof(ResetAttack), attackCooldown);
     }
 
@@ -198,7 +201,13 @@ public class Player : MonoBehaviour
     private void ResetAttack()
     {
         canAttack = true;
+
+        if (animator != null)
+        {
+            animator.SetBool("IsAttacking", false);
+        }
     }
+
 
     private bool IsGrounded()
     {
@@ -209,13 +218,5 @@ public class Player : MonoBehaviour
     public int GetFacingDirection()
     {
         return facingDirection;
-    }
-
-    private IEnumerator AttackFlash()
-    {
-        Color originalColor = sr.color;
-        sr.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        sr.color = originalColor;
     }
 }

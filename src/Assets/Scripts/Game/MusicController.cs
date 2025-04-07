@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(AudioSource))]
 public class MusicController : MonoBehaviour
 {
-    public static MusicController Instance;
+    public static MusicController Instance { get; private set; }
 
     [System.Serializable]
     public class SceneMusic

@@ -45,14 +45,11 @@ public class PlayerCollision : MonoBehaviour
         if (isDead || isInvulnerable) return;
 
         healthSystem.TakeDamage(damage);
+        if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
+        StartCoroutine(TemporaryKnockback());
+        StartCoroutine(InvulnerabilityRoutine());
+        ApplyKnockback(knockbackDirection);
 
-        if (!isDead) 
-        {
-            if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
-            StartCoroutine(TemporaryKnockback());
-            StartCoroutine(InvulnerabilityRoutine());
-            ApplyKnockback(knockbackDirection);
-        }
     }
 
     public void Kill(bool loseLife = true)
@@ -80,14 +77,14 @@ public class PlayerCollision : MonoBehaviour
 
     private void HandleDeath()
     {
-        Kill(); 
+        Kill();
     }
 
     private void RestartLogic()
     {
         if (shouldLoseLife)
         {
-            healthSystem.LoseLife(); 
+            healthSystem.LoseLife();
 
             if (!healthSystem.HasLivesLeft())
             {

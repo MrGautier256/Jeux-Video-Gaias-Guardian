@@ -1,71 +1,117 @@
+# Ce build permet de compiler le jeu avec Unity (job build)
+# Et il lance un second job (sonar) pour l'analyse SonarCloud
+
 name: Unity Build Pipeline
 
 on:
   push:
     branches:
-      - develop
+      - develop          # Le pipeline se déclenche lors d’un push sur la branche develop
   pull_request:
     branches:
-      - develop
-  workflow_dispatch:
-  
+      - develop          # Il se déclenche également lors d’un pull request vers develop
+  workflow_dispatch:     # Et peut être lancé manuellement
+
 jobs:
   build:
-    runs-on: ubuntu-latest 
-
+    runs-on: ubuntu-latest   # Utilise un runner GitHub standard sous Ubuntu
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-
-    - name: List files at root
+    - name: Generate build version number
+      id: version
       run: |
-        pwd
-        ls -la # Sur Linux
-
+        VERSION="1.0.0.${{ github.run_number }}"  # Numérotation automatique du build
+        echo "VERSION=$VERSION" >> $GITHUB_ENV
+        echo "::notice title=Build Version::$VERSION"  # Affiche la version dans les logs
+    - name: Checkout repository
+      uses: actions/checkout@v3  # Récupère le code source du repo
     - name: Cache Unity Library
       uses: actions/cache@v3
       with:
         path: src/Library
-        key: Library-${{ runner.os }}-${{ hashFiles('src/**/*.cs') }}
+        key: Library-${{ runner.os }}-${{ hashFiles('src/**/*.cs') }}  # Cache basé sur le hash des fichiers .cs
         restore-keys: |
-          Library-${{ runner.os }}-
-    - name: Check system resources
-      run: |
-        free -h
-        df -h
-        ulimit -a
-
-    - name: Debug scenes list
-      run: |
-        echo "Scenes in EditorBuildSettings:"
-        cat src/ProjectSettings/EditorBuildSettings.asset | grep -A 1 path
-        cd /home/runner/work/Jeux-Video-Gaias-Guardian/Jeux-Video-Gaias-Guardian/src
-
-    - name: Git status
-      run: |
-        #git clean -fdX
-        git status
-
+          Library-${{ runner.os }}-  # Clé de secours si le cache exact n’existe pas
     - name: Build Unity project
       uses: game-ci/unity-builder@v4.3.0
       with:
-        unityVersion: 6000.0.40f1
-          # 2021.3.16f1
-        targetPlatform: StandaloneWindows64
-        projectPath: src  
-        buildName: GaiasGuardian
-        customParameters: -logFile /dev/stdout -debugCodeOptimization
+        unityVersion: 6000.0.40f1        # Version Unity utilisée
+        targetPlatform: StandaloneWindows64  # Plateforme cible (Windows 64 bits)
+        projectPath: src                # Chemin vers le projet Unity
+        buildName: GaiasGuardian       # Nom du build
+        customParameters: -logFile /dev/stdout -debugCodeOptimization  # Paramètres supplémentaires pour le build
       env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}       # Données sensibles Unity (email)
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }} # mot de passe
+        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}     # clé de licence Unity
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
       with:
-        name: Build
-        path: build/**
-        
-    - name: Vérifier les fichiers générés
-      run: ls -laR src
-        
+        name: Build-${{ env.VERSION }}  # Nom de l’artefact avec version du build
+        path: build/StandaloneWindows64/**  # Chemin vers le dossier du build
+    - name: Set build summary
+      run: |
+        echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY  # Ajoute un résumé dans l’onglet "Summary"
+
+  sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
+    runs-on: ubuntu-latest
+    container: unityci/editor:ubuntu-6000.0.41f1-linux-il2cpp-3  # Utilise une image docker Unity contenant .NET et le build Unity
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Permet à Sonar d’avoir l’historique complet du repo
+          lfs: true        # Nécessaire si vous utilisez Git Large File System
+      - name: Cache Library
+        uses: actions/cache@v4
+        with:
+          path: Library
+          key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}  # Cache basé sur les fichiers Unity
+          restore-keys: Library-lint-
+      - name: Activate Unity
+        env:
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+        run: unity-editor -nographics -logFile /dev/stdout -quit -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -serial "$UNITY_SERIAL"  # Active la licence Unity dans le conteneur
+      - name: Generate Solution
+        run: unity-editor -nographics -logFile /dev/stdout -customBuildName jpp -projectPath src -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -quit  # Génère le fichier .sln (solution C#) avec Rider
+      - name: SonarQube Analysis
+        env:
+          FrameworkPathOverride: /opt/unity/Editor/Data/MonoBleedingEdge/  # Chemin vers le framework Mono utilisé par Unity
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          cd src
+          # Marque le projet comme un projet "normal" (non test) pour Sonar
+          sed -i '/<\/Project>/i\  <PropertyGroup>\n    <SonarQubeTestProject>false</SonarQubeTestProject>\n  </PropertyGroup>' Assembly-CSharp.csproj
+          # Installe dotnet (au cas où le conteneur ne l’a pas)
+          wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+          chmod +x ./dotnet-install.sh
+          ./dotnet-install.sh --version latest
+          # Installe Java pour le scanner Sonar
+          apt-get update
+          apt-get install -y openjdk-17-jre-headless
+          apt-get install -y dotnet-sdk-6.0  # Installe un SDK .NET compatible avec Unity
+          # Installe dotnet-sonarscanner localement
+          dotnet tool install dotnet-sonarscanner --tool-path .
+          # Démarre l’analyse SonarCloud
+          #   /o: Organisation SonarCloud
+          #   /k: Clé du projet
+          ./dotnet-sonarscanner begin \
+            /o:"mrgautier256" \
+            /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
+            /d:sonar.token="$SONAR_TOKEN" \
+            /d:sonar.exclusions=**/TextMesh*/**,**/Plugins/**,**/*.json,**/*.asmdef \
+            /d:sonar.host.url=https://sonarcloud.io
+          # Compilation du projet .sln généré par Unity
+          dotnet build src.sln                     
+          # Fin de l’analyse
+          ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+          cd ..
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: src
+          path: |
+            src/**/*.sln
+            src/**/*.csproj
+            src/Assets/Scripts/**/*.cs

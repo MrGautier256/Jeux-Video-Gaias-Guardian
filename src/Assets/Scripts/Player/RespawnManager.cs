@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RespawnManager : MonoBehaviour
 {
-    public static RespawnManager Instance;
+    public static RespawnManager Instance { get; private set; }
 
     [Header("Point de spawn initial")]
     public Transform fallbackSpawn;

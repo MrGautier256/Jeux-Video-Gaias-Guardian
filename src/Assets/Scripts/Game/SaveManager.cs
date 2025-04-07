@@ -37,7 +37,7 @@ public class AbilityData
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager Instance;
+    public static SaveManager Instance { get; private set; }
     private string savePath;
     public SaveData CurrentSave { get; private set; }
 

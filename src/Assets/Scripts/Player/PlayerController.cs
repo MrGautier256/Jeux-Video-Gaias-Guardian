@@ -57,7 +57,6 @@ public class Player : MonoBehaviour
     public int attackDamage = 1;
     public LayerMask enemyLayer;
 
-    public GameObject attackHitboxPrefab;
     private Animator animator;
     private float jumpBuffer = 0f;
 
@@ -218,11 +217,15 @@ public class Player : MonoBehaviour
     {
         if (isGrappling)
         {
-            EndGrapple();
+            abilities = GetComponent<PlayerAbilities>();
+            if (abilities == null)
+            {
+                Debug.LogWarning("[Player] PlayerAbilities est manquant !");
+                return;
+            }
         }
 
-        if (!context.performed || !canDash || isDashing || !abilities.CanDash) return;
-
+        if (!abilities.CanDash) return;
 
         isDashing = true;
         animator.SetTrigger("DashTrigger");
@@ -319,25 +322,11 @@ public class Player : MonoBehaviour
         return facingDirection;
     }
 
-    private void ClearGrappleLine()
+    private IEnumerator AttackFlash()
     {
-        if (!isGrappling)
-        {
-            grappleLine.positionCount = 0;
-        }
+        Color originalColor = sr.color;
+        sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        sr.color = originalColor;
     }
-
-    private void EndGrapple()
-    {
-        if (grappleTargetCollider != null)
-        {
-            Physics2D.IgnoreCollision(playerCollider, grappleTargetCollider, false);
-            grappleTargetCollider = null;
-        }
-
-        isGrappling = false;
-        rb.gravityScale = 1;
-        grappleLine.positionCount = 0;
-    }
-
 }

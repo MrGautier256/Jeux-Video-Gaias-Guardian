@@ -11,24 +11,17 @@ public class EnemyHealth : MonoBehaviour
     private SpriteRenderer sr;
     private Animator animator;
 
-
     private void Start()
     {
         currentHealth = maxHealth;
         sr = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
-
-
     }
 
     public void TakeDamage(int amount)
     {
         currentHealth -= amount;
-        Debug.Log($"{gameObject.name} a pris {amount} dégâts. Vie restante : {currentHealth}");
-
-
-
 
         if (currentHealth <= 0)
         {
@@ -55,8 +48,6 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log($"{gameObject.name} est détruit !");
-
         if (deathSound != null && audioSource != null)
             audioSource.PlayOneShot(deathSound);
 

@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     private AudioSource audioSource;
     private SpriteRenderer sr;
     private Animator animator;
+    public event System.Action OnDeath;
+
 
     private void Start()
     {
@@ -58,6 +60,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
+            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

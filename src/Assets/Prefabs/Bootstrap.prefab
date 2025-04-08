@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5591039341284970339}
   - component: {fileID: 4168600061099204579}
+  - component: {fileID: -6301766669539513987}
   m_Layer: 0
   m_Name: Bootstrap
   m_TagString: Untagged
@@ -47,3 +48,17 @@ MonoBehaviour:
   sceneTransitionManagerPrefab: {fileID: 1671803624444793091, guid: ab748c6b35d19844bab862e1c320d000, type: 3}
   musicControllerPrefab: {fileID: 160903482084532801, guid: 7469db9cb4e51524da6312a723db05a2, type: 3}
   saveManagerPrefab: {fileID: 7146693987073516902, guid: d532e35593936a042aad08fec7b3a1c0, type: 3}
+--- !u!114 &-6301766669539513987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 299323281334646445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 970cff0cb533e1c48bafe58b513efd15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  messageUIPrefab: {fileID: 7007978951877653428, guid: 89bdb0a582ac0194f95862f180083099, type: 3}
+  canvasParent: {fileID: 0}

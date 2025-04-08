@@ -50,6 +50,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        OnDeath?.Invoke();
+
         if (deathSound != null && audioSource != null)
             audioSource.PlayOneShot(deathSound);
 
@@ -60,7 +62,6 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            OnDeath?.Invoke();
             Destroy(gameObject);
         }
     }

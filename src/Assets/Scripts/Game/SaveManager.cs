@@ -39,6 +39,10 @@ public class SaveManager : MonoBehaviour
 {
     public static SaveManager Instance;
     private string savePath;
+    private event System.Action abilitiesUpdated;
+    private event System.Action<string> levelClaimed;
+
+
     public SaveData CurrentSave { get; private set; }
 
     private void Awake()
@@ -89,5 +93,14 @@ public class SaveManager : MonoBehaviour
     {
         CurrentSave = new SaveData();
     }
+
+    public void AddAbilitiesUpdatedListener(System.Action callback) => abilitiesUpdated += callback;
+    public void RemoveAbilitiesUpdatedListener(System.Action callback) => abilitiesUpdated -= callback;
+    public void TriggerAbilitiesUpdated() => abilitiesUpdated?.Invoke();
+
+    public void AddLevelClaimedListener(System.Action<string> callback) => levelClaimed += callback;
+    public void RemoveLevelClaimedListener(System.Action<string> callback) => levelClaimed -= callback;
+    public void TriggerLevelClaimed(string levelId) => levelClaimed?.Invoke(levelId);
+
 
 }

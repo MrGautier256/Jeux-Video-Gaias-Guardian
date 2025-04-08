@@ -26,4 +26,17 @@ public class PlayerAbilities : MonoBehaviour
         CanGrapple = abilities.hasGrapple;
         CanUseSword = abilities.hasSword;
     }
+
+    private void OnEnable()
+    {
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.AddAbilitiesUpdatedListener(LoadAbilities);
+    }
+
+    private void OnDisable()
+    {
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.RemoveAbilitiesUpdatedListener(LoadAbilities);
+    }
+
 }

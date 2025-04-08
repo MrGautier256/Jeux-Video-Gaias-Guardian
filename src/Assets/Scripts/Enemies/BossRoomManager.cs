@@ -1,22 +1,40 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class BossRoomManager : MonoBehaviour
 {
-    [Header("Triggers ‡ dÈsactiver")]
+    [Header("Triggers √† d√©sactiver")]
     public RoomTransitionTrigger[] triggersToDisable;
 
-    [Header("Colliders ‡ activer pour bloquer le joueur")]
+    [Header("Colliders √† activer pour bloquer le joueur")]
     public Collider2D[] playerBarriers;
 
-    [Header("Nom du niveau ‡ marquer comme terminÈ")]
+    [Header("Nom du niveau √† marquer comme termin√©")]
     public string levelID = "Level_2";
 
-    [Header("RÈfÈrence au boss")]
+    [Header("R√©f√©rence au boss")]
     public EnemyHealth bossHealth;
+
+    [Header("Message de r√©compense"), TextArea(2, 4)]
+    public string rewardMessage = "";
+
 
     private bool bossDefeated = false;
 
     private void Start()
+    {
+        foreach (var barrier in playerBarriers)
+            barrier.enabled = false;
+
+        foreach (var trigger in triggersToDisable)
+            trigger.enabled = true;
+
+        if (bossHealth != null)
+        {
+            bossHealth.OnDeath += HandleBossDeath;
+        }
+    }
+
+    public void ActivateBossRoom()
     {
         LockRoom();
 
@@ -53,15 +71,24 @@ public class BossRoomManager : MonoBehaviour
 
         if (SaveManager.Instance != null)
         {
-            var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
+            var save = SaveManager.Instance.CurrentSave;
 
+            var claimed = save.progression.levelsClaimed;
             if (levelID == "Level_2") claimed.Level_2 = true;
             else if (levelID == "Level_1") claimed.Level_1 = true;
             else if (levelID == "Level_3") claimed.Level_3 = true;
             else if (levelID == "Level_4") claimed.Level_4 = true;
             else if (levelID == "Level_5") claimed.Level_5 = true;
 
+            save.abilities.hasDash = true;
+
             SaveManager.Instance.SaveGame();
+
+            SaveManager.Instance.TriggerAbilitiesUpdated();
+            SaveManager.Instance.TriggerLevelClaimed(levelID);
+
+            MessageSpawner.Instance?.DisplayMessage(rewardMessage);
+
         }
     }
 }

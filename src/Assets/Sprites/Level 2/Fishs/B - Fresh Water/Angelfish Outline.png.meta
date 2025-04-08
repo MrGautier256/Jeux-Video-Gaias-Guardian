@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Angelfish Outline_0: -4544690517985550017
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

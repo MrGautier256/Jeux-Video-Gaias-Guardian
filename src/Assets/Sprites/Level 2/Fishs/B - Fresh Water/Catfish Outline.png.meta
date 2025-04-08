@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Catfish Outline_0: -8196673352288626494
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

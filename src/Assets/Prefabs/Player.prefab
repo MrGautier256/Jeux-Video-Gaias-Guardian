@@ -117,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -6367560908665664636, guid: 2b80a3b88b3cc3d4692b6f10a6fb4a9f, type: 3}
+  m_Sprite: {fileID: -898742325, guid: a90ef46b9b672db4d94afed8fc2c8ad5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -166,7 +166,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 2.73, y: 4.68}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -249,6 +249,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   groundCheckRadius: 0.2
+  attackRange: 1
+  attackWidth: 0.5
+  attackCooldown: 0.3
+  attackDamage: 1
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  attackHitboxPrefab: {fileID: 0}
 --- !u!114 &8723292802479816023
 MonoBehaviour:
   m_ObjectHideFlags: 0

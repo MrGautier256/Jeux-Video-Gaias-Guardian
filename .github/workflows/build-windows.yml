@@ -1,0 +1,142 @@
+# Ce pipeline n'est plus utilisé
+# il est à conserver pour archive.
+# C'était un test de pipeline sous windows
+# le problème est que la compilation de src.sln n'est pas possible
+# car les dll de unity avec les chemins du container docker, elles ne sont donc pas accessible à l'extérieur
+
+name: Pipeline windows
+
+on:
+  # push:
+    # branches:
+      # - testjppci
+  # pull_request:
+    # branches:
+      # - testjppci
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v2    
+    - name: Checkout repository
+      uses: actions/checkout@v3   
+    - name: Cache Unity Library
+      uses: actions/cache@v3
+      with:
+        path: src/Library
+        key: Library-${{ runner.os }}-${{ hashFiles('src/**/*.cs') }}
+        restore-keys: |
+          Library-${{ runner.os }}-
+    - name: Git status
+      run: |
+        #git clean -fdX
+        git status        
+
+#sonarqube steps part 1 start
+    - name: set up jdk 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: 'zulu' # alternative distribution options are available.
+    - name: cache sonarqube cloud packages
+      uses: actions/cache@v4
+      with:
+        path: ~\sonar\cache
+        key: ${{ runner.os }}-sonar
+        restore-keys: ${{ runner.os }}-sonar
+    - name: cache sonarqube cloud scanner
+      id: cache-sonar-scanner
+      uses: actions/cache@v4
+      with:
+        path: .\.sonar\scanner
+        key: ${{ runner.os }}-sonar-scanner
+        restore-keys: ${{ runner.os }}-sonar-scanner
+    - name: install sonarqube cloud scanner
+      if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+      shell: powershell
+      run: |
+        new-item -itemtype directory -path .sonar\scanner
+        dotnet tool update dotnet-sonarscanner --tool-path .sonar/scanner
+#sonarqube steps part 1 end   
+    # - name: Rechercher les dossiers UnityEditor
+      # shell: powershell
+      # run: |
+        # Write-Host "Recherche des dossiers 'UnityEditor' sur le disque C:"
+        # Get-ChildItem -Path C:\ -Directory -Recurse -ErrorAction SilentlyContinue -Depth 5 -Force |
+          # Where-Object { $_.Name -like "UnityEditor" } |
+          # Select-Object FullName
+    # - name: Rechercher les fichiers Unity.SourceGenerators.dll
+      # shell: powershell
+      # run: |
+        # Write-Host "Recherche de 'Unity.SourceGenerators.dll' sur C:\"
+        # Get-ChildItem -Path C:\ -Recurse -Filter "Unity.SourceGenerators.dll" -ErrorAction SilentlyContinue -Force |
+          # Select-Object FullName
+
+    # - name: check unity editor installation
+      # run: |
+        # if (test-path "c:\unityeditor") { write-host "unity editor found" } else { write-error "unity editor not installed!" }
+      # shell: powershell
+    # - name: restaurer les packages nuget
+      # run: nuget restore src/src.sln
+  
+#sonarqube steps part 2 start
+    # - name: sonar analyze start
+      # env:
+        # sonar_token: ${{ secrets.sonar_token }}
+      # shell: powershell 
+      # run: |
+        # .sonar/scanner/dotnet-sonarscanner.exe begin /k:"mrgautier256_jeux-video-gaias-guardian" /o:"mrgautier256" /d:sonar.token="${{ secrets.sonar_token }}" /d:sonar.host.url="https://sonarcloud.io"
+#sonarqube steps part 2 end     
+
+    - name: build unity project
+      uses: game-ci/unity-builder@v4.3.0
+      with:
+        unityversion: 6000.0.40f1
+          # 2021.3.16f1
+        targetplatform: StandaloneWindows64 
+        projectpath: src  
+        buildname: gaiasguardian
+        #customparameters: -logfile /dev/stdout -debugcodeoptimization
+      env:
+        unity_email: ${{ secrets.unity_email }}
+        unity_password: ${{ secrets.unity_password }}
+        unity_serial: ${{ secrets.unity_serial }}
+        
+    # - name: compiler le projet
+      # run: msbuild src/src.sln /p:configuration=release
+    # - name: afficher le résultat de la compilation
+      # run: |
+          # echo "compilation réussie !"
+          # dir /b src\bin\release    
+#sonarqube steps part 3 start
+    # - name: sonar analyze end
+      # env:
+        # sonar_token: ${{ secrets.sonar_token }}
+      # shell: powershell 
+      # run: |
+        # .sonar/scanner/dotnet-sonarscanner.exe end /d:sonar.token="${{ secrets.sonar_token }}"
+#sonarqube steps part 3 end          
+    - name: upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: build/StandaloneWindows64/**
+    - name: upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: src
+        path: |
+          src/**/*.csproj
+          src/**/*.sln
+    - name: docker information
+      run: |
+        docker inspect

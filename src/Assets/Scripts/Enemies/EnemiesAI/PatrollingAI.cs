@@ -2,6 +2,8 @@
 
 public class PatrollingAI : EnemyAI
 {
+    public enum ShootPatternMode { Dynamic, Fixed }
+
     [Header("Patrol Settings")]
     public float speed = 2f;
     public float stopDistance = 0.05f;
@@ -9,12 +11,28 @@ public class PatrollingAI : EnemyAI
     public float initialDelayRandomRange = 1.5f;
     public Transform pointA;
     public Transform pointB;
-    public bool isMoving = true;
+    public bool canMove = true;
 
     [Header("Attack Settings")]
+    public bool canShoot = true;
     public GameObject projectilePrefab;
     public float projectileSpeed = 5f;
     public float shootCooldown = 3f;
+
+
+    [Header("Shooting Pattern")]
+    public ShootPatternMode shootMode = ShootPatternMode.Dynamic;
+
+    [Header("Fixed Pattern Directions")]
+    public bool fireHorizontal = true;
+    public bool followPlayerDirectionHorizontal = false;
+
+    public bool fireVertical = false;
+    public bool followPlayerDirectionVertical = false;
+
+    public bool fireDiagonal = false;
+    public bool followPlayerDirectionDiagonal = false;
+
 
     [Header("Sprite Settings")]
     public bool spriteFacesLeftByDefault = true;
@@ -42,7 +60,7 @@ public class PatrollingAI : EnemyAI
 
     public override void Act()
     {
-        if (isMoving)
+        if (canMove)
         {
             Patrol();
         }
@@ -51,9 +69,9 @@ public class PatrollingAI : EnemyAI
             FacePlayer();
         }
 
-        if (player != null && Time.time >= nextShootTime && IsPlayerInDetectionZone())
+        if (canShoot && player != null && Time.time >= nextShootTime && IsPlayerInDetectionZone())
         {
-            ShootAtPlayer();
+            ShootProjectiles();
             nextShootTime = Time.time + shootCooldown;
         }
     }
@@ -104,14 +122,98 @@ public class PatrollingAI : EnemyAI
         transform.localScale = new Vector3(sign * flipFactor * Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
     }
 
-    private void ShootAtPlayer()
+    private void ShootProjectiles()
     {
         if (projectilePrefab == null) return;
 
         Vector3 spawnPos = transform.position;
-        Vector2 direction = (player.position - transform.position).normalized;
 
-        GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+        if (shootMode == ShootPatternMode.Dynamic)
+        {
+            ShootDynamic(spawnPos);
+        }
+        else if (shootMode == ShootPatternMode.Fixed)
+        {
+            ShootFixedHorizontal(spawnPos);
+            ShootFixedVertical(spawnPos);
+            ShootFixedDiagonal(spawnPos);
+        }
+    }
+
+    private void ShootDynamic(Vector3 spawnPos)
+    {
+        Vector2 direction = (player.position - transform.position).normalized;
+        CreateProjectile(spawnPos, direction);
+    }
+
+    private void ShootFixedHorizontal(Vector3 spawnPos)
+    {
+        if (!fireHorizontal) return;
+
+        float dx = player.position.x - transform.position.x;
+
+        if (followPlayerDirectionHorizontal)
+        {
+            if (Mathf.Abs(dx) >= 0.1f)
+            {
+                Vector2 dir = dx < 0 ? Vector2.left : Vector2.right;
+                CreateProjectile(spawnPos, dir);
+            }
+        }
+        else
+        {
+            CreateProjectile(spawnPos, Vector2.left);
+            CreateProjectile(spawnPos, Vector2.right);
+        }
+    }
+
+    private void ShootFixedVertical(Vector3 spawnPos)
+    {
+        if (!fireVertical) return;
+
+        float dy = player.position.y - transform.position.y;
+
+        if (followPlayerDirectionVertical)
+        {
+            if (Mathf.Abs(dy) >= 0.1f)
+            {
+                Vector2 dir = dy < 0 ? Vector2.down : Vector2.up;
+                CreateProjectile(spawnPos, dir);
+            }
+        }
+        else
+        {
+            CreateProjectile(spawnPos, Vector2.up);
+            CreateProjectile(spawnPos, Vector2.down);
+        }
+    }
+
+    private void ShootFixedDiagonal(Vector3 spawnPos)
+    {
+        if (!fireDiagonal) return;
+
+        if (followPlayerDirectionDiagonal)
+        {
+            Vector2 to = player.position - transform.position;
+            float dx = Mathf.Sign(to.x);
+            float dy = Mathf.Sign(to.y);
+            Vector2 diagDir = new Vector2(dx, dy).normalized;
+            CreateProjectile(spawnPos, diagDir);
+        }
+        else
+        {
+            CreateProjectile(spawnPos, (Vector2.left + Vector2.up).normalized);
+            CreateProjectile(spawnPos, (Vector2.right + Vector2.up).normalized);
+            CreateProjectile(spawnPos, (Vector2.left + Vector2.down).normalized);
+            CreateProjectile(spawnPos, (Vector2.right + Vector2.down).normalized);
+        }
+    }
+
+
+
+    private void CreateProjectile(Vector3 position, Vector2 direction)
+    {
+        GameObject proj = Instantiate(projectilePrefab, position, Quaternion.identity);
         Projectile p = proj.GetComponent<Projectile>();
         if (p != null)
         {

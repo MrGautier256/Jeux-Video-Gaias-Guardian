@@ -7320,10 +7320,18 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 0}
   pointB: {fileID: 0}
-  isMoving: 0
+  canMove: 0
+  canShoot: 1
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 1.5
+  shootMode: 1
+  fireHorizontal: 1
+  followPlayerDirectionHorizontal: 0
+  fireVertical: 1
+  followPlayerDirectionVertical: 0
+  fireDiagonal: 0
+  followPlayerDirectionDiagonal: 0
   spriteFacesLeftByDefault: 1
   rangeLeft: 7.09
   rangeRight: 9

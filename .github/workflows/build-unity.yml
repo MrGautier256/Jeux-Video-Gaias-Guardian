@@ -99,7 +99,7 @@ jobs:
             echo "== Installation de dotnet-sdk-6.0 =="
             apt-get install -y dotnet-sdk-6.0
             
-            echo "== Installation de dotnet-sonarscanner =="
+            echo "== Déplacement de dossier =="
             cd ..            
             
             echo "== Installation de dotnet-sonarscanner =="

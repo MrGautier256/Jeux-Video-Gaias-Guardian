@@ -4,6 +4,12 @@ using System.Reflection;
 
 public class PowerCollectible : MonoBehaviour
 {
+    [Header("Capacité à débloquer")]
+    public AbilityName abilityToUnlock = AbilityName.None;
+
+    [Header("Message de récompense"), TextArea(2, 4)]
+    public string rewardMessage = "";
+
     public enum AbilityName
     {
         None,
@@ -12,9 +18,6 @@ public class PowerCollectible : MonoBehaviour
         Grapple,
         Sword
     }
-
-    [Header("Capacité à débloquer")]
-    public AbilityName abilityToUnlock = AbilityName.None;
 
     private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
     {
@@ -60,6 +63,9 @@ public class PowerCollectible : MonoBehaviour
                 Destroy(gameObject);
             }
 
+            if (!string.IsNullOrWhiteSpace(rewardMessage))
+                MessageSpawner.Instance?.DisplayMessage(rewardMessage);
+
             UnlockAbility();
         }
     }
@@ -79,7 +85,6 @@ public class PowerCollectible : MonoBehaviour
 
                 SaveManager.Instance.SaveGame();
                 SaveManager.Instance.TriggerAbilitiesUpdated();
-                AbilityData a = SaveManager.Instance.CurrentSave.abilities;
             }
         }
     }

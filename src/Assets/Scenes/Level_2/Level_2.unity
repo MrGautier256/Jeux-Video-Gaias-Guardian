@@ -29041,14 +29041,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 1.5
-  dashSpeed: 6
-  dashDuration: 0.3
+  dashSpeed: 1
+  dashDuration: 0.1
   dashCooldown: 4
   pointA: {fileID: 1432688169}
   pointB: {fileID: 1334396003}
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
-  projectileSpeed: 6
-  shootCooldown: 2
+  projectileSpeed: 3
+  shootCooldown: 4
   detectionRadius: 9
   spriteFacesLeftByDefault: 1
 --- !u!1 &1617107805

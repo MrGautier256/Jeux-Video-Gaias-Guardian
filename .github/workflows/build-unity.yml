@@ -54,7 +54,7 @@ jobs:
 
   sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-6000.0.41f1-linux-il2cpp-3  # Utilise une image docker Unity contenant .NET et le build Unity
+    container: unityci/editor:ubuntu-6000.0.40f1-linux-il2cpp-3  # Utilise une image docker Unity contenant .NET et le build Unity
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
@@ -80,33 +80,46 @@ jobs:
           FrameworkPathOverride: /opt/unity/Editor/Data/MonoBleedingEdge/  # Chemin vers le framework Mono utilisé par Unity
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          cd src
-          # Marque le projet comme un projet "normal" (non test) pour Sonar
-          sed -i '/<\/Project>/i\  <PropertyGroup>\n    <SonarQubeTestProject>false</SonarQubeTestProject>\n  </PropertyGroup>' Assembly-CSharp.csproj
-          # Installe dotnet (au cas où le conteneur ne l’a pas)
-          wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
-          chmod +x ./dotnet-install.sh
-          ./dotnet-install.sh --version latest
-          # Installe Java pour le scanner Sonar
-          apt-get update
-          apt-get install -y openjdk-17-jre-headless
-          apt-get install -y dotnet-sdk-6.0  # Installe un SDK .NET compatible avec Unity
-          # Installe dotnet-sonarscanner localement
-          dotnet tool install dotnet-sonarscanner --tool-path .
-          # Démarre l’analyse SonarCloud
-          #   /o: Organisation SonarCloud
-          #   /k: Clé du projet
-          ./dotnet-sonarscanner begin \
-            /o:"mrgautier256" \
-            /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
-            /d:sonar.token="$SONAR_TOKEN" \
-            /d:sonar.exclusions=**/TextMesh*/**,**/Plugins/**,**/*.json,**/*.asmdef \
-            /d:sonar.host.url=https://sonarcloud.io
-          # Compilation du projet .sln généré par Unity
-          dotnet build src.sln                
-          # Fin de l’analyse
-          ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
-          cd ..
+            echo "=== Démarrage de l'analyse SonarQube ==="
+            cd src
+            echo "== Modification du fichier Assembly-CSharp.csproj =="
+            sed -i '/<\/Project>/i\  <PropertyGroup>\n    <SonarQubeTestProject>false</SonarQubeTestProject>\n  </PropertyGroup>' Assembly-CSharp.csproj
+    
+            echo "== Téléchargement de l'installateur .NET =="
+            wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+            chmod +x ./dotnet-install.sh
+    
+            echo "== Installation de la version la plus récente de .NET =="
+            ./dotnet-install.sh --version latest
+    
+            echo "== Mise à jour des paquets et installation de Java =="
+            apt-get update
+            apt-get install -y openjdk-17-jre-headless
+    
+            echo "== Installation de dotnet-sdk-6.0 =="
+            apt-get install -y dotnet-sdk-6.0
+    
+            echo "== Installation de dotnet-sonarscanner =="
+            dotnet tool install dotnet-sonarscanner --tool-path .
+    
+            echo "== Démarrage de l'analyse SonarQube =="
+                  #   /o: Organisation SonarCloud
+                  #   /k: Clé du projet
+            ./dotnet-sonarscanner begin \
+              /o:"mrgautier256" \
+              /k:"MrGautier256_Jeux-Video-Gaias-Guardian" \
+              /d:sonar.token="$SONAR_TOKEN" \
+              /d:sonar.exclusions=**/TextMesh*/**,**/Plugins/**,**/*.json,**/*.asmdef \
+              /d:sonar.host.url=https://sonarcloud.io
+    
+            echo "== Compilation du projet principal =="
+            dotnet build src.sln
+    
+            echo "== Fin de l'analyse SonarQube =="
+            ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
+    
+            cd ..
+            echo "=== Fin de l'analyse SonarQube ==="
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
@@ -115,4 +128,3 @@ jobs:
             src/**/*.sln
             src/**/*.csproj
             src/Assets/Scripts/**/*.cs
-

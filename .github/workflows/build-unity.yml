@@ -51,6 +51,10 @@ jobs:
     - name: Set build summary
       run: |
         echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY  # Ajoute un résumé dans l’onglet "Summary"
+    - name: Free Disk Space
+      uses: jlumbroso/free-disk-space@v1.3.1
+      with:
+        large-packages: false        
     - name: Run Unit Tests
       uses: game-ci/unity-test-runner@main
       env:

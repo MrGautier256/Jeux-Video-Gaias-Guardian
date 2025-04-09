@@ -1422,6 +1422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level_3
+  sceneIfClaimed: 
 --- !u!61 &69732432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3975,7 +3976,7 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   canMove: 0
-  canShoot: 1
+  canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -10616,7 +10617,7 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1502393966}
   pointB: {fileID: 1474939628}
-  canMove: 1
+  canMove: 0
   canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
@@ -11052,7 +11053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.23
+      value: -1.13
       objectReference: {fileID: 0}
     - target: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11126,7 +11127,7 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 2128267562}
   pointB: {fileID: 530019243}
-  canMove: 1
+  canMove: 0
   canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
@@ -11796,7 +11797,7 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1374809655}
   pointB: {fileID: 192986487}
-  canMove: 1
+  canMove: 0
   canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
@@ -12144,6 +12145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level_5
+  sceneIfClaimed: 
 --- !u!61 &698071673
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34716,7 +34718,7 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   canMove: 0
-  canShoot: 1
+  canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -36636,7 +36638,7 @@ MonoBehaviour:
   pointA: {fileID: 0}
   pointB: {fileID: 0}
   canMove: 0
-  canShoot: 1
+  canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -73676,7 +73678,7 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 660831646}
   pointB: {fileID: 189120829}
-  canMove: 1
+  canMove: 0
   canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5

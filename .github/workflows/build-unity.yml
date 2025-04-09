@@ -54,7 +54,7 @@ jobs:
 
   sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-6000.0.41f1-linux-il2cpp-3  # Utilise une image docker Unity contenant .NET et le build Unity
+    container: unityci/editor:ubuntu-6000.0.40f1-linux-il2cpp-3  # Utilise une image docker Unity contenant .NET et le build Unity
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4

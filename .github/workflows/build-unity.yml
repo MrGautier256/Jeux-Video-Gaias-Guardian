@@ -51,6 +51,15 @@ jobs:
     - name: Set build summary
       run: |
         echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY  # Ajoute un résumé dans l’onglet "Summary"
+    - name: Run Unit Tests
+      uses: game-ci/unity-test-runner@main
+      env:
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL_PERSONAL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD_PERSONAL }}
+        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL_PERSONAL }}
+      with:
+        testMode: playmode
+        githubToken: ${{ secrets.GITHUB_TOKEN }}	  
 
   sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
     runs-on: ubuntu-latest
@@ -131,12 +140,3 @@ jobs:
             src/**/*.sln
             src/**/*.csproj
             src/Assets/Scripts/**/*.cs
-      - name: Run Unit Tests
-        uses: game-ci/unity-test-runner@main
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL_PERSONAL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD_PERSONAL }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL_PERSONAL }}
-        with:
-          testMode: playmode
-          githubToken: ${{ secrets.GITHUB_TOKEN }}	  

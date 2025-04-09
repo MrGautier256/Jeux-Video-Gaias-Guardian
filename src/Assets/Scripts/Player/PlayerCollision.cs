@@ -25,6 +25,8 @@ public class PlayerCollision : MonoBehaviour
     private bool isInvulnerable = false;
     private bool shouldLoseLife = true;
 
+    public bool IsDead() => isDead;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -59,21 +61,28 @@ public class PlayerCollision : MonoBehaviour
         isDead = true;
         shouldLoseLife = loseLife;
 
+        // Désactiver le script de mouvement
         GetComponent<Player>().enabled = false;
 
+        // Empêcher tout déclencheur ou interaction
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector2.up * 110f);
 
         if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
 
+        // Désactive tous les colliders pour éviter triggers & collisions
         foreach (Collider2D col in GetComponents<Collider2D>())
-            col.isTrigger = true;
+            col.enabled = false;
+
+        // Optionnel : changer le layer du joueur temporairement pour l'exclure de tout (ex: "IgnoreEverything")
+        gameObject.layer = LayerMask.NameToLayer("IgnoreEverything");
 
         StartCoroutine(FakeDeathEffect());
 
         Invoke(nameof(RestartLogic), 2f);
     }
+
 
     private void HandleDeath()
     {
@@ -115,13 +124,18 @@ public class PlayerCollision : MonoBehaviour
         isDead = false;
 
         foreach (Collider2D col in GetComponents<Collider2D>())
-            col.isTrigger = false;
+            col.enabled = true;
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
 
         GetComponent<Player>().enabled = true;
     }
 
+
     private void ApplyKnockback(Vector2 direction)
     {
+        if (isDead) return;
+
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(direction.normalized * 120f);

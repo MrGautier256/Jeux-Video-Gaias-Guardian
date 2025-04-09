@@ -103,7 +103,7 @@ jobs:
             /d:sonar.exclusions=**/TextMesh*/**,**/Plugins/**,**/*.json,**/*.asmdef \
             /d:sonar.host.url=https://sonarcloud.io
           # Compilation du projet .sln généré par Unity
-          dotnet build Assembly-CSharp.csproj                 
+          dotnet build src.sln                
           # Fin de l’analyse
           ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
           cd ..

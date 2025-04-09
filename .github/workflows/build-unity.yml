@@ -115,3 +115,4 @@ jobs:
             src/**/*.sln
             src/**/*.csproj
             src/Assets/Scripts/**/*.cs
+

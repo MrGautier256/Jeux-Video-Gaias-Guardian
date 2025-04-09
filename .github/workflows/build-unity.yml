@@ -98,7 +98,10 @@ jobs:
     
             echo "== Installation de dotnet-sdk-6.0 =="
             apt-get install -y dotnet-sdk-6.0
-    
+            
+            echo "== Déplacement de dossier =="
+            cd ..            
+            
             echo "== Installation de dotnet-sonarscanner =="
             dotnet tool install dotnet-sonarscanner --tool-path .
     
@@ -113,12 +116,11 @@ jobs:
               /d:sonar.host.url=https://sonarcloud.io
     
             echo "== Compilation du projet principal =="
-            dotnet build src.sln
+            dotnet build src/src.sln
     
             echo "== Fin de l'analyse SonarQube =="
             ./dotnet-sonarscanner end /d:sonar.token="$SONAR_TOKEN"
     
-            cd ..
             echo "=== Fin de l'analyse SonarQube ==="
       - name: Upload Build Artifact
         uses: actions/upload-artifact@v4

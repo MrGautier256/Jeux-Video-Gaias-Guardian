@@ -1,8 +1,8 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class GlobalManagerAutoLoader : MonoBehaviour
 {
-    [Header("Prefabs à instancier s’ils sont absents")]
+    [Header("Prefabs Ã  instancier sâ€™ils sont absents")]
     public GameObject sceneTransitionManagerPrefab;
     public GameObject musicControllerPrefab;
     public GameObject saveManagerPrefab;

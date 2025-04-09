@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     private AudioSource audioSource;
     private SpriteRenderer sr;
     private Animator animator;
+    public event System.Action OnDeath;
+
 
     private void Start()
     {
@@ -48,6 +50,8 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        OnDeath?.Invoke();
+
         if (deathSound != null && audioSource != null)
             audioSource.PlayOneShot(deathSound);
 

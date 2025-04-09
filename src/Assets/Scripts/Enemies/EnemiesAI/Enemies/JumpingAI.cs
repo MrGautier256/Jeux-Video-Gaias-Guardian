@@ -33,7 +33,7 @@ public class JumpingAI : EnemyAI
 
             if (t >= 1f)
             {
-                transform.position = startPos; // Fix du "vol progressif"
+                transform.position = startPos; 
                 isJumping = false;
             }
         }

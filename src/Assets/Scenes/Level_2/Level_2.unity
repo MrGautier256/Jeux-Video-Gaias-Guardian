@@ -16748,7 +16748,7 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1702634706}
   pointB: {fileID: 404050583}
-  canMove: 1
+  canMove: 0
   canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
@@ -25623,8 +25623,8 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 96733800}
   pointB: {fileID: 1244602106}
-  canMove: 1
-  canShoot: 1
+  canMove: 0
+  canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -27663,7 +27663,7 @@ MonoBehaviour:
   pointA: {fileID: 969132369}
   pointB: {fileID: 1166934642}
   canMove: 0
-  canShoot: 1
+  canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -56639,8 +56639,8 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1701403439}
   pointB: {fileID: 1336304355}
-  canMove: 1
-  canShoot: 1
+  canMove: 0
+  canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3

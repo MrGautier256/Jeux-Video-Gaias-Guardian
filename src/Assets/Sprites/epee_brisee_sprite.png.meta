@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      epee_brisee_sprite_0: -4101451457718909580
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

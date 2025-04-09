@@ -59,6 +59,7 @@ jobs:
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       with:
         testMode: playmode
+        projectPath: src                # Chemin vers le projet Unity        
         githubToken: ${{ secrets.GITHUB_TOKEN }}	  
 
   sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157

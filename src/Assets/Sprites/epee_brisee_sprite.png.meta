@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: ba04473752817ae45ae10cecdea7fb92
+guid: 87acb6392abe1a146aa74fa2eedb8b92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5473912143610790163
-    second: Ground2_0
+      213: -4101451457718909580
+    second: epee_brisee_sprite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Ground2_0
+      name: epee_brisee_sprite_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 11
         y: 0
-        width: 645
-        height: 382
+        width: 11
+        height: 31
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: deeb16c48e1c804b0800000000000000
-      internalID: -5473912143610790163
+      spriteID: 475082f21a7b417c0800000000000000
+      internalID: -4101451457718909580
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Ground2_0: -5473912143610790163
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

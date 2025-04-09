@@ -131,11 +131,6 @@ jobs:
             src/**/*.sln
             src/**/*.csproj
             src/Assets/Scripts/**/*.cs
-  
-  tests :
-    runs-on: ubuntu-latest
-    needs: [build]
-    steps:
       - name: Run Unit Tests
         uses: game-ci/unity-test-runner@main
         env:
@@ -144,4 +139,4 @@ jobs:
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL_PERSONAL }}
         with:
           testMode: playmode
-          githubToken: ${{ secrets.GITHUB_TOKEN }}	
+          githubToken: ${{ secrets.GITHUB_TOKEN }}	  

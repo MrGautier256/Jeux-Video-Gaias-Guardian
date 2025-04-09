@@ -147,3 +147,9 @@ MonoBehaviour:
     musicClip: {fileID: 8300000, guid: 140b56c1a2f14154bb8a6118c5674996, type: 3}
   - sceneName: Level_2
     musicClip: {fileID: 8300000, guid: 4401f930ee5ea0449b2a2a895a96fd1f, type: 3}
+  - sceneName: Level_3
+    musicClip: {fileID: 8300000, guid: ce53bdc950a541b45a7a292f92c85827, type: 3}
+  - sceneName: Level_4
+    musicClip: {fileID: 8300000, guid: 7a5613474078d6547a7bb3b02b949e93, type: 3}
+  - sceneName: MainMenu
+    musicClip: {fileID: 8300000, guid: fba799e31751305478c816057604e392, type: 3}

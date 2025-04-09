@@ -60,5 +60,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 970cff0cb533e1c48bafe58b513efd15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  messageUIPrefab: {fileID: 7007978951877653428, guid: 89bdb0a582ac0194f95862f180083099, type: 3}
+  messageUIPrefab: {fileID: 9030090164872827346, guid: 89bdb0a582ac0194f95862f180083099, type: 3}
   canvasParent: {fileID: 0}

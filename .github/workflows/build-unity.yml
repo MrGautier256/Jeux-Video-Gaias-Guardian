@@ -54,9 +54,9 @@ jobs:
     - name: Run Unit Tests
       uses: game-ci/unity-test-runner@main
       env:
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL_PERSONAL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD_PERSONAL }}
-        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL_PERSONAL }}
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       with:
         testMode: playmode
         githubToken: ${{ secrets.GITHUB_TOKEN }}	  

@@ -94,6 +94,8 @@ public class SaveManager : MonoBehaviour
         CurrentSave = new SaveData();
     }
 
+
+
     public void AddAbilitiesUpdatedListener(System.Action callback) => abilitiesUpdated += callback;
     public void RemoveAbilitiesUpdatedListener(System.Action callback) => abilitiesUpdated -= callback;
     public void TriggerAbilitiesUpdated() => abilitiesUpdated?.Invoke();

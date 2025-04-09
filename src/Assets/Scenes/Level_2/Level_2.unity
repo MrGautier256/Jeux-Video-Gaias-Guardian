@@ -2842,6 +2842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level_1
+  sceneIfClaimed: Level_1_clear
 --- !u!61 &69732432
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7168,6 +7169,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &252483515 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 962262766956219761, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+  m_PrefabInstance: {fileID: 874298360731767683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &271926606
 GameObject:
   m_ObjectHideFlags: 0
@@ -8159,6 +8165,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stephane
       objectReference: {fileID: 0}
+    - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      propertyPath: maxHealth
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8609,6 +8619,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
   m_PrefabInstance: {fileID: 428123269}
+  m_PrefabAsset: {fileID: 0}
+--- !u!61 &430884239 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3318081763147668185, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+  m_PrefabInstance: {fileID: 874298360731767683}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &432733803
 GameObject:
@@ -14677,6 +14692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level_3
+  sceneIfClaimed: Level_3_clear
 --- !u!61 &698071673
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -16645,7 +16661,7 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1702634706}
   pointB: {fileID: 404050583}
-  canMove: 0
+  canMove: 1
   canShoot: 0
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
@@ -25520,18 +25536,18 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 96733800}
   pointB: {fileID: 1244602106}
-  canMove: 0
-  canShoot: 0
+  canMove: 1
+  canShoot: 1
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
   shootMode: 0
-  fireHorizontal: 1
-  followPlayerDirectionHorizontal: 1
+  fireHorizontal: 0
+  followPlayerDirectionHorizontal: 0
   fireVertical: 0
   followPlayerDirectionVertical: 0
-  fireDiagonal: 1
-  followPlayerDirectionDiagonal: 1
+  fireDiagonal: 0
+  followPlayerDirectionDiagonal: 0
   spriteFacesLeftByDefault: 1
   rangeLeft: 14
   rangeRight: 12
@@ -26334,7 +26350,7 @@ Transform:
   m_GameObject: {fileID: 1384983220}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.456, y: -1.161, z: 0}
+  m_LocalPosition: {x: 36.456, y: -0.92, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27560,7 +27576,7 @@ MonoBehaviour:
   pointA: {fileID: 969132369}
   pointB: {fileID: 1166934642}
   canMove: 0
-  canShoot: 0
+  canShoot: 1
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -28937,16 +28953,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5160d96dfc72c4047bb0c5f0938e848f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 0
+  walkSpeed: 1.5
   dashSpeed: 6
   dashDuration: 0.3
-  dashCooldown: 30000000
+  dashCooldown: 4
   pointA: {fileID: 1432688169}
   pointB: {fileID: 1334396003}
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 6
-  shootCooldown: 2e+9
-  detectionRadius: 12
+  shootCooldown: 2
+  detectionRadius: 9
+  spriteFacesLeftByDefault: 1
 --- !u!1 &1617107805
 GameObject:
   m_ObjectHideFlags: 0
@@ -33732,7 +33749,7 @@ Transform:
   m_GameObject: {fileID: 1712735108}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 56.376, y: -1.25, z: 0}
+  m_LocalPosition: {x: 56.54, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56535,8 +56552,8 @@ MonoBehaviour:
   initialDelayRandomRange: 1.5
   pointA: {fileID: 1701403439}
   pointB: {fileID: 1336304355}
-  canMove: 0
-  canShoot: 0
+  canMove: 1
+  canShoot: 1
   projectilePrefab: {fileID: 7745061867490962113, guid: 0b8a738ba1acb00459e2f01fb8dbc28b, type: 3}
   projectileSpeed: 5
   shootCooldown: 3
@@ -56561,6 +56578,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1814926507}
     m_Modifications:
+    - target: {fileID: 962262766956219761, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318081763147668185, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3639945911186993629, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: m_LocalPosition.x
       value: 99.99069
@@ -56602,9 +56627,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: levelID
+      value: Level_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: bossHealth
       value: 
       objectReference: {fileID: 361914702}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: rewardMessage
+      value: "Vous avez debloqu\xE9 le Dash !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: abilityToUnlock
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: playerBarriers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: 'playerBarriers.Array.data[0]'
+      value: 
+      objectReference: {fileID: 252483515}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: 'playerBarriers.Array.data[1]'
+      value: 
+      objectReference: {fileID: 430884239}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: triggersToDisable.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: 'triggersToDisable.Array.data[0]'
       value: 

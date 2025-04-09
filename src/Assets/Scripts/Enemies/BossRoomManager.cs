@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Reflection;
+using System.Collections.Generic;
 
 public class BossRoomManager : MonoBehaviour
 {
@@ -17,21 +19,38 @@ public class BossRoomManager : MonoBehaviour
     [Header("Message de récompense"), TextArea(2, 4)]
     public string rewardMessage = "";
 
+    [Header("Capacité à débloquer en battant le boss")]
+    public AbilityName abilityToUnlock = AbilityName.None;
+
+    public enum AbilityName
+    {
+        None,
+        Dash,
+        DoubleJump,
+        Grapple,
+        Sword
+    }
+
+    private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
+{
+    { AbilityName.Dash, "hasDash" },
+    { AbilityName.DoubleJump, "hasDoubleJump" },
+    { AbilityName.Grapple, "hasGrapple" },
+    { AbilityName.Sword, "hasSword" }
+};
+
 
     private bool bossDefeated = false;
 
     private void Start()
     {
         foreach (var barrier in playerBarriers)
+        {
             barrier.enabled = false;
+        }
 
         foreach (var trigger in triggersToDisable)
             trigger.enabled = true;
-
-        if (bossHealth != null)
-        {
-            bossHealth.OnDeath += HandleBossDeath;
-        }
     }
 
     public void ActivateBossRoom()
@@ -80,15 +99,21 @@ public class BossRoomManager : MonoBehaviour
             else if (levelID == "Level_4") claimed.Level_4 = true;
             else if (levelID == "Level_5") claimed.Level_5 = true;
 
-            save.abilities.hasDash = true;
+            if (abilityToUnlock != AbilityName.None && abilityFieldMap.TryGetValue(abilityToUnlock, out string fieldName))
+            {
+                var abilityField = typeof(AbilityData).GetField(fieldName);
+                if (abilityField != null && abilityField.FieldType == typeof(bool))
+                {
+                    abilityField.SetValue(save.abilities, true);
+                }
+            }
 
             SaveManager.Instance.SaveGame();
-
             SaveManager.Instance.TriggerAbilitiesUpdated();
             SaveManager.Instance.TriggerLevelClaimed(levelID);
 
-            MessageSpawner.Instance?.DisplayMessage(rewardMessage);
-
+            if (!string.IsNullOrWhiteSpace(rewardMessage))
+                MessageSpawner.Instance?.DisplayMessage(rewardMessage);
         }
     }
 }

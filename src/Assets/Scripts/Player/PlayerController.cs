@@ -5,6 +5,13 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    private Collider2D playerCollider;
+    private Collider2D grappleTargetCollider;
+
+    private Vector2 lastPosition;
+    private float stuckTimer = 0f;
+    public float maxStuckTime = 0.25f;
+
     [Header("Components")]
     public Rigidbody2D rb;
     private SpriteRenderer sr;
@@ -33,6 +40,15 @@ public class Player : MonoBehaviour
     public LayerMask wallLayer;
     public float groundCheckRadius = 0.2f;
 
+    [Header("Grapple")]
+    public LayerMask grappleLayer;
+    public float grappleRange = 10f;
+    public float grappleSpeed = 5f;
+    private Vector2 grappleTarget;
+    private bool isGrappling = false;
+
+    private LineRenderer grappleLine;
+
 
     [Header("Attack")]
     public float attackRange = 1f;
@@ -47,11 +63,16 @@ public class Player : MonoBehaviour
 
     private bool canAttack = true;
 
+
     void Start()
     {
+        playerCollider = GetComponent<Collider2D>();
         sr = GetComponent<SpriteRenderer>();
         abilities = GetComponent<PlayerAbilities>();
         animator = GetComponent<Animator>();
+
+        grappleLine = GetComponent<LineRenderer>();
+        grappleLine.positionCount = 0;
     }
 
     void Update()
@@ -86,6 +107,12 @@ public class Player : MonoBehaviour
                 return;
             }
         }
+
+        if (isGrappling)
+        {
+            grappleLine.SetPosition(0, transform.position);
+            grappleLine.SetPosition(1, grappleTarget);
+        }
     }
 
     void FixedUpdate()
@@ -104,6 +131,53 @@ public class Player : MonoBehaviour
         if (!isDashing)
         {
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
+
+        if (isGrappling)
+        {
+            Vector2 toTarget = grappleTarget - rb.position;
+            Vector2 direction = toTarget.normalized;
+            float distance = toTarget.magnitude;
+
+            //Annule si un obstacle bloque le chemin
+            RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, distance, groundLayer);
+            if (hit.collider != null)
+            {
+                EndGrapple();
+                return;
+            }
+
+            //Mouvement vers la cible
+            if (distance < 0.3f)
+            {
+                EndGrapple();
+            }
+            else
+            {
+                Vector2 newPos = rb.position + direction * grappleSpeed * Time.fixedDeltaTime;
+                rb.MovePosition(newPos);
+            }
+
+            //Déblocage automatique si bloqué
+            if (Vector2.Distance(rb.position, lastPosition) < 0.01f)
+            {
+                stuckTimer += Time.fixedDeltaTime;
+
+                if (stuckTimer >= maxStuckTime)
+                {
+                    Debug.Log("Grappin : débloqué par mini-téléportation");
+                    Vector2 escapeDir = ((grappleTarget - rb.position).normalized + Vector2.up * 0.75f).normalized;
+                    Vector2 newPos = rb.position + escapeDir * 0.5f;
+                    rb.position = newPos;
+                    stuckTimer = 0f;
+                }
+            }
+            else
+            {
+                stuckTimer = 0f;
+            }
+
+            lastPosition = rb.position;
         }
     }
 
@@ -142,6 +216,11 @@ public class Player : MonoBehaviour
 
     public void Dash(InputAction.CallbackContext context)
     {
+        if (isGrappling)
+        {
+            EndGrapple();
+        }
+
         if (!context.performed || !canDash || isDashing) return;
 
         if (abilities == null)
@@ -162,6 +241,41 @@ public class Player : MonoBehaviour
         animator.SetBool("IsDashing", true);
         dashTime = Time.time + dashDuration;
         canDash = false;
+    }
+
+    public void Grapple(InputAction.CallbackContext context)
+    {
+        Debug.Log("Grapple input received");
+
+        if (!context.performed || isGrappling) return;
+
+        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized; 
+        Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
+
+        // Visuel direct pour feedback
+        grappleLine.positionCount = 2;
+        grappleLine.SetPosition(0, transform.position);
+        grappleLine.SetPosition(1, endPoint);
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, grappleRange, grappleLayer);
+        Debug.DrawRay(transform.position, direction * grappleRange, Color.green, 1f);
+
+        if (hit.collider != null)
+        {
+            Debug.Log("Grapple target hit: " + hit.collider.name);
+            grappleTarget = hit.point;
+            isGrappling = true;
+            rb.gravityScale = 0;
+
+            grappleTargetCollider = hit.collider;
+            Physics2D.IgnoreCollision(playerCollider, grappleTargetCollider, true);
+        }
+        else
+        {
+            Debug.Log("No grapple target hit.");
+            // Optionnel : reset le visuel si pas de cible
+            Invoke(nameof(ClearGrappleLine), 0.1f);
+        }
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -219,4 +333,26 @@ public class Player : MonoBehaviour
     {
         return facingDirection;
     }
+
+    private void ClearGrappleLine()
+    {
+        if (!isGrappling)
+        {
+            grappleLine.positionCount = 0;
+        }
+    }
+
+    private void EndGrapple()
+    {
+        if (grappleTargetCollider != null)
+        {
+            Physics2D.IgnoreCollision(playerCollider, grappleTargetCollider, false);
+            grappleTargetCollider = null;
+        }
+
+        isGrappling = false;
+        rb.gravityScale = 1;
+        grappleLine.positionCount = 0;
+    }
+
 }

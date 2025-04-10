@@ -295,7 +295,7 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("AttackTrigger");
             animator.SetBool("IsAttacking", true);
-
+            animator.speed = 2f;
         }
 
         Vector2 attackOrigin = (Vector2)transform.position + Vector2.right * GetFacingDirection() * attackRange * 0.5f;
@@ -310,8 +310,7 @@ public class Player : MonoBehaviour
                 hitbox.ReceiveHit(attackDamage);
             }
         }
-        float attackDuration = animator.runtimeAnimatorController.animationClips
-    .FirstOrDefault(clip => clip.name == "attack")?.length ?? 0.5f;
+        float attackDuration = 0.2f;
 
 
         attackCooldown = attackDuration;
@@ -326,6 +325,7 @@ public class Player : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("IsAttacking", false);
+            animator.speed = 1f;
         }
     }
 

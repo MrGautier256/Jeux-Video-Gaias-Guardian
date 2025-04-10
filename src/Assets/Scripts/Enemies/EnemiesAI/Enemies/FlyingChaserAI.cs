@@ -1,0 +1,92 @@
+﻿using UnityEngine;
+
+public class FlyingChaserAI : EnemyAI
+{
+    [Header("Flight Settings")]
+    public float speed = 3f;
+    public float detectionRadius = 5f;
+    public float swoopArcHeight = 1.5f;
+    public float cooldownBetweenAttacks = 1f;
+    public LayerMask playerLayer;
+
+    private Vector2 targetPosition;
+    private bool hasLockedTarget = false;
+    private float attackCooldown = 0f;
+    private float swoopProgress = 0f;
+    private Vector2 swoopStartPos;
+
+    private bool hasDealtDamage = false;
+
+    protected override void Start()
+    {
+        base.Start();
+    }
+
+    public override void Act()
+    {
+        if (player == null) return;
+
+        attackCooldown -= Time.deltaTime;
+
+        if (!hasLockedTarget && attackCooldown <= 0f)
+        {
+            float dist = Vector2.Distance(transform.position, player.position);
+            if (dist < detectionRadius)
+            {
+                hasLockedTarget = true;
+                swoopStartPos = transform.position;
+                targetPosition = player.position;
+                swoopProgress = 0f;
+                hasDealtDamage = false;
+            }
+        }
+
+        if (hasLockedTarget)
+        {
+            // Avance du swoop dans le temps
+            swoopProgress += Time.deltaTime * (speed / Vector2.Distance(swoopStartPos, targetPosition));
+
+            Vector2 direction = Vector2.Lerp(swoopStartPos, targetPosition, swoopProgress);
+            float arc = Mathf.Sin(Mathf.PI * swoopProgress) * swoopArcHeight;
+            Vector2 curvedTarget = new Vector2(direction.x, direction.y + arc);
+
+            transform.position = Vector2.Lerp(transform.position, curvedTarget, Time.deltaTime * speed);
+
+            // Flip visuel
+            Vector2 dir = curvedTarget - (Vector2)transform.position;
+            if (dir.x != 0)
+            {
+                Vector3 scale = transform.localScale;
+                scale.x = Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
+                transform.localScale = scale;
+            }
+
+            // Collision (mais seulement une fois par attaque)
+            if (!hasDealtDamage)
+            {
+                Collider2D hit = Physics2D.OverlapCircle(transform.position, 0.4f, playerLayer);
+                if (hit != null && hit.TryGetComponent(out PlayerCollision player))
+                {
+                    Vector2 knockback = (player.transform.position - transform.position).normalized;
+                    player.TakeDamages(1, knockback);
+                    hasDealtDamage = true;
+                }
+            }
+
+            // Fin de l’attaque
+            if (swoopProgress >= 1f)
+            {
+                hasLockedTarget = false;
+                attackCooldown = cooldownBetweenAttacks;
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, 0.4f);
+    }
+}

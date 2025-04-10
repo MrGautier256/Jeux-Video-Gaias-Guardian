@@ -280,7 +280,8 @@ public class Player : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
+        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword || GetComponent<PlayerCollision>().IsDead())
+            return;
 
         canAttack = false;
 

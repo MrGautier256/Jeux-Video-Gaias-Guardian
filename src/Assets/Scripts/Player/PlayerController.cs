@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private Vector2 lastPosition;
     private float stuckTimer = 0f;
     public float maxStuckTime = 0.25f;
+    private bool isPlayingRetractSound = false;
+
 
     [Header("Components")]
     public Rigidbody2D rb;
@@ -22,6 +24,13 @@ public class Player : MonoBehaviour
     public float jumpingPower = 3f;
     private int facingDirection = 1;
     private float horizontal;
+
+    [Header("Grapple SFX")]
+    public AudioClip grappleLaunchClip;
+    public AudioClip grappleHitClip;
+    public AudioClip grappleRetractClip;
+
+    private AudioSource audioSource;
 
     [Header("Dash")]
     public float dashSpeed = 10f;
@@ -73,6 +82,12 @@ public class Player : MonoBehaviour
 
         grappleLine = GetComponent<LineRenderer>();
         grappleLine.positionCount = 0;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -90,7 +105,6 @@ public class Player : MonoBehaviour
         }
         else if (animator.GetBool("Isjumping") && IsGrounded())
         {
-            Debug.Log("Reset Isjumping");
             animator.SetBool("Isjumping", false);
         }
 
@@ -127,7 +141,6 @@ public class Player : MonoBehaviour
             }
         }
 
-
         if (!isDashing)
         {
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
@@ -139,7 +152,16 @@ public class Player : MonoBehaviour
             Vector2 direction = toTarget.normalized;
             float distance = toTarget.magnitude;
 
-            //Annule si un obstacle bloque le chemin
+            //Lancer le son de rembobinage si ce nï¿½est pas dï¿½jï¿½ fait
+            if (!isPlayingRetractSound)
+            {
+                audioSource.clip = grappleRetractClip;
+                audioSource.loop = false;
+                audioSource.Play();
+                isPlayingRetractSound = true;
+            }
+
+            // Annule si un obstacle bloque le chemin
             RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, distance, groundLayer);
             if (hit.collider != null)
             {
@@ -158,7 +180,7 @@ public class Player : MonoBehaviour
                 rb.MovePosition(newPos);
             }
 
-            //Déblocage automatique si bloqué
+            //Dï¿½blocage automatique si bloquï¿½
             if (Vector2.Distance(rb.position, lastPosition) < 0.01f)
             {
                 stuckTimer += Time.fixedDeltaTime;
@@ -179,6 +201,7 @@ public class Player : MonoBehaviour
             lastPosition = rb.position;
         }
     }
+
 
     public void Move(InputAction.CallbackContext context)
     {
@@ -222,7 +245,6 @@ public class Player : MonoBehaviour
 
         if (!context.performed || !canDash || isDashing || !abilities.CanDash) return;
 
-
         isDashing = true;
         animator.SetTrigger("DashTrigger");
         animator.SetBool("IsDashing", true);
@@ -232,10 +254,11 @@ public class Player : MonoBehaviour
 
     public void Grapple(InputAction.CallbackContext context)
     {
+        audioSource.PlayOneShot(grappleLaunchClip);
 
         if (!context.performed || isGrappling || !abilities.CanGrapple) return;
 
-        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized; 
+        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized;
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
 
         // Visuel direct pour feedback
@@ -250,6 +273,7 @@ public class Player : MonoBehaviour
         {
             grappleTarget = hit.point;
             isGrappling = true;
+            audioSource.PlayOneShot(grappleHitClip);
             rb.gravityScale = 0;
 
             grappleTargetCollider = hit.collider;
@@ -263,8 +287,7 @@ public class Player : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword || GetComponent<PlayerCollision>().IsDead())
-            return;
+        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
 
         canAttack = false;
 
@@ -272,7 +295,7 @@ public class Player : MonoBehaviour
         {
             animator.SetTrigger("AttackTrigger");
             animator.SetBool("IsAttacking", true);
-
+            animator.speed = 2f;
         }
 
         Vector2 attackOrigin = (Vector2)transform.position + Vector2.right * GetFacingDirection() * attackRange * 0.5f;
@@ -287,8 +310,7 @@ public class Player : MonoBehaviour
                 hitbox.ReceiveHit(attackDamage);
             }
         }
-        float attackDuration = animator.runtimeAnimatorController.animationClips
-    .FirstOrDefault(clip => clip.name == "attack")?.length ?? 0.5f;
+        float attackDuration = 0.2f;
 
 
         attackCooldown = attackDuration;
@@ -303,6 +325,7 @@ public class Player : MonoBehaviour
         if (animator != null)
         {
             animator.SetBool("IsAttacking", false);
+            animator.speed = 1f;
         }
     }
 
@@ -328,6 +351,12 @@ public class Player : MonoBehaviour
 
     private void EndGrapple()
     {
+        if (isPlayingRetractSound)
+        {
+            audioSource.Stop();
+            isPlayingRetractSound = false;
+        }
+
         if (grappleTargetCollider != null)
         {
             Physics2D.IgnoreCollision(playerCollider, grappleTargetCollider, false);

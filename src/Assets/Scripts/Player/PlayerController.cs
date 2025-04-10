@@ -165,7 +165,6 @@ public class Player : MonoBehaviour
 
                 if (stuckTimer >= maxStuckTime)
                 {
-                    Debug.Log("Grappin : débloqué par mini-téléportation");
                     Vector2 escapeDir = ((grappleTarget - rb.position).normalized + Vector2.up * 0.75f).normalized;
                     Vector2 newPos = rb.position + escapeDir * 0.5f;
                     rb.position = newPos;
@@ -221,19 +220,7 @@ public class Player : MonoBehaviour
             EndGrapple();
         }
 
-        if (!context.performed || !canDash || isDashing) return;
-
-        if (abilities == null)
-        {
-            abilities = GetComponent<PlayerAbilities>();
-            if (abilities == null)
-            {
-                Debug.LogWarning("[Player] PlayerAbilities est manquant !");
-                return;
-            }
-        }
-
-        if (!abilities.CanDash) return;
+        if (!context.performed || !canDash || isDashing || !abilities.CanDash) return;
 
 
         isDashing = true;
@@ -245,9 +232,8 @@ public class Player : MonoBehaviour
 
     public void Grapple(InputAction.CallbackContext context)
     {
-        Debug.Log("Grapple input received");
 
-        if (!context.performed || isGrappling) return;
+        if (!context.performed || isGrappling || !abilities.CanGrapple) return;
 
         Vector2 direction = new Vector2(facingDirection, 0.5f).normalized; 
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
@@ -262,7 +248,6 @@ public class Player : MonoBehaviour
 
         if (hit.collider != null)
         {
-            Debug.Log("Grapple target hit: " + hit.collider.name);
             grappleTarget = hit.point;
             isGrappling = true;
             rb.gravityScale = 0;
@@ -272,8 +257,6 @@ public class Player : MonoBehaviour
         }
         else
         {
-            Debug.Log("No grapple target hit.");
-            // Optionnel : reset le visuel si pas de cible
             Invoke(nameof(ClearGrappleLine), 0.1f);
         }
     }

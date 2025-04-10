@@ -28914,6 +28914,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6301766669539513987, guid: d1f83c908ace93047b7585312f1f5d8a, type: 3}
+      propertyPath: canvasParent
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 299323281334646445, guid: d1f83c908ace93047b7585312f1f5d8a, type: 3}
       propertyPath: m_Name
       value: Bootstrap
@@ -31145,6 +31149,10 @@ PrefabInstance:
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 37.543
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: rewardMessage
+      value: Vous avez obtenu une arme
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock

@@ -90,7 +90,6 @@ public class Player : MonoBehaviour
         }
         else if (animator.GetBool("Isjumping") && IsGrounded())
         {
-            Debug.Log("Reset Isjumping");
             animator.SetBool("Isjumping", false);
         }
 
@@ -217,15 +216,10 @@ public class Player : MonoBehaviour
     {
         if (isGrappling)
         {
-            abilities = GetComponent<PlayerAbilities>();
-            if (abilities == null)
-            {
-                Debug.LogWarning("[Player] PlayerAbilities est manquant !");
-                return;
-            }
+            EndGrapple();
         }
 
-        if (!abilities.CanDash) return;
+        if (!context.performed || !canDash || isDashing || !abilities.CanDash) return;
 
         isDashing = true;
         animator.SetTrigger("DashTrigger");
@@ -242,7 +236,6 @@ public class Player : MonoBehaviour
         Vector2 direction = new Vector2(facingDirection, 0.5f).normalized;
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
 
-        // Visuel direct pour feedback
         grappleLine.positionCount = 2;
         grappleLine.SetPosition(0, transform.position);
         grappleLine.SetPosition(1, endPoint);
@@ -267,8 +260,7 @@ public class Player : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword || GetComponent<PlayerCollision>().IsDead())
-            return;
+        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
 
         canAttack = false;
 
@@ -322,11 +314,25 @@ public class Player : MonoBehaviour
         return facingDirection;
     }
 
-    private IEnumerator AttackFlash()
+    private void ClearGrappleLine()
     {
-        Color originalColor = sr.color;
-        sr.color = Color.red;
-        yield return new WaitForSeconds(0.1f);
-        sr.color = originalColor;
+        if (!isGrappling)
+        {
+            grappleLine.positionCount = 0;
+        }
     }
+
+    private void EndGrapple()
+    {
+        if (grappleTargetCollider != null)
+        {
+            Physics2D.IgnoreCollision(playerCollider, grappleTargetCollider, false);
+            grappleTargetCollider = null;
+        }
+
+        isGrappling = false;
+        rb.gravityScale = 1;
+        grappleLine.positionCount = 0;
+    }
+
 }

@@ -105,7 +105,6 @@ public class Player : MonoBehaviour
         }
         else if (animator.GetBool("Isjumping") && IsGrounded())
         {
-            Debug.Log("Reset Isjumping");
             animator.SetBool("Isjumping", false);
         }
 
@@ -246,7 +245,6 @@ public class Player : MonoBehaviour
 
         if (!context.performed || !canDash || isDashing || !abilities.CanDash) return;
 
-
         isDashing = true;
         animator.SetTrigger("DashTrigger");
         animator.SetBool("IsDashing", true);
@@ -260,7 +258,7 @@ public class Player : MonoBehaviour
 
         if (!context.performed || isGrappling || !abilities.CanGrapple) return;
 
-        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized; 
+        Vector2 direction = new Vector2(facingDirection, 0.5f).normalized;
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
 
         // Visuel direct pour feedback
@@ -289,8 +287,7 @@ public class Player : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword || GetComponent<PlayerCollision>().IsDead())
-            return;
+        if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
 
         canAttack = false;
 

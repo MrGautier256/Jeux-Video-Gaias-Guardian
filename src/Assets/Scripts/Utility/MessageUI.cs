@@ -1,10 +1,10 @@
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 using System.Collections;
 
 public class MessageUI : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI messageText;
+    [SerializeField] private Text messageText;
     [SerializeField] private float displayDuration = 3f;
 
     public void Show(string message)

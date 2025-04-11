@@ -29654,7 +29654,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
-      value: Vous avez obtenu le grappin !
+      value: "Avec ce grappin, je vais pouvoir explorer des zones que je pensais
+        hors d\u2019atteinte !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock

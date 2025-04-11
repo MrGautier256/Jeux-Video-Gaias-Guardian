@@ -60,8 +60,8 @@ public class Player : MonoBehaviour
 
 
     [Header("Attack")]
-    public float attackRange = 1f;
-    public float attackWidth = 0.5f;
+    public float attackRange = 1.5f;
+    public float attackWidth = 0.8f;
     public float attackCooldown = 0.5f;
     public int attackDamage = 1;
     public LayerMask enemyLayer;
@@ -293,7 +293,17 @@ public class Player : MonoBehaviour
 
         if (animator != null)
         {
-            animator.SetTrigger("AttackTrigger");
+            if (animator.GetBool("Isjumping"))
+            {
+                // En l’air jump attack
+                animator.SetTrigger("JumpMeleeTrigger");
+            }
+            else
+            {
+                // Au sol attaque normale
+                animator.SetTrigger("AttackTrigger");
+            }
+
             animator.SetBool("IsAttacking", true);
             animator.speed = 2f;
         }

@@ -48,6 +48,7 @@ MonoBehaviour:
   sceneTransitionManagerPrefab: {fileID: 1671803624444793091, guid: ab748c6b35d19844bab862e1c320d000, type: 3}
   musicControllerPrefab: {fileID: 160903482084532801, guid: 7469db9cb4e51524da6312a723db05a2, type: 3}
   saveManagerPrefab: {fileID: 7146693987073516902, guid: d532e35593936a042aad08fec7b3a1c0, type: 3}
+  pauseMenuPrefab: {fileID: 5801030820931255558, guid: 8ebab2242bc5f724a8b23019e270ba2a, type: 3}
 --- !u!114 &-6301766669539513987
 MonoBehaviour:
   m_ObjectHideFlags: 0

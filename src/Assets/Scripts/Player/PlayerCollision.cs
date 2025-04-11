@@ -54,6 +54,11 @@ public class PlayerCollision : MonoBehaviour
         if (isDead) return;
 
         healthSystem.Heal(amount);
+
+        if (playerHUD != null)
+        {
+            playerHUD.UpdateHearts(healthSystem.CurrentHealth);
+        }
     }
 
 

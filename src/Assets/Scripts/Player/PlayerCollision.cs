@@ -27,11 +27,19 @@ public class PlayerCollision : MonoBehaviour
 
     public bool IsDead() => isDead;
 
+    [Header("Interface")]
+    public PlayerHUD playerHUD;
+
+
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         healthSystem = new HealthSystem(maxHealth, initialLives);
         healthSystem.OnDeath += HandleDeath;
+        playerHUD.UpdateHearts(healthSystem.CurrentHealth);
+        playerHUD.UpdateLives(healthSystem.Lives);
+
     }
 
     public bool IsInvulnerable() => isInvulnerable;
@@ -46,6 +54,11 @@ public class PlayerCollision : MonoBehaviour
         if (isDead) return;
 
         healthSystem.Heal(amount);
+
+        if (playerHUD != null)
+        {
+            playerHUD.UpdateHearts(healthSystem.CurrentHealth);
+        }
     }
 
 
@@ -54,6 +67,7 @@ public class PlayerCollision : MonoBehaviour
         if (isDead || isInvulnerable) return;
 
         healthSystem.TakeDamage(damage);
+        playerHUD.UpdateHearts(healthSystem.CurrentHealth);
         if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
         StartCoroutine(TemporaryKnockback());
         StartCoroutine(InvulnerabilityRoutine());
@@ -67,6 +81,11 @@ public class PlayerCollision : MonoBehaviour
 
         isDead = true;
         shouldLoseLife = loseLife;
+
+        if (playerHUD != null)
+        {
+            playerHUD.UpdateHearts(0);
+        }
 
         // Désactiver le script de mouvement
         GetComponent<Player>().enabled = false;
@@ -101,14 +120,24 @@ public class PlayerCollision : MonoBehaviour
         if (shouldLoseLife)
         {
             healthSystem.LoseLife();
+            playerHUD.UpdateLives(healthSystem.Lives);
+
 
             if (!healthSystem.HasLivesLeft())
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                playerHUD.UpdateLives(0);
                 return;
             }
 
             healthSystem.ResetHealth();
+
+            if (playerHUD != null)
+            {
+                playerHUD.UpdateHearts(healthSystem.CurrentHealth);
+                playerHUD.UpdateLives(healthSystem.Lives);
+            }
+
         }
 
         Transform spawn = RespawnManager.Instance?.GetRespawnPoint();

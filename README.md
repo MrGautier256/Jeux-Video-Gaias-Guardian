@@ -18,3 +18,9 @@ Please read the [User manual](https://github.com/MrGautier256/Jeux-Video-Gaias-G
  
 Gallery
 -------
+Level 1 :
+![alt text](https://github.com/MrGautier256/Jeux-Video-Gaias-Guardian/blob/develop/docs/Screenshots/Level1.png)
+Level 2 :
+![alt text](https://github.com/MrGautier256/Jeux-Video-Gaias-Guardian/blob/develop/docs/Screenshots/Level2.png)
+Level 3 :
+![alt text](https://github.com/MrGautier256/Jeux-Video-Gaias-Guardian/blob/develop/docs/Screenshots/Level3.png)

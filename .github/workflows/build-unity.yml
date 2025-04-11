@@ -51,6 +51,21 @@ jobs:
     - name: Set build summary
       run: |
         echo "### 🚀 Build version: \`${VERSION}\`" >> $GITHUB_STEP_SUMMARY  # Ajoute un résumé dans l’onglet "Summary"
+    - name: Free Disk Space
+      uses: jlumbroso/free-disk-space@v1.3.1
+      with:
+        large-packages: false        
+    - name: Run Unit Tests
+      uses: game-ci/unity-test-runner@main
+      env:
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+      with:
+        unityVersion: 6000.0.40f1        # Version Unity utilisée
+        testMode: playmode
+        projectPath: src                # Chemin vers le projet Unity        
+        githubToken: ${{ secrets.GITHUB_TOKEN }}	  
 
   sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
     runs-on: ubuntu-latest
@@ -80,6 +95,7 @@ jobs:
           FrameworkPathOverride: /opt/unity/Editor/Data/MonoBleedingEdge/  # Chemin vers le framework Mono utilisé par Unity
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
+            echo "========================================"
             echo "=== Démarrage de l'analyse SonarQube ==="
             cd src
             echo "== Modification du fichier Assembly-CSharp.csproj =="
@@ -100,8 +116,8 @@ jobs:
             apt-get install -y dotnet-sdk-6.0
             
             echo "== Déplacement de dossier =="
-            cd ..            
-            
+            cd ..
+    
             echo "== Installation de dotnet-sonarscanner =="
             dotnet tool install dotnet-sonarscanner --tool-path .
     

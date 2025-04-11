@@ -41,6 +41,13 @@ public class PlayerCollision : MonoBehaviour
         apples++;
         if (appleCollectSound && audioSource) audioSource.PlayOneShot(appleCollectSound);
     }
+    public void Heal(int amount)
+    {
+        if (isDead) return;
+
+        healthSystem.Heal(amount);
+    }
+
 
     public void TakeDamages(int damage, Vector2 knockbackDirection)
     {

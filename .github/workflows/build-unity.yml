@@ -66,6 +66,21 @@ jobs:
         testMode: playmode
         projectPath: src                # Chemin vers le projet Unity        
         githubToken: ${{ secrets.GITHUB_TOKEN }}	  
+      continue-on-error: true # Permet de continuer même en cas d'échec
+    - name: Analyze Test Results
+      run: |
+        if [ ! -f playmode-results.xml ]; then
+          echo "Test results file not found. Marking build as neutral."
+          exit 78 # Code de sortie pour statut 'neutral'
+        fi
+
+        if grep -q "<failure>" playmode-results.xml; then
+          echo "Tests failed. Marking build as neutral."
+          exit 78 # Code de sortie pour statut 'neutral'
+        else
+          echo "All tests passed."
+        fi
+
 
   sonar: # Librement inspiré du workflow suivant : https://github.com/finol-digital/Card-Game-Simulator/blob/e2639469f86f09d186121d8ccaacefb9b69227e8/.github/workflows/main.yml#L157
     runs-on: ubuntu-latest

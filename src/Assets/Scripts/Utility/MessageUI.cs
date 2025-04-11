@@ -12,12 +12,14 @@ public class MessageUI : MonoBehaviour
     private IEnumerator TypeMessage(string message)
     {
         messageText.text = "";
+        int counter = 0;
         foreach (char c in message)
         {
             messageText.text += c;
-            if (blipSound != null)
+            counter++;
+            if (!char.IsWhiteSpace(c) && counter % 2 == 0)
             {
-                AudioSource.PlayClipAtPoint(blipSound, Camera.main.transform.position, 0.5f);
+                AudioSource.PlayClipAtPoint(blipSound, Camera.main.transform.position, 0.2f);
             }
             yield return new WaitForSeconds(0.05f); //
         }

@@ -62,6 +62,7 @@ jobs:
         UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
       with:
+        unityVersion: 6000.0.40f1        # Version Unity utilisée
         testMode: playmode
         projectPath: src                # Chemin vers le projet Unity        
         githubToken: ${{ secrets.GITHUB_TOKEN }}	  

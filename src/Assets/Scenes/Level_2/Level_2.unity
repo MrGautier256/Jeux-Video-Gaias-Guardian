@@ -56727,7 +56727,8 @@ PrefabInstance:
       objectReference: {fileID: 361914702}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
-      value: "Vous avez debloqu\xE9 le Dash !"
+      value: "Ce r\xE9acteur\u2026 C\u2019est comme \xE7a qu\u2019il bougeait si
+        vite. \xC0 moi de jouer maintenant!"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock

@@ -18,8 +18,8 @@ public class AppleCollectibleTest
         // Attendre une frame que la scene charge
         yield return null;
 
-        // Vérifie qu'un objet nomme "Apple" est present dans la scene
-        var apples = GameObject.FindGameObjectsWithTag("Apple");
+        // VÃ©rifie qu'un objet nomme "Apple" est present dans la scene
+        var apples = GameObject.FindObjectsByType<AppleCollectible>(FindObjectsSortMode.None);
         Assert.IsTrue(apples.Count() > 0, "L'objet 'Apple' devrait etre present dans la scene.");
     }
 

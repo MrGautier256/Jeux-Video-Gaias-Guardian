@@ -40,12 +40,12 @@ public class PowerCollectible : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        //if (IsAbilityUnlocked(abilityToUnlock))
-        //{
-        //    Destroy(gameObject);
-        //    return;
+        if (IsAbilityUnlocked(abilityToUnlock))
+        {
+            Destroy(gameObject);
+            return;
 
-        //}
+        }
     }
 
     private void HandleMessageAndAbility()

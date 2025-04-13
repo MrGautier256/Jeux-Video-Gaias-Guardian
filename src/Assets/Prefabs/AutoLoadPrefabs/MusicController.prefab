@@ -151,5 +151,5 @@ MonoBehaviour:
     musicClip: {fileID: 8300000, guid: ce53bdc950a541b45a7a292f92c85827, type: 3}
   - sceneName: Level_4
     musicClip: {fileID: 8300000, guid: 7a5613474078d6547a7bb3b02b949e93, type: 3}
-  - sceneName: MainMenu
-    musicClip: {fileID: 8300000, guid: fba799e31751305478c816057604e392, type: 3}
+  - sceneName: First_menu
+    musicClip: {fileID: 8300000, guid: e96bd95a773f31544be5dd6422b7266f, type: 3}

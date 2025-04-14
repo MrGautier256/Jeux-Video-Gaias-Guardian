@@ -24,7 +24,26 @@ public class MainMenuManager : MonoBehaviour
     public void ContinueGame()
     {
         string levelToLoad = SaveManager.Instance.CurrentSave.progression.currentLevel;
-        SceneTransitionManager.Instance.LoadSceneWithFade(levelToLoad);
+        string finalLevelToLoad = levelToLoad;
+
+        var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
+
+        bool isClaimed = levelToLoad switch
+        {
+            "Level_1" => claimed.Level_1,
+            "Level_2" => claimed.Level_2,
+            "Level_3" => claimed.Level_3,
+            "Level_4" => claimed.Level_4,
+            "Level_5" => claimed.Level_5,
+            _ => false
+        };
+
+        if (isClaimed)
+        {
+            finalLevelToLoad = levelToLoad + "_clear";
+        }
+
+        SceneTransitionManager.Instance.LoadSceneWithFade(finalLevelToLoad);
     }
 
     public void Credits()

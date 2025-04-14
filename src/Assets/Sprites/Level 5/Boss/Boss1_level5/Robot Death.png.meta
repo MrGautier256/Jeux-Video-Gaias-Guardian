@@ -135,6 +135,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -459,7 +485,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Robot Death_0: -619021263805796301
+      Robot Death_1: 2502871677080342282
+      Robot Death_10: -8960041584124438586
+      Robot Death_11: 5030987257610003163
+      Robot Death_12: -1424510974027665636
+      Robot Death_13: 9196604794625255044
+      Robot Death_2: 3482136221997732756
+      Robot Death_3: 5923117054909234050
+      Robot Death_4: -5537602388068213612
+      Robot Death_5: -8723519795164619222
+      Robot Death_6: 7429913258492688240
+      Robot Death_7: 3086861039818180339
+      Robot Death_8: 8571799309772866381
+      Robot Death_9: -8693296732122311519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

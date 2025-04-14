@@ -2,15 +2,12 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class RoomTransitionTrigger : MonoBehaviour, ITriggerDesactivable
+public class PlayerTeleporter : MonoBehaviour, ITriggerDesactivable
 {
-    [Header("Room References")]
-    public Transform previousRoom;
-    public Transform nextRoom;
-
-    [Header("Respawn Points")]
-    public Transform previousRespawn;
-    public Transform nextRespawn;
+    [Header("Changement de Room et de Spawn")]
+    public Transform nextRoom;            // Pour la caméra
+    public Transform newRespawnPoint;     // Point de respawn à sauvegarder
+    public Transform teleportTarget;      // Point exact où téléporter le joueur
 
     [Header("Cooldown")]
     public float cooldown = 0.2f;
@@ -28,24 +25,27 @@ public class RoomTransitionTrigger : MonoBehaviour, ITriggerDesactivable
 
     public void SetEnabled(bool value) => enabled = value;
 
-    private void OnTriggerStay2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Player")) return;
         if (Time.time - lastTriggerTime < cooldown) return;
 
-        Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
-        if (rb == null) return;
+        if (teleportTarget != null)
+        {
+            // Déplacement immédiat du joueur
+            other.transform.position = teleportTarget.position;
 
-        float dir = rb.linearVelocity.x;
-        if (Mathf.Abs(dir) < 0.1f) return;
+            // Réinitialisation de la vitesse
+            Rigidbody2D rb = other.GetComponent<Rigidbody2D>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+            }
+        }
 
-        bool goingRight = dir > 0;
-
-        Transform targetRoom = goingRight ? nextRoom : previousRoom;
-        Transform targetRespawn = goingRight ? nextRespawn : previousRespawn;
-
-        UpdateCameraRoom(targetRoom);
-        UpdateRespawnPoint(targetRespawn);
+        UpdateCameraRoom(nextRoom);
+        UpdateRespawnPoint(newRespawnPoint);
 
         lastTriggerTime = Time.time;
     }
@@ -53,7 +53,6 @@ public class RoomTransitionTrigger : MonoBehaviour, ITriggerDesactivable
     private void UpdateCameraRoom(Transform room)
     {
         OnRoomChanged?.Invoke(room);
-
         if (cameraSizer != null && room != null)
         {
             cameraSizer.SetRoom(room);
@@ -63,7 +62,6 @@ public class RoomTransitionTrigger : MonoBehaviour, ITriggerDesactivable
     private void UpdateRespawnPoint(Transform respawn)
     {
         OnRespawnChanged?.Invoke(respawn);
-
         if (respawn != null && RespawnManager.Instance != null)
         {
             RespawnManager.Instance.SetRespawnPoint(respawn);

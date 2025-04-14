@@ -67034,6 +67034,10 @@ PrefabInstance:
       value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 1737192411}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 512
       objectReference: {fileID: 0}
@@ -67133,6 +67137,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1737192411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 1737192409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742573567
 GameObject:
   m_ObjectHideFlags: 0

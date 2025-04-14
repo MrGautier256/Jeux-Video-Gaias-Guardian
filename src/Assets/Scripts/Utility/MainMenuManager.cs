@@ -32,6 +32,23 @@ public class MainMenuManager : MonoBehaviour
         SceneTransitionManager.Instance.LoadSceneWithFade("Credits");
     }
 
+    public void GoLevel1()
+    {
+        
+    }
+    public void GoLevel2()
+    {
+
+    }
+    public void GoLevel3()
+    {
+
+    }
+    public void GoLevel4()
+    {
+
+    }
+
     public void QuitGame()
     {
         Debug.Log("QUIT!");

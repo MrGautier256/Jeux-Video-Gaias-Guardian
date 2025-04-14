@@ -26,8 +26,13 @@ public class MainMenuManager : MonoBehaviour
         string levelToLoad = SaveManager.Instance.CurrentSave.progression.currentLevel;
         SceneTransitionManager.Instance.LoadSceneWithFade(levelToLoad);
     }
-    
-     public void QuitGame()
+
+    public void Credits()
+    {
+        SceneTransitionManager.Instance.LoadSceneWithFade("Credits");
+    }
+
+    public void QuitGame()
     {
         Debug.Log("QUIT!");
         Application.Quit();

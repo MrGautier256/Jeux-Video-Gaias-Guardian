@@ -18,14 +18,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Télécharger les artefacts depuis un autre workflow
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-unity  # Nom utilisé lors du téléversement
-          path: ./artifacts
+      # Étape 1 : Lister les artefacts du workflow précédent
+      - name: List artifacts from Unity Build Pipeline
+        id: list_artifacts
+        run: |
+          artifacts=$(gh run list --workflow="build-unity.yml" --json conclusion,artifacts --jq '.[] | select(.conclusion == "success") | .artifacts[].name')
+          echo "ARTIFACTS=$artifacts" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Étape 2 : Créer une release
+      # Étape 2 : Télécharger chaque artefact
+      - name: Download artifacts
+        run: |
+          mkdir -p artifacts
+          for artifact in $ARTIFACTS; do
+            gh artifact download "$artifact" --dir artifacts
+          done
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Étape 3 : Créer une release
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
@@ -38,13 +50,13 @@ jobs:
           draft: false
           prerelease: false
 
-      # Étape 3 : Ajouter les artefacts à la release
-      - name: Upload artifact to release
+      # Étape 4 : Ajouter les artefacts à la release
+      - name: Upload artifacts to release
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts # Chemin des artefacts téléchargés
-          asset_name: build-artifacts.zip
+          asset_path: artifacts
+          asset_name: ${{ github.event.inputs.tag_name }}.zip
           asset_content_type: application/zip

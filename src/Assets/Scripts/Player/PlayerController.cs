@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -55,8 +56,15 @@ public class Player : MonoBehaviour
     public float grappleSpeed = 5f;
     private Vector2 grappleTarget;
     private bool isGrappling = false;
-
+    private bool canGrapple = true;
     private LineRenderer grappleLine;
+
+    [Header("Special Attack - Pollen Vortex")]
+    public GameObject vortexProjectilePrefab;
+    public Transform shootPoint; // point d’apparition
+    public float vortexCooldown = 3f;
+
+    private float lastVortexTime = -999f;
 
 
     [Header("Attack")]
@@ -70,7 +78,7 @@ public class Player : MonoBehaviour
     private float jumpBuffer = 0f;
 
 
-    private bool canAttack = true;
+    private bool canAttack { get; set; } = false; 
 
 
     void Start()
@@ -88,6 +96,7 @@ public class Player : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
+        SetControlsEnabled(true);
     }
 
     void Update()
@@ -256,7 +265,7 @@ public class Player : MonoBehaviour
     {
         audioSource.PlayOneShot(grappleLaunchClip);
 
-        if (!context.performed || isGrappling || !abilities.CanGrapple) return;
+        if (!context.performed || !canGrapple || isGrappling || !abilities.CanGrapple) return;
 
         Vector2 direction = new Vector2(facingDirection, 0.5f).normalized;
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
@@ -285,6 +294,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void SpecialAttack(InputAction.CallbackContext context)
+    {
+        Debug.Log("abilities.CanUsePollenVortex");
+        if (!context.performed || !abilities.CanUsePollenVortex || Time.time < lastVortexTime + vortexCooldown) return;
+
+        lastVortexTime = Time.time;
+
+        Vector2 shootDir = new Vector2(facingDirection, 0f);
+        GameObject vortex = Instantiate(vortexProjectilePrefab, shootPoint.position, Quaternion.identity);
+        vortex.GetComponent<PollenVortexProjectile>().Launch(shootDir);
+    }
+
     public void Attack(InputAction.CallbackContext context)
     {
         if (!context.performed || !canAttack || abilities == null || !abilities.CanUseSword) return;
@@ -295,12 +316,10 @@ public class Player : MonoBehaviour
         {
             if (animator.GetBool("Isjumping"))
             {
-                // En l’air jump attack
                 animator.SetTrigger("JumpMeleeTrigger");
             }
             else
             {
-                // Au sol attaque normale
                 animator.SetTrigger("AttackTrigger");
             }
 
@@ -377,5 +396,15 @@ public class Player : MonoBehaviour
         rb.gravityScale = 1;
         grappleLine.positionCount = 0;
     }
+
+    public void SetControlsEnabled(bool enabled)
+    {
+        canAttack = enabled;
+        canDash = enabled;
+        canGrapple = enabled;
+    }
+
+
+
 
 }

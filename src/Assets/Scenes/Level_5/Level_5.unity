@@ -7232,9 +7232,6 @@ MonoBehaviour:
   detectionRadius: 5.16
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 0.2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &157233910
 GameObject:
   m_ObjectHideFlags: 0
@@ -11666,9 +11663,6 @@ MonoBehaviour:
   detectionRadius: 2.62
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 0.2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &395565245
 GameObject:
   m_ObjectHideFlags: 0
@@ -14553,9 +14547,6 @@ MonoBehaviour:
   detectionRadius: 2.5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 0.2
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &823478056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36495,7 +36486,7 @@ Transform:
   m_GameObject: {fileID: 1176299624}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.1, y: 34.8, z: 0.0806565}
+  m_LocalPosition: {x: -14.07, y: 1.06, z: 0.0806565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49540,6 +49531,10 @@ PrefabInstance:
       value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 1737192411}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 512
       objectReference: {fileID: 0}
@@ -49639,6 +49634,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1737192411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 1737192409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742005562
 GameObject:
   m_ObjectHideFlags: 0

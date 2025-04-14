@@ -8,6 +8,7 @@ public class GlobalManagerAutoLoader : MonoBehaviour
     public GameObject saveManagerPrefab;
     public GameObject pauseMenuPrefab;
     public GameObject HUDPrefab;
+    public GameObject levelTrackerPrefab;
 
 
     private void Awake()
@@ -17,6 +18,7 @@ public class GlobalManagerAutoLoader : MonoBehaviour
         LoadIfMissing<SaveManager>(saveManagerPrefab);
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MainMenu")
         {
+            LoadIfMissing<LevelTracker>(levelTrackerPrefab);
             LoadIfMissing<PauseMenu>(pauseMenuPrefab);
             LoadIfMissing<PlayerHUD>(HUDPrefab);
         }

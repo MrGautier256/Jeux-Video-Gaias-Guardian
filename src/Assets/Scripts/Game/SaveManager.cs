@@ -33,6 +33,7 @@ public class AbilityData
     public bool hasDoubleJump = false;
     public bool hasDash = false;
     public bool hasGrapple = false;
+    public bool hasPollenVortex = false;
 }
 
 public class SaveManager : MonoBehaviour
@@ -94,6 +95,11 @@ public class SaveManager : MonoBehaviour
         CurrentSave = new SaveData();
     }
 
+    public void SetCurrentLevel(string levelName)
+    {
+        CurrentSave.progression.currentLevel = levelName;
+        SaveGame();
+    }
 
 
     public void AddAbilitiesUpdatedListener(System.Action callback) => abilitiesUpdated += callback;

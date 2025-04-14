@@ -26,7 +26,8 @@ jobs:
       - name: Get latest successful run ID
         id: get_run_id
         run: |
-          run_id=$(gh run list --workflow="build-unity.yml" --json conclusion,number --jq '.[] | select(.conclusion == "success") | .number' | head -n 1)
+          run_number=$(gh run list --workflow="build-unity.yml" --json conclusion,number --jq '.[] | select(.conclusion == "success") | .number' | head -n 1)
+          run_id=$(gh run view $run_number --json databaseId --jq '.databaseId')
           echo "RUN_ID=$run_id" >> $GITHUB_ENV
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

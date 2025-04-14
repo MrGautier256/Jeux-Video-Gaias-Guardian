@@ -93,5 +93,5 @@ jobs:
           echo "Body: ${{ env.body }}"
           for artifact in artifacts/*; do
             echo "Uploading $artifact"
-            gh release upload "${{ env.release_name }}" "$artifact" --repo "${{ github.repository }}"
+            gh release upload "${{ github.event.inputs.tag_name }}" "$artifact" --repo "${{ github.repository }}"
           done

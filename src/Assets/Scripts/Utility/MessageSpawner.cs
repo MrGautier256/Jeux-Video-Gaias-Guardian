@@ -31,4 +31,14 @@ public class MessageSpawner : MonoBehaviour
             messageUI.Show(message);
         }
     }
+    public void DisplayMessageWithPause(string message, KeyCode[] skipKeys)
+    {
+        GameObject instance = Instantiate(messageUIPrefab, canvasParent);
+        MessageUI messageUI = instance.GetComponent<MessageUI>();
+        if (messageUI != null)
+        {
+            messageUI.ShowWithPause(message, skipKeys);
+        }
+    }
+
 }

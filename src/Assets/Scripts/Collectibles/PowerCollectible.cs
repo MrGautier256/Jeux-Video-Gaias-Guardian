@@ -10,6 +10,10 @@ public class PowerCollectible : MonoBehaviour
     [Header("Message de récompense"), TextArea(2, 4)]
     public string rewardMessage = "";
 
+    [Header("Touches pour fermer le message")]
+    [SerializeField] private KeyCode[] skipKeys = { KeyCode.Return };
+
+
     public enum AbilityName
     {
         None,
@@ -51,7 +55,7 @@ public class PowerCollectible : MonoBehaviour
     private void HandleMessageAndAbility()
     {
         if (!string.IsNullOrWhiteSpace(rewardMessage))
-            MessageSpawner.Instance?.DisplayMessage(rewardMessage);
+            MessageSpawner.Instance?.DisplayMessageWithPause(rewardMessage, skipKeys);
 
         UnlockAbility();
     }

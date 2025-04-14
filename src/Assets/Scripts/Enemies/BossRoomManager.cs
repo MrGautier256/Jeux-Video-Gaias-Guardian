@@ -31,16 +31,19 @@ public class BossRoomManager : MonoBehaviour
         Dash,
         DoubleJump,
         Grapple,
-        Sword
+        Sword,
+        PollenVortex
+
     }
 
     private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
-{
-    { AbilityName.Dash, "hasDash" },
-    { AbilityName.DoubleJump, "hasDoubleJump" },
-    { AbilityName.Grapple, "hasGrapple" },
-    { AbilityName.Sword, "hasSword" }
-};
+    {
+        { AbilityName.Dash, "hasDash" },
+        { AbilityName.DoubleJump, "hasDoubleJump" },
+        { AbilityName.Grapple, "hasGrapple" },
+        { AbilityName.Sword, "hasSword" },
+        { AbilityName.PollenVortex, "hasPollenVortex" }
+    };
 
 
     private bool bossDefeated = false;

@@ -7,15 +7,12 @@ public class FlyingChaserAI : EnemyAI
     public float detectionRadius = 5f;
     public float swoopArcHeight = 1.5f;
     public float cooldownBetweenAttacks = 1f;
-    public LayerMask playerLayer;
 
     private Vector2 targetPosition;
     private bool hasLockedTarget = false;
     private float attackCooldown = 0f;
     private float swoopProgress = 0f;
     private Vector2 swoopStartPos;
-
-    private bool hasDealtDamage = false;
 
     protected override void Start()
     {
@@ -37,7 +34,6 @@ public class FlyingChaserAI : EnemyAI
                 swoopStartPos = transform.position;
                 targetPosition = player.position;
                 swoopProgress = 0f;
-                hasDealtDamage = false;
             }
         }
 
@@ -59,18 +55,6 @@ public class FlyingChaserAI : EnemyAI
                 Vector3 scale = transform.localScale;
                 scale.x = Mathf.Sign(dir.x) * Mathf.Abs(scale.x);
                 transform.localScale = scale;
-            }
-
-            // Collision (mais seulement une fois par attaque)
-            if (!hasDealtDamage)
-            {
-                Collider2D hit = Physics2D.OverlapCircle(transform.position, 0.4f, playerLayer);
-                if (hit != null && hit.TryGetComponent(out PlayerCollision player))
-                {
-                    Vector2 knockback = (player.transform.position - transform.position).normalized;
-                    player.TakeDamages(1, knockback);
-                    hasDealtDamage = true;
-                }
             }
 
             // Fin de l’attaque

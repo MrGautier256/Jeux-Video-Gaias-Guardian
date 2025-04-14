@@ -19018,6 +19018,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 7266916551260063494, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: m_Name
       value: Player
@@ -19046,6 +19054,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.68
       objectReference: {fileID: 0}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 1053510356}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 512
@@ -19146,6 +19158,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1053510356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 1053510354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1059589068
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,6 +33,7 @@ public class AbilityData
     public bool hasDoubleJump = false;
     public bool hasDash = false;
     public bool hasGrapple = false;
+    public bool hasPollenVortex = false;
 }
 
 public class SaveManager : MonoBehaviour

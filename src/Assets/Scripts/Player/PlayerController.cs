@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Linq;
 using UnityEngine;
@@ -57,6 +58,13 @@ public class Player : MonoBehaviour
     private bool isGrappling = false;
 
     private LineRenderer grappleLine;
+
+    [Header("Special Attack - Pollen Vortex")]
+    public GameObject vortexProjectilePrefab;
+    public Transform shootPoint; // point d’apparition
+    public float vortexCooldown = 3f;
+
+    private float lastVortexTime = -999f;
 
 
     [Header("Attack")]
@@ -283,6 +291,18 @@ public class Player : MonoBehaviour
         {
             Invoke(nameof(ClearGrappleLine), 0.1f);
         }
+    }
+
+    public void SpecialAttack(InputAction.CallbackContext context)
+    {
+        Debug.Log("abilities.CanUsePollenVortex");
+        if (!context.performed || !abilities.CanUsePollenVortex || Time.time < lastVortexTime + vortexCooldown) return;
+
+        lastVortexTime = Time.time;
+
+        Vector2 shootDir = new Vector2(facingDirection, 0f);
+        GameObject vortex = Instantiate(vortexProjectilePrefab, shootPoint.position, Quaternion.identity);
+        vortex.GetComponent<PollenVortexProjectile>().Launch(shootDir);
     }
 
     public void Attack(InputAction.CallbackContext context)

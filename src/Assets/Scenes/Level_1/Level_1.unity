@@ -18386,11 +18386,28 @@ PrefabInstance:
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
       value: "Alors c\u2019\xE9tait \xE7a son secret... Un double saut ? Ca va m\u2019ouvrir
-        des portes."
+        des portes. Appuyez deux fois sur Z, Espace ou la fl\xE8che du haut pour
+        l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: skipKeys.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: 'skipKeys.Array.data[1]'
+      value: 119
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: 'skipKeys.Array.data[2]'
+      value: 273
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: playerBarriers.Array.size
@@ -23434,6 +23451,11 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!4 &1229750828 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+  m_PrefabInstance: {fileID: 2873148264261871651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1250956321
 GameObject:
   m_ObjectHideFlags: 0
@@ -24621,6 +24643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1621149648}
+  - {fileID: 1229750828}
   - {fileID: 1562373472}
   - {fileID: 208040940}
   m_Father: {fileID: 817426713}
@@ -33850,11 +33873,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
-      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ?"
+      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ?  Appuyez sur M pour
+        utiliser l'\xE9p\xE9e !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: skipKeys.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 59
       objectReference: {fileID: 0}
     - target: {fileID: 6210101120865482139, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_FlipX
@@ -33885,6 +33917,92 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+--- !u!1001 &2873148264261871651
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1450265725}
+    m_Modifications:
+    - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_Name
+      value: MessageTrigger
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.17011541
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6468872655774542979, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2873148264261871653}
+  m_SourcePrefab: {fileID: 100100000, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+--- !u!1 &2873148264261871652 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+  m_PrefabInstance: {fileID: 2873148264261871651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2873148264261871653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873148264261871652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0942c4d81216f984faa7eb966ae361f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: "D\xE9pacez-vous en utilisant ZQSD ou les fl\xE8ches directionnelles du
+    clavier !"
+  skipKeys: 7a00000061000000730000006400000011010000120100001301000014010000
+  triggerOnce: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

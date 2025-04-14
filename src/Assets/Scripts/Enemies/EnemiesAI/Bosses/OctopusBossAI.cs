@@ -16,7 +16,7 @@ public class OctopusBossAI : EnemyAI
     [Header("Swoop Settings")]
     public float detectionRadius = 7f;
     public float swoopCooldown = 5f;
-    public float swoopDuration = 10f;
+    public float swoopDuration = 2.2f;
 
     private Vector2 swoopTarget;
     private float swoopTimer = 0f;
@@ -74,7 +74,6 @@ public class OctopusBossAI : EnemyAI
     {
         floatTimer += Time.deltaTime;
 
-        // Mouvement horizontal entre les deux bornes
         float direction = goingRight ? 1f : -1f;
         float targetX = transform.position.x + direction * floatSpeed * Time.deltaTime;
 
@@ -84,12 +83,10 @@ public class OctopusBossAI : EnemyAI
             return;
         }
 
-        // Mouvement vertical sinusoïdal
         float offsetY = Mathf.Sin(floatTimer * curveFrequency + verticalWobbleOffset) * curveAmplitude;
 
         transform.position = new Vector3(targetX, floatY + offsetY, transform.position.z);
 
-        // Flip visuel
         Vector3 scale = transform.localScale;
         scale.x = goingRight ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
         transform.localScale = scale;
@@ -106,7 +103,10 @@ public class OctopusBossAI : EnemyAI
 
     private void HandleSwoop()
     {
-        swoopProgress += Time.deltaTime / swoopDuration;
+        float distance = Vector2.Distance(startSwoopPos, swoopTarget);
+        float totalTime = distance / swoopSpeed;
+
+        swoopProgress += Time.deltaTime / totalTime;
         if (swoopProgress >= 1f)
         {
             isSwooping = false;
@@ -118,7 +118,12 @@ public class OctopusBossAI : EnemyAI
         float arc = Mathf.Sin(Mathf.PI * swoopProgress) * curveAmplitude;
         Vector2 final = new Vector2(lerped.x, lerped.y + arc);
         transform.position = final;
+
+        Vector3 scale = transform.localScale;
+        scale.x = (swoopTarget.x - transform.position.x) > 0 ? -Mathf.Abs(scale.x) : Mathf.Abs(scale.x);
+        transform.localScale = scale;
     }
+
 
     private void StartReturnToFloat()
     {

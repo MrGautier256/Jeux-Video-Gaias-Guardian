@@ -17588,6 +17588,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1522967095301520905, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      propertyPath: damage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2847968060831530000, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_Size.x
       value: 0.63
@@ -17663,6 +17667,10 @@ PrefabInstance:
     - target: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_Name
       value: Antoine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      propertyPath: maxHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8490238263465302742, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_Name
@@ -17797,7 +17805,7 @@ MonoBehaviour:
   floatY: 0
   detectionRadius: 8.79
   swoopCooldown: 5
-  swoopDuration: 2.2
+  swoopDuration: 10
 --- !u!1 &1077697497
 GameObject:
   m_ObjectHideFlags: 0

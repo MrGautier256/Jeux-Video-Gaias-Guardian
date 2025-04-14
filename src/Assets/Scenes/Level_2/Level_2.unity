@@ -57357,7 +57357,7 @@ PrefabInstance:
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
       value: "Ce r\xE9acteur\u2026 C\u2019est comme \xE7a qu\u2019il bougeait si
-        vite. \xC0 moi de jouer maintenant! Appuyez sur TAB pour l'utiliser !"
+        vite. \xC0 moi de jouer maintenant! Appuyez sur Z pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock
@@ -57365,7 +57365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: 'skipKeys.Array.data[0]'
-      value: 9
+      value: 119
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: playerBarriers.Array.size

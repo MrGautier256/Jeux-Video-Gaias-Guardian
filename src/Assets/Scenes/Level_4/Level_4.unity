@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 96818589}
   m_Layer: 7
   m_Name: TilemapSolid_Room7-A
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4247,9 +4247,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &192986486
 GameObject:
   m_ObjectHideFlags: 0
@@ -4671,7 +4668,7 @@ GameObject:
   - component: {fileID: 372936126}
   m_Layer: 7
   m_Name: TilemapSolid_Room5
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13059,7 +13056,7 @@ GameObject:
   - component: {fileID: 823542101}
   m_Layer: 7
   m_Name: TilemapSolid_Room7
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -19905,7 +19902,7 @@ GameObject:
   - component: {fileID: 867422274}
   m_Layer: 7
   m_Name: TilemapSolid_Room6
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22081,7 +22078,7 @@ GameObject:
   - component: {fileID: 909158646}
   m_Layer: 7
   m_Name: TilemapSolid_Room4
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -27995,7 +27992,7 @@ GameObject:
   - component: {fileID: 1078402094}
   m_Layer: 7
   m_Name: TilemapSolid_Room2
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -34360,9 +34357,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1100748486
 GameObject:
   m_ObjectHideFlags: 0
@@ -36020,9 +36014,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &1326744289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36806,9 +36797,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &1404271543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37286,7 +37274,7 @@ GameObject:
   - component: {fileID: 1499679431}
   m_Layer: 7
   m_Name: TilemapSolid_Room8
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -46016,9 +46004,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &1621149647
 GameObject:
   m_ObjectHideFlags: 0
@@ -67072,9 +67057,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &1737192409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -67605,7 +67587,7 @@ GameObject:
   - component: {fileID: 1834741785}
   m_Layer: 7
   m_Name: TilemapSolid_Room3
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -73910,9 +73892,6 @@ MonoBehaviour:
   detectionRadius: 5
   swoopArcHeight: 1.5
   cooldownBetweenAttacks: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1 &2105517561
 GameObject:
   m_ObjectHideFlags: 0

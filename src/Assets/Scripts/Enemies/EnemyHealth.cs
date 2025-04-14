@@ -11,6 +11,9 @@ public class EnemyHealth : MonoBehaviour
     private SpriteRenderer sr;
     private Animator animator;
     public event System.Action OnDeath;
+    private bool isDead = false;
+    public bool IsDead => isDead;
+
 
 
     private void Start()

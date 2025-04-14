@@ -14,11 +14,14 @@ public class HazardDamage : MonoBehaviour
         TryApplyDamage(collision);
     }
 
-
     private void TryApplyDamage(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            var health = GetComponentInParent<EnemyHealth>();
+            if (health != null && health.IsDead)
+                return;
+
             PlayerCollision pc = collision.GetComponent<PlayerCollision>();
             if (pc != null)
             {
@@ -28,5 +31,6 @@ public class HazardDamage : MonoBehaviour
             }
         }
     }
+
 
 }

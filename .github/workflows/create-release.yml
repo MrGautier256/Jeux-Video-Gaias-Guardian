@@ -1,0 +1,68 @@
+name: Create Release from Artifacts
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Nom du tag pour la release (ex: v1.0.0)'
+        required: true
+      release_name:
+        description: 'Nom de la release (ex: Initial Release)'
+        required: false
+      body:
+        description: 'Description de la release'
+        required: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Cloner le dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Identifier le dernier run avec succès pour le workflow "build-unity.yml"
+      - name: Get latest successful run ID
+        id: get_run_id
+        run: |
+          run_id=$(gh run list --workflow="build-unity.yml" --json conclusion,databaseId --jq '.[] | select(.conclusion == "success") | .databaseId' | head -n 1)
+          echo "RUN_ID=$run_id" >> $GITHUB_ENV
+          echo "Latest successful RUN_ID: $run_id"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Étape 3 : Télécharger les artefacts de cette exécution
+      - name: Download artifacts from run
+        run: |
+          mkdir -p artifacts
+          gh run download $RUN_ID --dir artifacts
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Étape 4 : Lister les artefacts téléchargés
+      - name: List artifacts
+        run: ls -l artifacts
+
+      # Étape 5 : Créer une release
+      - name: Create GitHub release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.event.inputs.tag_name }}
+          release_name: ${{ github.event.inputs.release_name || github.event.inputs.tag_name }}
+          body: ${{ github.event.inputs.body || 'Release description' }}
+          draft: false
+          prerelease: false
+
+      # Étape 6 : Ajouter chaque artefact à la release
+      - name: Upload individual artifacts to release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for artifact in artifacts/*; do
+            echo "Uploading $artifact"
+            gh release upload "${{ steps.create_release.outputs.tag_name }}" "$artifact" --repo "${{ github.repository }}"
+          done

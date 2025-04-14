@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 96818589}
   m_Layer: 7
   m_Name: TilemapSolid_Room7-A
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -4606,7 +4606,7 @@ GameObject:
   - component: {fileID: 372936126}
   m_Layer: 7
   m_Name: TilemapSolid_Room5
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -13211,7 +13211,7 @@ GameObject:
   - component: {fileID: 823542101}
   m_Layer: 7
   m_Name: TilemapSolid_Room7
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -20057,7 +20057,7 @@ GameObject:
   - component: {fileID: 867422274}
   m_Layer: 7
   m_Name: TilemapSolid_Room6
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -22233,7 +22233,7 @@ GameObject:
   - component: {fileID: 909158646}
   m_Layer: 7
   m_Name: TilemapSolid_Room4
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -28147,7 +28147,7 @@ GameObject:
   - component: {fileID: 1078402094}
   m_Layer: 7
   m_Name: TilemapSolid_Room2
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -37429,7 +37429,7 @@ GameObject:
   - component: {fileID: 1499679431}
   m_Layer: 7
   m_Name: TilemapSolid_Room8
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -67742,7 +67742,7 @@ GameObject:
   - component: {fileID: 1834741785}
   m_Layer: 7
   m_Name: TilemapSolid_Room3
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

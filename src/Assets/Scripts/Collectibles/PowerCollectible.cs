@@ -39,6 +39,21 @@ public class PowerCollectible : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (IsAbilityUnlocked(abilityToUnlock))
+        {
+            Destroy(gameObject);
+            return;
+
+        }
+    }
+
+    private void HandleMessageAndAbility()
+    {
+        if (!string.IsNullOrWhiteSpace(rewardMessage))
+            MessageSpawner.Instance?.DisplayMessage(rewardMessage);
+
+        UnlockAbility();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -56,31 +71,28 @@ public class PowerCollectible : MonoBehaviour
             {
                 audioSource.clip = collectSound; 
                 audioSource.Play();
+                Invoke(nameof(HandleMessageAndAbility), collectSound.length);
                 Destroy(gameObject, collectSound.length); 
             }
             else
             {
                 Destroy(gameObject);
             }
-
-            if (!string.IsNullOrWhiteSpace(rewardMessage))
-                MessageSpawner.Instance?.DisplayMessage(rewardMessage);
-
-            UnlockAbility();
         }
     }
 
     private void UnlockAbility()
     {
-        if (SaveManager.Instance == null) return;
+        if (SaveManager.Instance == null || abilityToUnlock == AbilityName.None) return;
+
+        if (IsAbilityUnlocked(abilityToUnlock)) return;
 
         if (abilityFieldMap.TryGetValue(abilityToUnlock, out string fieldName))
         {
-            var save = SaveManager.Instance.CurrentSave;
             var abilityField = typeof(AbilityData).GetField(fieldName);
-
             if (abilityField != null && abilityField.FieldType == typeof(bool))
             {
+                var save = SaveManager.Instance.CurrentSave;
                 abilityField.SetValue(save.abilities, true);
 
                 SaveManager.Instance.SaveGame();
@@ -88,4 +100,22 @@ public class PowerCollectible : MonoBehaviour
             }
         }
     }
+
+    private bool IsAbilityUnlocked(AbilityName ability)
+    {
+        if (SaveManager.Instance == null || ability == AbilityName.None) return false;
+
+        if (abilityFieldMap.TryGetValue(ability, out string fieldName))
+        {
+            var abilityField = typeof(AbilityData).GetField(fieldName);
+            if (abilityField != null && abilityField.FieldType == typeof(bool))
+            {
+                var save = SaveManager.Instance.CurrentSave;
+                return (bool)abilityField.GetValue(save.abilities);
+            }
+        }
+
+        return false;
+    }
+
 }

@@ -4,7 +4,7 @@ public class MessageSpawner : MonoBehaviour
 {
     public static MessageSpawner Instance;
 
-    [Header("Référence du prefab")]
+    [Header("Reference du prefab")]
     public GameObject messageUIPrefab;
 
     [Header("Canvas parent (UI)")]

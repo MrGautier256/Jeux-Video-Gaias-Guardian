@@ -5099,6 +5099,10 @@ PrefabInstance:
       value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 215129137}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: grappleHitClip
       value: 
       objectReference: {fileID: 8300000, guid: 3582fa37b74af454a82729fe59d3802b, type: 3}
@@ -5210,6 +5214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &215129137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 215129135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220626129
 GameObject:
   m_ObjectHideFlags: 0
@@ -25861,7 +25870,8 @@ PrefabInstance:
       objectReference: {fileID: 1056774284}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
-      value: "Vous avez compl\xE9t\xE9 le niveau 3"
+      value: "Je sens son \xE9nergie se lier \xE0 moi... Une vie de plus, \xE7a pourrait
+        faire la diff\xE9rence ! Appuyez sur ENTREE pour continuer !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: playerBarriers.Array.size
@@ -29811,11 +29821,15 @@ PrefabInstance:
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
       value: "Avec ce grappin, je vais pouvoir explorer des zones que je pensais
-        hors d\u2019atteinte !"
+        hors d\u2019atteinte ! Appuyez sur E pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 7287393718354499823, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_Name

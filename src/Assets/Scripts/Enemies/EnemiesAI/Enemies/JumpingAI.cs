@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JumpingAI : EnemyAI
+public class JumpingAI : EnemyAI, IEnemySlowable
 {
     [Header("Jump Settings")]
     public float jumpHeight = 1.5f;
@@ -16,10 +16,16 @@ public class JumpingAI : EnemyAI
     private float jumpStartTime;
     private Vector3 startPos;
 
+    private bool isSlowed = false; 
+    private float originalJumpInterval; 
+    private SpriteRenderer sr; 
+
     protected override void Start()
     {
         base.Start();
         nextJumpTime = Time.time + Random.Range(0f, initialDelayRandomRange);
+        originalJumpInterval = jumpInterval; 
+        sr = GetComponent<SpriteRenderer>(); 
     }
 
     public override void Act()
@@ -64,5 +70,26 @@ public class JumpingAI : EnemyAI
             Gizmos.color = Color.green;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
         }
+    }
+
+
+    public void ApplySlow(float factor, float duration)
+    {
+        if (isSlowed) return;
+
+        isSlowed = true;
+        jumpInterval /= factor;
+
+
+        sr.color = new Color(1f, 0.85f, 0.2f);
+
+        Invoke(nameof(RemoveSlow), duration);
+    }
+
+    private void RemoveSlow()
+    {
+        jumpInterval = originalJumpInterval;
+        sr.color = Color.white;
+        isSlowed = false;
     }
 }

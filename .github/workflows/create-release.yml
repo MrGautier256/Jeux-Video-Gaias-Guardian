@@ -79,6 +79,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo "Release name = ${{ steps.create_release.outputs.tag_name }}"
           for artifact in artifacts/*; do
             echo "Uploading $artifact"
             gh release upload "${{ steps.create_release.outputs.tag_name }}" "$artifact" --repo "${{ github.repository }}"

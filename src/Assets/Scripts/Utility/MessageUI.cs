@@ -9,7 +9,7 @@ public class MessageUI : MonoBehaviour
     [SerializeField] private AudioClip blipSound;
 
     private bool isAwaitingInput = false;
-    private KeyCode[] skipKeys = { KeyCode.Return }; // ex: "a", "e", "space", "enter"
+    private KeyCode[] skipKeys = { KeyCode.Return }; 
 
 
     public void ShowWithPause(string message, KeyCode[] keysToSkip)
@@ -58,7 +58,6 @@ public class MessageUI : MonoBehaviour
 
     public void Show(string message)
     {
-        // Calcule une durée selon la taille du message
         displayDuration = Mathf.Clamp(1f + (message.Length * 0.05f), 2f, 6f);
         StartCoroutine(TypeMessage(message));
         gameObject.SetActive(true);

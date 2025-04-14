@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelTransitionTrigger : MonoBehaviour
 {
-    [Header("Nom de la scene à charger")]
+    [Header("Nom de la scene a charger")]
     [SerializeField] private string sceneToLoad;
 
     [Header("Scene alternative si ce niveau est claim (ex: Level_1_clear)")]
@@ -26,7 +26,7 @@ public class LevelTransitionTrigger : MonoBehaviour
                 "Level_3" => claimed.Level_3,
                 "Level_4" => claimed.Level_4,
                 "Level_5" => claimed.Level_5,
-                _ => false // Pour MainMenu, etc.
+                _ => false 
             };
 
             if (isClaimed && !string.IsNullOrEmpty(sceneIfClaimed))

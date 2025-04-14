@@ -4,10 +4,10 @@ using System.Reflection;
 
 public class PowerCollectible : MonoBehaviour
 {
-    [Header("Capacité à débloquer")]
+    [Header("Capacite a debloquer")]
     public AbilityName abilityToUnlock = AbilityName.None;
 
-    [Header("Message de récompense"), TextArea(2, 4)]
+    [Header("Message de recompense"), TextArea(2, 4)]
     public string rewardMessage = "";
 
     [Header("Touches pour fermer le message")]

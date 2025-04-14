@@ -44,7 +44,7 @@ jobs:
       - name: List artifacts
         run: |
             # Se déplacer dans le dossier
-            cd "artifacts
+            cd "artifacts"
 
             # Zipper chaque sous-dossier
             for SOUS_DOSSIER in */; do

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tornade_pollen_frame_5_0: -7678718983927245061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

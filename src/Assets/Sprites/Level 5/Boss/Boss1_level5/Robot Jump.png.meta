@@ -135,6 +135,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -459,7 +485,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Robot Jump_0: 7798174959667970484
+      Robot Jump_1: -8798622535807224093
+      Robot Jump_10: -5501113730891520921
+      Robot Jump_11: -3425939506070079419
+      Robot Jump_12: -813508191570350316
+      Robot Jump_13: 717775989507224676
+      Robot Jump_2: -3656773105582103332
+      Robot Jump_3: 1490357810587856242
+      Robot Jump_4: 7304926996771562755
+      Robot Jump_5: -6556061405388189275
+      Robot Jump_6: 5032132968402553786
+      Robot Jump_7: 8843271781566220221
+      Robot Jump_8: 8878971842997492903
+      Robot Jump_9: -1525153102477100481
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

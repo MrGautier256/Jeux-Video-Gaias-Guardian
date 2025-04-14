@@ -135,6 +135,32 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -459,7 +485,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Robot Jump with gun_0: 4869394151907158696
+      Robot Jump with gun_1: -4101127114717162744
+      Robot Jump with gun_10: -5414517232978430835
+      Robot Jump with gun_11: 6148801930404027616
+      Robot Jump with gun_12: 2826990461181912003
+      Robot Jump with gun_13: -3151164049229685116
+      Robot Jump with gun_2: 5028345254206741564
+      Robot Jump with gun_3: 368377242474540579
+      Robot Jump with gun_4: -3101014181294625550
+      Robot Jump with gun_5: 3588993770701647947
+      Robot Jump with gun_6: -6749734389521305409
+      Robot Jump with gun_7: -811100626518223812
+      Robot Jump with gun_8: 2488542655658097264
+      Robot Jump with gun_9: -425895927403845740
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

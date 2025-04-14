@@ -12274,7 +12274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level_5
-  sceneIfClaimed: Level_5_clear
+  sceneIfClaimed: 
 --- !u!61 &698071673
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -46033,7 +46033,7 @@ GameObject:
   - component: {fileID: 1621149651}
   m_Layer: 7
   m_Name: TilemapSolid_Room1
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647

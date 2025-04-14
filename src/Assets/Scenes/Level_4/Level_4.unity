@@ -12274,7 +12274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: Level_5
-  sceneIfClaimed: Level_5_clear
+  sceneIfClaimed: 
 --- !u!61 &698071673
 BoxCollider2D:
   m_ObjectHideFlags: 0

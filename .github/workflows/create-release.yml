@@ -1,7 +1,7 @@
 name: Create Release from Artifacts
 
 on:
-  workflow_dispatch:  # Permet un déclenchement manuel
+  workflow_dispatch:
     inputs:
       tag_name:
         description: 'Nom du tag pour la release (ex: v1.0.0)'
@@ -18,7 +18,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Identifier la dernière exécution réussie du workflow "Unity Build Pipeline"
+      # Étape 1 : Cloner le dépôt
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Identifier la dernière exécution réussie du workflow "Unity Build Pipeline"
       - name: Get latest successful run ID
         id: get_run_id
         run: |
@@ -27,7 +31,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Étape 2 : Télécharger les artefacts de cette exécution
+      # Étape 3 : Télécharger les artefacts de cette exécution
       - name: Download artifacts from run
         run: |
           mkdir -p artifacts
@@ -35,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Étape 3 : Créer une release
+      # Étape 4 : Créer une release
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
@@ -48,7 +52,7 @@ jobs:
           draft: false
           prerelease: false
 
-      # Étape 4 : Ajouter les artefacts à la release
+      # Étape 5 : Ajouter les artefacts à la release
       - name: Upload artifacts to release
         uses: actions/upload-release-asset@v1
         env:

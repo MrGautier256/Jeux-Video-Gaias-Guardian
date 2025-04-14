@@ -22,13 +22,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Étape 2 : Identifier la dernière exécution réussie du workflow "Unity Build Pipeline"
+      # Étape 2 : Identifier le dernier run avec succès pour le workflow "build-unity.yml"
       - name: Get latest successful run ID
         id: get_run_id
         run: |
-          run_number=$(gh run list --workflow="build-unity.yml" --json conclusion,number --jq '.[] | select(.conclusion == "success") | .number' | head -n 1)
-          run_id=$(gh run view $run_number --json databaseId --jq '.databaseId')
+          run_id=$(gh run list --workflow="build-unity.yml" --json conclusion,databaseId --jq '.[] | select(.conclusion == "success") | .databaseId' | head -n 1)
           echo "RUN_ID=$run_id" >> $GITHUB_ENV
+          echo "Latest successful RUN_ID: $run_id"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

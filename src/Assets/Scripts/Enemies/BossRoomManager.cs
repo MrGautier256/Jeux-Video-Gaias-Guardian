@@ -22,6 +22,9 @@ public class BossRoomManager : MonoBehaviour
     [Header("Capacité à débloquer en battant le boss")]
     public AbilityName abilityToUnlock = AbilityName.None;
 
+    [Header("Touches pour fermer le message")]
+    [SerializeField] private KeyCode[] skipKeys = { KeyCode.Return };
+
     public enum AbilityName
     {
         None,
@@ -113,7 +116,7 @@ public class BossRoomManager : MonoBehaviour
             SaveManager.Instance.TriggerLevelClaimed(levelID);
 
             if (!string.IsNullOrWhiteSpace(rewardMessage))
-                MessageSpawner.Instance?.DisplayMessage(rewardMessage);
+                MessageSpawner.Instance?.DisplayMessageWithPause(rewardMessage, skipKeys);
         }
     }
 }

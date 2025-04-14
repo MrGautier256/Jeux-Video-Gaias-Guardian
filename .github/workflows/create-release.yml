@@ -42,9 +42,35 @@ jobs:
 
       # Étape 4 : Lister les artefacts téléchargés
       - name: List artifacts
-        run: ls -l artifacts
+        run: |
+            # Se déplacer dans le dossier
+            cd "artifacts"
 
-      # Étape 5 : Créer une release
+            # Zipper chaque sous-dossier
+            for SOUS_DOSSIER in */; do
+              if [ -d "$SOUS_DOSSIER" ]; then
+                # Enlever le slash final pour obtenir le nom du sous-dossier
+                NOM_ARCHIVE="${SOUS_DOSSIER%/}.zip"
+                echo "Création de l'archive : $NOM_ARCHIVE"
+                zip -r "$NOM_ARCHIVE" "$SOUS_DOSSIER" && rm -rf "$SOUS_DOSSIER"
+              fi
+            done
+
+            # Lister les fichiers restants
+            echo "Fichiers restants dans le dossier :"
+            ls -l      
+            cd ..  
+
+      # Étape 5 : Set release name and body
+      - name: Set release name and body
+        id: set_defaults
+        run: |
+          release_name="${{ github.event.inputs.release_name || github.event.inputs.tag_name }}"
+          body="${{ github.event.inputs.body || 'Release description' }}"
+          echo "release_name=$release_name" >> $GITHUB_ENV
+          echo "body=$body" >> $GITHUB_ENV
+
+      # Étape 6 : Créer une release
       - name: Create GitHub release
         id: create_release
         uses: actions/create-release@v1
@@ -52,17 +78,20 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.event.inputs.tag_name }}
-          release_name: ${{ github.event.inputs.release_name || github.event.inputs.tag_name }}
-          body: ${{ github.event.inputs.body || 'Release description' }}
+          release_name: ${{ env.release_name }}
+          body: ${{ env.body }}
           draft: false
           prerelease: false
-
-      # Étape 6 : Ajouter chaque artefact à la release
+          
+      # Étape 7 : Ajouter chaque artefact à la release
       - name: Upload individual artifacts to release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          echo "Tag name: ${{ github.event.inputs.tag_name }}"
+          echo "Release name: ${{ env.release_name }}"
+          echo "Body: ${{ env.body }}"
           for artifact in artifacts/*; do
             echo "Uploading $artifact"
-            gh release upload "${{ steps.create_release.outputs.tag_name }}" "$artifact" --repo "${{ github.repository }}"
+            gh release upload "${{ github.event.inputs.tag_name }}" "$artifact" --repo "${{ github.repository }}"
           done

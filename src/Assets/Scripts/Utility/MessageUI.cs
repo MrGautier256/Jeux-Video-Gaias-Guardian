@@ -8,6 +8,34 @@ public class MessageUI : MonoBehaviour
     [SerializeField] private float displayDuration;
     [SerializeField] private AudioClip blipSound;
 
+    private bool isAwaitingInput = false;
+    private KeyCode[] skipKeys = { KeyCode.Return }; // ex: "a", "e", "space", "enter"
+
+
+    public void ShowWithPause(string message, KeyCode[] keysToSkip)
+    {
+        messageText.text = message;
+        skipKeys = keysToSkip;
+        StartCoroutine(TypeMessage(message));
+        gameObject.SetActive(true);
+
+        isAwaitingInput = true;
+    }
+    private void Update()
+    {
+        if (!isAwaitingInput) return;
+
+        foreach (KeyCode key in skipKeys)
+        {
+            if (Input.GetKeyDown(key))
+            {
+                isAwaitingInput = false;
+                Time.timeScale = 1f;
+                Destroy(gameObject);
+                break;
+            }
+        }
+    }
 
     private IEnumerator TypeMessage(string message)
     {
@@ -32,7 +60,8 @@ public class MessageUI : MonoBehaviour
     {
         // Calcule une durée selon la taille du message
         displayDuration = Mathf.Clamp(1f + (message.Length * 0.05f), 2f, 6f);
-        StartCoroutine(TypeMessage(message)); gameObject.SetActive(true);
+        StartCoroutine(TypeMessage(message));
+        gameObject.SetActive(true);
         StartCoroutine(HideAfterDelay());
     }
 

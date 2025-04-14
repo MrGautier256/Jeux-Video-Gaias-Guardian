@@ -29697,7 +29697,7 @@ GameObject:
   - component: {fileID: 1621149651}
   m_Layer: 7
   m_Name: TilemapSolid_Room1
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -57357,11 +57357,15 @@ PrefabInstance:
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
       value: "Ce r\xE9acteur\u2026 C\u2019est comme \xE7a qu\u2019il bougeait si
-        vite. \xC0 moi de jouer maintenant!"
+        vite. \xC0 moi de jouer maintenant! Appuyez sur TAB pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: playerBarriers.Array.size

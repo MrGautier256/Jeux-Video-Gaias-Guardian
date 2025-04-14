@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class MessageTrigger : MonoBehaviour
 {
-    [Header("Message à afficher"), TextArea(2, 4)]
+    [Header("Message a afficher"), TextArea(2, 4)]
     [SerializeField] private string message;
 
     [Header("Touches pour fermer le message")]

@@ -4,7 +4,7 @@ public class MessageSpawner : MonoBehaviour
 {
     public static MessageSpawner Instance;
 
-    [Header("Référence du prefab")]
+    [Header("Reference du prefab")]
     public GameObject messageUIPrefab;
 
     [Header("Canvas parent (UI)")]
@@ -31,4 +31,14 @@ public class MessageSpawner : MonoBehaviour
             messageUI.Show(message);
         }
     }
+    public void DisplayMessageWithPause(string message, KeyCode[] skipKeys)
+    {
+        GameObject instance = Instantiate(messageUIPrefab, canvasParent);
+        MessageUI messageUI = instance.GetComponent<MessageUI>();
+        if (messageUI != null)
+        {
+            messageUI.ShowWithPause(message, skipKeys);
+        }
+    }
+
 }

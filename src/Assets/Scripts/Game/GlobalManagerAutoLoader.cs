@@ -1,17 +1,26 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public class GlobalManagerAutoLoader : MonoBehaviour
 {
-    [Header("Prefabs à instancier s’ils sont absents")]
+    [Header("Prefabs Ã  instancier sâ€™ils sont absents")]
     public GameObject sceneTransitionManagerPrefab;
     public GameObject musicControllerPrefab;
     public GameObject saveManagerPrefab;
+    public GameObject pauseMenuPrefab;
+    public GameObject HUDPrefab;
+
 
     private void Awake()
     {
         LoadIfMissing<SceneTransitionManager>(sceneTransitionManagerPrefab);
         LoadIfMissing<MusicController>(musicControllerPrefab);
         LoadIfMissing<SaveManager>(saveManagerPrefab);
+        if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MainMenu")
+        {
+            LoadIfMissing<PauseMenu>(pauseMenuPrefab);
+            LoadIfMissing<PlayerHUD>(HUDPrefab);
+        }
+
     }
 
     private void LoadIfMissing<T>(GameObject prefab) where T : MonoBehaviour

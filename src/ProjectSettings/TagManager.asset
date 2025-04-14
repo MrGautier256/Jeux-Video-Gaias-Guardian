@@ -19,6 +19,7 @@ TagManager:
   - ground
   - Player
   - Enemy
+  - GrappleTarget
   - 
   - 
   - 
@@ -39,8 +40,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - IgnoreEverything
   m_SortingLayers:
   - name: Default
     uniqueID: 0

@@ -25,12 +25,31 @@ public class PlayerCollision : MonoBehaviour
     private bool isInvulnerable = false;
     private bool shouldLoseLife = true;
 
+    public bool IsDead() => isDead;
+
+    [Header("Interface")]
+    private PlayerHUD playerHUD;
+
+
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         healthSystem = new HealthSystem(maxHealth, initialLives);
         healthSystem.OnDeath += HandleDeath;
+
+        if (playerHUD == null)
+        {
+            playerHUD = FindAnyObjectByType<PlayerHUD>();
+            if (playerHUD == null)
+                Debug.LogWarning("[PlayerCollision] Aucun PlayerHUD trouvé dans la scène !");
+        }
+
+        playerHUD?.UpdateHearts(healthSystem.CurrentHealth);
+        playerHUD?.UpdateLives(healthSystem.Lives);
     }
+
+
 
     public bool IsInvulnerable() => isInvulnerable;
 
@@ -39,12 +58,25 @@ public class PlayerCollision : MonoBehaviour
         apples++;
         if (appleCollectSound && audioSource) audioSource.PlayOneShot(appleCollectSound);
     }
+    public void Heal(int amount)
+    {
+        if (isDead) return;
+
+        healthSystem.Heal(amount);
+
+        if (playerHUD != null)
+        {
+            playerHUD.UpdateHearts(healthSystem.CurrentHealth);
+        }
+    }
+
 
     public void TakeDamages(int damage, Vector2 knockbackDirection)
     {
         if (isDead || isInvulnerable) return;
 
         healthSystem.TakeDamage(damage);
+        playerHUD.UpdateHearts(healthSystem.CurrentHealth);
         if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
         StartCoroutine(TemporaryKnockback());
         StartCoroutine(InvulnerabilityRoutine());
@@ -59,21 +91,33 @@ public class PlayerCollision : MonoBehaviour
         isDead = true;
         shouldLoseLife = loseLife;
 
+        if (playerHUD != null)
+        {
+            playerHUD.UpdateHearts(0);
+        }
+
+        // Désactiver le script de mouvement
         GetComponent<Player>().enabled = false;
 
+        // Empêcher tout déclencheur ou interaction
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(Vector2.up * 110f);
 
         if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
 
+        // Désactive tous les colliders pour éviter triggers & collisions
         foreach (Collider2D col in GetComponents<Collider2D>())
-            col.isTrigger = true;
+            col.enabled = false;
+
+        // Optionnel : changer le layer du joueur temporairement pour l'exclure de tout (ex: "IgnoreEverything")
+        gameObject.layer = LayerMask.NameToLayer("IgnoreEverything");
 
         StartCoroutine(FakeDeathEffect());
 
         Invoke(nameof(RestartLogic), 2f);
     }
+
 
     private void HandleDeath()
     {
@@ -85,14 +129,24 @@ public class PlayerCollision : MonoBehaviour
         if (shouldLoseLife)
         {
             healthSystem.LoseLife();
+            playerHUD.UpdateLives(healthSystem.Lives);
+
 
             if (!healthSystem.HasLivesLeft())
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                playerHUD.UpdateLives(0);
                 return;
             }
 
             healthSystem.ResetHealth();
+
+            if (playerHUD != null)
+            {
+                playerHUD.UpdateHearts(healthSystem.CurrentHealth);
+                playerHUD.UpdateLives(healthSystem.Lives);
+            }
+
         }
 
         Transform spawn = RespawnManager.Instance?.GetRespawnPoint();
@@ -115,13 +169,18 @@ public class PlayerCollision : MonoBehaviour
         isDead = false;
 
         foreach (Collider2D col in GetComponents<Collider2D>())
-            col.isTrigger = false;
+            col.enabled = true;
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
 
         GetComponent<Player>().enabled = true;
     }
 
+
     private void ApplyKnockback(Vector2 direction)
     {
+        if (isDead) return;
+
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(direction.normalized * 120f);
@@ -137,6 +196,9 @@ public class PlayerCollision : MonoBehaviour
         sr.color = originalColor;
         yield return new WaitForSeconds(0.1f);
         sr.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+
+        sr.color = originalColor;
     }
 
     private IEnumerator InvulnerabilityRoutine()

@@ -7,6 +7,7 @@ public class GlobalManagerAutoLoader : MonoBehaviour
     public GameObject musicControllerPrefab;
     public GameObject saveManagerPrefab;
     public GameObject pauseMenuPrefab;
+    public GameObject HUDPrefab;
 
 
     private void Awake()
@@ -17,6 +18,7 @@ public class GlobalManagerAutoLoader : MonoBehaviour
         if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != "MainMenu")
         {
             LoadIfMissing<PauseMenu>(pauseMenuPrefab);
+            LoadIfMissing<PlayerHUD>(HUDPrefab);
         }
 
     }

@@ -28,7 +28,7 @@ public class PlayerCollision : MonoBehaviour
     public bool IsDead() => isDead;
 
     [Header("Interface")]
-    public PlayerHUD playerHUD;
+    private PlayerHUD playerHUD;
 
 
 
@@ -37,10 +37,19 @@ public class PlayerCollision : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         healthSystem = new HealthSystem(maxHealth, initialLives);
         healthSystem.OnDeath += HandleDeath;
-        playerHUD.UpdateHearts(healthSystem.CurrentHealth);
-        playerHUD.UpdateLives(healthSystem.Lives);
 
+        if (playerHUD == null)
+        {
+            playerHUD = FindAnyObjectByType<PlayerHUD>();
+            if (playerHUD == null)
+                Debug.LogWarning("[PlayerCollision] Aucun PlayerHUD trouvé dans la scène !");
+        }
+
+        playerHUD?.UpdateHearts(healthSystem.CurrentHealth);
+        playerHUD?.UpdateLives(healthSystem.Lives);
     }
+
+
 
     public bool IsInvulnerable() => isInvulnerable;
 

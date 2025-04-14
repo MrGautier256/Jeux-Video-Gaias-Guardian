@@ -33879,7 +33879,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
-      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ?  Appuyez sur M pour
+      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ?  Appuyez sur A pour
         utiliser l'\xE9p\xE9e !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
@@ -33892,7 +33892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: 'skipKeys.Array.data[0]'
-      value: 59
+      value: 113
       objectReference: {fileID: 0}
     - target: {fileID: 6210101120865482139, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_FlipX

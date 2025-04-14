@@ -40,12 +40,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Étape 4 : Compresser les artefacts en un fichier ZIP
-      - name: Compress artifacts
-        run: |
-          zip -r artifacts.zip artifacts
-        env:
-          RUN_ID: ${{ env.RUN_ID }}
+      # Étape 4 : Lister les artefacts téléchargés
+      - name: List artifacts
+        run: ls -l artifacts
 
       # Étape 5 : Créer une release
       - name: Create GitHub release
@@ -60,4 +57,12 @@ jobs:
           draft: false
           prerelease: false
 
-      # Étape 6 :
+      # Étape 6 : Ajouter chaque artefact à la release
+      - name: Upload individual artifacts to release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for artifact in artifacts/*; do
+            echo "Uploading $artifact"
+            gh release upload "${{ steps.create_release.outputs.tag_name }}" "$artifact" --repo "${{ github.repository }}"
+          done

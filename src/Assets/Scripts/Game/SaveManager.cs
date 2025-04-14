@@ -95,6 +95,11 @@ public class SaveManager : MonoBehaviour
         CurrentSave = new SaveData();
     }
 
+    public void SetCurrentLevel(string levelName)
+    {
+        CurrentSave.progression.currentLevel = levelName;
+        SaveGame();
+    }
 
 
     public void AddAbilitiesUpdatedListener(System.Action callback) => abilitiesUpdated += callback;

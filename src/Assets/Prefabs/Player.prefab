@@ -241,9 +241,9 @@ MonoBehaviour:
   rb: {fileID: 8212886553266885894}
   speed: 3.1
   jumpingPower: 4
-  grappleLaunchClip: {fileID: 0}
-  grappleHitClip: {fileID: 0}
-  grappleRetractClip: {fileID: 0}
+  grappleLaunchClip: {fileID: 8300000, guid: 062ee5a1d42682b4eaec5d880aa7bcc5, type: 3}
+  grappleHitClip: {fileID: 8300000, guid: 3582fa37b74af454a82729fe59d3802b, type: 3}
+  grappleRetractClip: {fileID: 8300000, guid: 1e6e50d607cef944ab8d7c8225cc1bbe, type: 3}
   dashSpeed: 10
   dashDuration: 0.2
   groundCheck: {fileID: 502286128699369049}

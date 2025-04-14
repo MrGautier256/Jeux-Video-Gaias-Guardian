@@ -790,7 +790,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "CESI Corporation\n\n\nAutimatique\n\n\nGuillem PAIROT\n\n\nThomas BALLINI
-    \n\n\nLuca LEGRAND & Gautier MEKHELIAN\n\n\nMathis BRUGREAUD\n\n\nRohan FOSSE"
+    \n\n\nLuca LEGRAND & Gautier MEKHELIAN\n\n\nMathis BRUGREAUD\n\n\nRohan FOSSE
+    & Jean-Pierre PLANAS"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

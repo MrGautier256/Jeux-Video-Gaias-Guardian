@@ -25861,7 +25861,8 @@ PrefabInstance:
       objectReference: {fileID: 1056774284}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
-      value: "Vous avez compl\xE9t\xE9 le niveau 3"
+      value: "Je sens son \xE9nergie se lier \xE0 moi... Une vie de plus, \xE7a pourrait
+        faire la diff\xE9rence ! Appuyez sur ENTREE pour continuer !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: playerBarriers.Array.size
@@ -29811,11 +29812,15 @@ PrefabInstance:
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
       value: "Avec ce grappin, je vais pouvoir explorer des zones que je pensais
-        hors d\u2019atteinte !"
+        hors d\u2019atteinte ! Appuyez sur E pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 101
       objectReference: {fileID: 0}
     - target: {fileID: 7287393718354499823, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_Name

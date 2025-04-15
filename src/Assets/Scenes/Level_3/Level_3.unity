@@ -5099,6 +5099,10 @@ PrefabInstance:
       value: 4.68
       objectReference: {fileID: 0}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 215129137}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: grappleHitClip
       value: 
       objectReference: {fileID: 8300000, guid: 3582fa37b74af454a82729fe59d3802b, type: 3}
@@ -5210,6 +5214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &215129137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 215129135}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &220626129
 GameObject:
   m_ObjectHideFlags: 0

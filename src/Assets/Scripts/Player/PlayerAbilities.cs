@@ -6,6 +6,7 @@ public class PlayerAbilities : MonoBehaviour
     public bool CanDash { get; private set; }
     public bool CanGrapple { get; private set; }
     public bool CanUseSword { get; private set; }
+    public bool CanUsePollenVortex { get; private set; }
 
     void Start()
     {
@@ -25,6 +26,7 @@ public class PlayerAbilities : MonoBehaviour
         CanDash = abilities.hasDash;
         CanGrapple = abilities.hasGrapple;
         CanUseSword = abilities.hasSword;
+        CanUsePollenVortex = abilities.hasPollenVortex;
     }
 
     private void OnEnable()

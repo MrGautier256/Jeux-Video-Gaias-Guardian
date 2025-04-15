@@ -165,6 +165,62 @@ MonoBehaviour:
   leftBoundary: {fileID: 1960051074}
   rightBoundary: {fileID: 1798323060}
   detectionRadius: 7
+--- !u!60 &26917087
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26917077}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.040422067, y: -0.01885574}
+      - {x: -0.03813418, y: -0.017708734}
+      - {x: -0.11242987, y: -0.09042628}
+      - {x: -0.11288383, y: -0.13097808}
+      - {x: -0.101197585, y: -0.16043858}
+      - {x: 0.08195617, y: -0.16386184}
+      - {x: 0.082394786, y: -0.14554827}
+      - {x: 0.08337287, y: -0.11902192}
+      - {x: 0.060715936, y: -0.029997757}
+  m_UseDelaunayMesh: 0
 --- !u!1 &28079651
 GameObject:
   m_ObjectHideFlags: 0
@@ -19018,6 +19074,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.55
+      objectReference: {fileID: 0}
     - target: {fileID: 7266916551260063494, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: m_Name
       value: Player
@@ -19046,6 +19110,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.68
       objectReference: {fileID: 0}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 1053510356}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 512
@@ -19146,6 +19214,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1053510356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 1053510354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1059589068
 GameObject:
   m_ObjectHideFlags: 0
@@ -23110,6 +23183,10 @@ PrefabInstance:
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4578664203913865107, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4578664203913865107, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_Offset.x
       value: -0.015
       objectReference: {fileID: 0}
@@ -23135,11 +23212,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 99.98
+      value: 99.95
       objectReference: {fileID: 0}
     - target: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.59
+      value: 1.62
       objectReference: {fileID: 0}
     - target: {fileID: 5663928084553857206, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23179,7 +23256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -23188,6 +23265,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 26917086}
+    - targetCorrespondingSourceObject: {fileID: 6060325770409174779, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 26917087}
   m_SourcePrefab: {fileID: 100100000, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
 --- !u!1 &1204415008
 GameObject:
@@ -33932,8 +34012,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1450265725}
     m_Modifications:
     - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: message
+      value: "D\xE9pacez-vous en utilisant ZQSD ou les fl\xE8ches directionnelles
+        du clavier !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Name
@@ -33979,36 +34064,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2873148264261871653}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
---- !u!1 &2873148264261871652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
-  m_PrefabInstance: {fileID: 2873148264261871651}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2873148264261871653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2873148264261871652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0942c4d81216f984faa7eb966ae361f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "D\xE9pacez-vous en utilisant ZQSD ou les fl\xE8ches directionnelles du
-    clavier !"
-  skipKeys: 7a00000061000000730000006400000011010000120100001301000014010000
-  triggerOnce: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

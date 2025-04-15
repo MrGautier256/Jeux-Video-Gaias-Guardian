@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class EnemyAI : MonoBehaviour
 {
     protected Transform player;
+    public bool IsDead { get; private set; } = false;
 
     protected virtual void Start()
     {
@@ -10,6 +11,11 @@ public abstract class EnemyAI : MonoBehaviour
     }
 
     public abstract void Act();
+
+    public void MarkAsDead()
+    {
+        IsDead = true;
+    }
 }
 
 

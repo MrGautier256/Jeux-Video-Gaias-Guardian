@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class CreditsReturn : MonoBehaviour
+public class CreditsManager : MonoBehaviour
 {
     [SerializeField] private string mainMenuScene = "MainMenu";
 

@@ -8,10 +8,6 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject deleteSaveButton;
 
-    private void Start()
-    {
-       
-    }
 
     public void StartNewGame()
     {
@@ -49,23 +45,6 @@ public class MainMenuManager : MonoBehaviour
     public void Credits()
     {
         SceneTransitionManager.Instance.LoadSceneWithFade("Credits");
-    }
-
-    public void GoLevel1()
-    {
-        
-    }
-    public void GoLevel2()
-    {
-
-    }
-    public void GoLevel3()
-    {
-
-    }
-    public void GoLevel4()
-    {
-
     }
 
     public void QuitGame()

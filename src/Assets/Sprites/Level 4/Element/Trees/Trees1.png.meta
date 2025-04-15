@@ -1,10 +1,22 @@
 fileFormatVersion: 2
-guid: c911c92736caea441bebc079bc2652fe
+guid: d9fa1a4051cc30d49abc5cc44325ef22
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1846781244278701463
-    second: Fall (32x32)_0
+      213: 3506950381290521348
+    second: Trees1_0
+  - first:
+      213: 8568620997604337228
+    second: Trees1_1
+  - first:
+      213: 1181828456681107084
+    second: Trees1_2
+  - first:
+      213: 7034602165019134384
+    second: Trees1_3
+  - first:
+      213: -4342115738751412480
+    second: Trees1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +49,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -75,7 +87,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -100,13 +112,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Fall (32x32)_0
+      name: Trees1_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 32
+        x: 676
+        y: 18
+        width: 338
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +127,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9620ae43e3aee56e0800000000000000
-      internalID: -1846781244278701463
+      spriteID: c8eece148b2b66010800000000000000
+      internalID: 1181828456681107084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 338
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 374d4a42c3e1a4745abe4175f41389e4
+      internalID: 3506950381290521348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Trees1_1
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 18
+        width: 338
+        height: 320
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54df9eb3826f2af4db23a945319ab47d
+      internalID: 8568620997604337228
       vertices: []
       indices: 
       edges: []
@@ -125,7 +181,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ba002f1efa4e234429ec4d837bb35487
+    spriteID: 81dbf5f4df0be5046b4f296f5f4c20cb
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +191,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Fall (32x32)_0: -1846781244278701463
+      Trees1_0: 3506950381290521348
+      Trees1_1: 8568620997604337228
+      Trees1_2: 1181828456681107084
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

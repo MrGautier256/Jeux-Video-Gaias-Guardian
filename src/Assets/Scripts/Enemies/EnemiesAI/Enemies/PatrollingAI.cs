@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class PatrollingAI : EnemyAI
+public class PatrollingAI : EnemyAI, IEnemySlowable
 {
     public enum ShootPatternMode { Dynamic, Fixed }
 
@@ -49,6 +49,12 @@ public class PatrollingAI : EnemyAI
     private float nextShootTime;
     private Vector3 originalScale;
 
+    [Header("VortexPollen Reaction")]
+    private float originalSpeed;
+    private float originalCooldown;
+    private bool isSlowed = false;
+    private SpriteRenderer sr;
+
     protected override void Start()
     {
         base.Start();
@@ -56,6 +62,11 @@ public class PatrollingAI : EnemyAI
         waitTimer = -Random.Range(0f, initialDelayRandomRange);
         nextShootTime = Time.time + Random.Range(0f, shootCooldown);
         originalScale = transform.localScale;
+
+        originalSpeed = speed;
+        originalCooldown = shootCooldown;
+
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public override void Act()
@@ -248,5 +259,26 @@ public class PatrollingAI : EnemyAI
         Vector3 gizmoCenter = new Vector3(center.x + (rangeRight - rangeLeft) / 2f, center.y + (rangeUp - rangeDown) / 2f, 0f);
 
         Gizmos.DrawWireCube(gizmoCenter, size);
+    }
+
+
+    public void ApplySlow(float factor, float duration)
+    {
+        if (isSlowed) return;
+
+        isSlowed = true;
+        speed *= factor;
+        shootCooldown /= factor;
+        sr.color = new Color(1f, 0.85f, 0.2f);
+
+        Invoke(nameof(RemoveSlow), duration);
+    }
+
+    private void RemoveSlow()
+    {
+        speed = originalSpeed;
+        shootCooldown = originalCooldown;
+        sr.color = Color.white;
+        isSlowed = false;
     }
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FlyingChaserAI : EnemyAI
+public class FlyingChaserAI : EnemyAI, IEnemySlowable
 {
     [Header("Flight Settings")]
     public float speed = 3f;
@@ -14,9 +14,19 @@ public class FlyingChaserAI : EnemyAI
     private float swoopProgress = 0f;
     private Vector2 swoopStartPos;
 
+
+    [Header("VortexPollen Reaction")]
+    private float originalSpeed;
+    private float originalCooldown;
+    private bool isSlowed = false;
+    private SpriteRenderer sr;
+
     protected override void Start()
     {
         base.Start();
+        originalSpeed = speed;
+        originalCooldown = cooldownBetweenAttacks;
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public override void Act()
@@ -72,5 +82,26 @@ public class FlyingChaserAI : EnemyAI
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, 0.4f);
+    }
+
+
+    public void ApplySlow(float factor, float duration)
+    {
+        if (isSlowed) return;
+
+        isSlowed = true;
+        speed *= factor;
+        cooldownBetweenAttacks /= factor;
+        sr.color = new Color(1f, 1f, 0.6f); // effet jaune
+
+        Invoke(nameof(RemoveSlow), duration);
+    }
+
+    private void RemoveSlow()
+    {
+        speed = originalSpeed;
+        cooldownBetweenAttacks = originalCooldown;
+        sr.color = Color.white;
+        isSlowed = false;
     }
 }

@@ -4,7 +4,7 @@ public class PollenVortexProjectile : MonoBehaviour
 {
     public float speed = 5f;
     public float slowFactor = 0.3f;
-    public float slowDuration = 15f;
+    public float slowDuration = 10f;
 
     private Vector2 direction;
 

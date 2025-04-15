@@ -5,6 +5,7 @@ using System.IO;
 public class SaveData
 {
     public bool hasSave = false;
+    public int GuardianID = 2786264;
     public ProgressionData progression = new ProgressionData();
     public AbilityData abilities = new AbilityData();
 }

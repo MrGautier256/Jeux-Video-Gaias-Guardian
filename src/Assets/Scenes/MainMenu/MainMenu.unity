@@ -204,8 +204,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8328924}
-        m_TargetAssemblyTypeName: LevelSelectButton, Game.Run
-        m_MethodName: LoadLevel
+        m_TargetAssemblyTypeName: LevelSelector, Game.Run
+        m_MethodName: TryLoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -265,8 +265,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3039f1255fe8f64196c80ed7869c771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_1_clear
-  levelButton: {fileID: 8328921}
+  sceneName: Level_1
+  sceneIfClaimed: Level_1_clear
 --- !u!1 &15797176
 GameObject:
   m_ObjectHideFlags: 0
@@ -1764,7 +1764,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &334218274
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5746,8 +5746,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1536230286}
-        m_TargetAssemblyTypeName: LevelSelectButton, Game.Run
-        m_MethodName: LoadLevel
+        m_TargetAssemblyTypeName: LevelSelector, Game.Run
+        m_MethodName: TryLoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5807,8 +5807,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3039f1255fe8f64196c80ed7869c771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_2_clear
-  levelButton: {fileID: 1536230283}
+  sceneName: Level_2
+  sceneIfClaimed: Level_2_clear
 --- !u!1 &1563142328
 GameObject:
   m_ObjectHideFlags: 0
@@ -5969,8 +5969,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1567011910}
-        m_TargetAssemblyTypeName: LevelSelectButton, Game.Run
-        m_MethodName: LoadLevel
+        m_TargetAssemblyTypeName: LevelSelector, Game.Run
+        m_MethodName: TryLoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6030,8 +6030,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3039f1255fe8f64196c80ed7869c771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_3_clear
-  levelButton: {fileID: 1567011907}
+  sceneName: Level_3
+  sceneIfClaimed: Level_3_clear
 --- !u!1 &1591793703
 GameObject:
   m_ObjectHideFlags: 0
@@ -6243,8 +6243,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1601784918}
-        m_TargetAssemblyTypeName: LevelSelectButton, Game.Run
-        m_MethodName: LoadLevel
+        m_TargetAssemblyTypeName: LevelSelector, Game.Run
+        m_MethodName: TryLoadLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6304,8 +6304,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3039f1255fe8f64196c80ed7869c771, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: Level_4_clear
-  levelButton: {fileID: 1601784915}
+  sceneName: Level_4
+  sceneIfClaimed: Level_4_clear
 --- !u!1001 &1650435842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7026,7 +7026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1747487291
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8152,7 +8152,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.00024414062}
+  m_AnchoredPosition: {x: 0, y: 0.00024414062}
   m_SizeDelta: {x: -479.6, y: -269.82}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2126269045

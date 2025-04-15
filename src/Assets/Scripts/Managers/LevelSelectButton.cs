@@ -1,38 +1,58 @@
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class LevelSelectButton : MonoBehaviour
+public class LevelSelector : MonoBehaviour
 {
-    [Header("Nom de la scËne associÈe")]
-    [SerializeField] private string sceneName;
-
-    [Header("Bouton UI ‡ activer/dÈsactiver")]
-    [SerializeField] private Button levelButton;
+    [SerializeField] private string sceneName;           // ex: "Level_1"
+    [SerializeField] private string sceneIfClaimed;      // ex: "Level_1_clear"
 
     private void Start()
     {
-        if (SaveManager.Instance == null || SaveManager.Instance.CurrentSave == null)
+        if (SaveManager.Instance == null)
         {
-            Debug.LogWarning("SaveManager ou Save non chargÈ.");
+            Debug.LogWarning("SaveManager not loaded.");
             return;
         }
 
+        var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
+
         bool isClaimed = sceneName switch
         {
-            "Level_1" => SaveManager.Instance.CurrentSave.progression.levelsClaimed.Level_1,
-            "Level_2" => SaveManager.Instance.CurrentSave.progression.levelsClaimed.Level_2,
-            "Level_3" => SaveManager.Instance.CurrentSave.progression.levelsClaimed.Level_3,
-            "Level_4" => SaveManager.Instance.CurrentSave.progression.levelsClaimed.Level_4,
-            "Level_5" => SaveManager.Instance.CurrentSave.progression.levelsClaimed.Level_5,
+            "Level_1" => claimed.Level_1,
+            "Level_2" => claimed.Level_2,
+            "Level_3" => claimed.Level_3,
+            "Level_4" => claimed.Level_4,
             _ => false
         };
 
-        levelButton.interactable = isClaimed;
+        if (!isClaimed)
+        {
+            gameObject.SetActive(false); // cache le bouton s'il est bloqu√©
+        }
     }
 
-    public void LoadLevel()
+    public void TryLoadLevel()
     {
-        SceneTransitionManager.Instance.LoadSceneWithFade(sceneName);
+        if (SaveManager.Instance == null) return;
+
+        var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
+
+        bool isClaimed = sceneName switch
+        {
+            "Level_1" => claimed.Level_1,
+            "Level_2" => claimed.Level_2,
+            "Level_3" => claimed.Level_3,
+            "Level_4" => claimed.Level_4,
+            _ => false
+        };
+
+        if (isClaimed)
+        {
+            string targetScene = string.IsNullOrEmpty(sceneIfClaimed) ? sceneName : sceneIfClaimed;
+            SceneTransitionManager.Instance.LoadSceneWithFade(targetScene);
+        }
+        else
+        {
+            Debug.Log($"Le niveau {sceneName} n‚Äôest pas encore d√©bloqu√©.");
+        }
     }
 }

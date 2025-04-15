@@ -151,3 +151,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0546d580dd35c114f96bd8d117586b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifetime: 3
+  deathEffect: {fileID: 0}
+  deathSound: {fileID: 0}

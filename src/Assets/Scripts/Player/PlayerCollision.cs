@@ -39,12 +39,12 @@ public class PlayerCollision : MonoBehaviour
         if (SaveManager.Instance != null)
         {
             var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
-            Debug.Log(claimed);
             if (claimed.Level_4)
                 initialLives = 5;
             else if (claimed.Level_3)
                 initialLives = 4;
-            Debug.Log(initialLives);
+            else
+                initialLives = 3;
         }
         healthSystem = new HealthSystem(maxHealth, initialLives);
         healthSystem.OnDeath += HandleDeath;

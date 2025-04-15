@@ -71,6 +71,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3359460296027101838}
   - {fileID: 502286128699369049}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -259,6 +260,9 @@ MonoBehaviour:
     m_Bits: 1024
   grappleRange: 10
   grappleSpeed: 5
+  vortexProjectilePrefab: {fileID: 4985431919512007849, guid: 2382c3d36503885409dff32d1d7ecf22, type: 3}
+  shootPoint: {fileID: 0}
+  vortexCooldown: 3
   attackRange: 1
   attackWidth: 0.5
   attackCooldown: 0.3
@@ -415,6 +419,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7e6676b4-eaf0-4262-aefc-f3fadb94c88d
     m_ActionName: 'Player/Grapple[/Keyboard/g]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7490964114590126065}
+        m_TargetAssemblyTypeName: Player, Game.Run
+        m_MethodName: SpecialAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5f0e8d44-f316-458a-bb07-c06b59f75ac0
+    m_ActionName: 'Player/SpecialAttack[/Keyboard/r]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
@@ -667,3 +687,34 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!1 &8823310443283563046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3359460296027101838}
+  m_Layer: 0
+  m_Name: ShootPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3359460296027101838
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8823310443283563046}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.66, y: 0.73, z: 0}
+  m_LocalScale: {x: 0.06666666, y: 0.06666666, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7962563123687537712}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

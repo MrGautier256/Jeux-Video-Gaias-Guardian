@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     public event System.Action OnDeath;
     private bool isDead = false;
     public bool IsDead => isDead;
+    public bool CanDealDamage { get; private set; } = true;
 
 
 
@@ -53,6 +54,15 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        if (isDead) return;
+
+        isDead = true;
+        CanDealDamage = false;
+
+        var ai = GetComponent<EnemyAI>();
+        if (ai != null)
+            ai.MarkAsDead();
+
         OnDeath?.Invoke();
 
         if (deathSound != null && audioSource != null)
@@ -68,6 +78,7 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
     private IEnumerator WaitForDeathAnimation()
     {

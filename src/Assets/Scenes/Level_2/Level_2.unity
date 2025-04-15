@@ -8168,7 +8168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: maxHealth
-      value: 12
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -34319,6 +34319,14 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.72
+      objectReference: {fileID: 0}
     - target: {fileID: 3944649885882212170, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: playerHUD
       value: 
@@ -34351,6 +34359,10 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 4.68
       objectReference: {fileID: 0}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: shootPoint
+      value: 
+      objectReference: {fileID: 1737192411}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 512
@@ -34451,6 +34463,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1737192411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3359460296027101838, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+  m_PrefabInstance: {fileID: 1737192409}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1742573567
 GameObject:
   m_ObjectHideFlags: 0

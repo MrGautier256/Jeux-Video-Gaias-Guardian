@@ -34012,8 +34012,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 1450265725}
     m_Modifications:
     - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: message
+      value: "D\xE9pacez-vous en utilisant ZQSD ou les fl\xE8ches directionnelles
+        du clavier !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Name
@@ -34059,36 +34064,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2873148264261871653}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
---- !u!1 &2873148264261871652 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
-  m_PrefabInstance: {fileID: 2873148264261871651}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2873148264261871653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2873148264261871652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0942c4d81216f984faa7eb966ae361f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  message: "D\xE9pacez-vous en utilisant ZQSD ou les fl\xE8ches directionnelles du
-    clavier !"
-  skipKeys: 7a00000061000000730000006400000011010000120100001301000014010000
-  triggerOnce: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

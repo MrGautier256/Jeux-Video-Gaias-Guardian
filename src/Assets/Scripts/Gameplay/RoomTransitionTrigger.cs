@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 
 [RequireComponent(typeof(BoxCollider2D))]
-public class RoomTransitionTrigger : MonoBehaviour
+public class RoomTransitionTrigger : MonoBehaviour, ITriggerDesactivable
 {
     [Header("Room References")]
     public Transform previousRoom;
@@ -25,6 +25,8 @@ public class RoomTransitionTrigger : MonoBehaviour
     {
         cameraSizer = Camera.main?.GetComponent<CameraRoomSizer>();
     }
+
+    public void SetEnabled(bool value) => enabled = value;
 
     private void OnTriggerStay2D(Collider2D other)
     {

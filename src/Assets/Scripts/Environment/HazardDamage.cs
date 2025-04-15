@@ -19,7 +19,7 @@ public class HazardDamage : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             var health = GetComponentInParent<EnemyHealth>();
-            if (health != null && health.IsDead)
+            if (health != null && (!health.CanDealDamage || health.IsDead))
                 return;
 
             PlayerCollision pc = collision.GetComponent<PlayerCollision>();
@@ -31,6 +31,7 @@ public class HazardDamage : MonoBehaviour
             }
         }
     }
+
 
 
 }

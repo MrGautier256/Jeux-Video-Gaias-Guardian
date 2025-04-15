@@ -40,6 +40,8 @@ public class DashingChaserAI : EnemyAI
 
     public override void Act()
     {
+        if (IsDead) return;
+
         if (player == null || pointA == null || pointB == null) return;
 
         float minX = Mathf.Min(pointA.position.x, pointB.position.x);

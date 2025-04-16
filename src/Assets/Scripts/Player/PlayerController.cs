@@ -62,8 +62,8 @@ public class Player : MonoBehaviour
 
     [Header("Special Attack - Pollen Vortex")]
     public GameObject vortexProjectilePrefab;
-    public Transform shootPoint; // point d’apparition
-    public float vortexCooldown = 10f;
+    public Transform shootPoint; 
+    public float vortexCooldown = 3f;
 
     private float lastVortexTime = -999f;
 

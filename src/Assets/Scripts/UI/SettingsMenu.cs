@@ -38,11 +38,7 @@ public class SettingsMenu : MonoBehaviour
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-    public AudioMixer audioMixer;
-    public void SetVolume (float volume)
-    {
-        audioMixer.SetFloat("volume",volume);
-    }
+    
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);

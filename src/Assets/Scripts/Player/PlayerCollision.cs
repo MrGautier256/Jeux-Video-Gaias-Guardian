@@ -24,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
     private bool isDead = false;
     private bool isInvulnerable = false;
     private bool shouldLoseLife = true;
+    private bool isGodMode = false;
 
     public bool IsDead() => isDead;
 
@@ -35,8 +36,22 @@ public class PlayerCollision : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+
+        if (SaveManager.Instance != null)
+        {
+            var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
+            isGodMode = SaveManager.Instance.CurrentSave.GuardianID == 256;
+
+            if (claimed.Level_4)
+                initialLives = 5;
+            else if (claimed.Level_3)
+                initialLives = 4;
+            else
+                initialLives = 3;
+        }
         healthSystem = new HealthSystem(maxHealth, initialLives);
         healthSystem.OnDeath += HandleDeath;
+
 
         if (playerHUD == null)
         {
@@ -44,7 +59,6 @@ public class PlayerCollision : MonoBehaviour
             if (playerHUD == null)
                 Debug.LogWarning("[PlayerCollision] Aucun PlayerHUD trouvé dans la scène !");
         }
-
         playerHUD?.UpdateHearts(healthSystem.CurrentHealth);
         playerHUD?.UpdateLives(healthSystem.Lives);
     }
@@ -75,48 +89,55 @@ public class PlayerCollision : MonoBehaviour
     {
         if (isDead || isInvulnerable) return;
 
+        if (SaveManager.Instance != null && isGodMode)
+            return;
+
         healthSystem.TakeDamage(damage);
         playerHUD.UpdateHearts(healthSystem.CurrentHealth);
-        if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
+
+        if (hitSound && audioSource)
+            audioSource.PlayOneShot(hitSound);
+
         StartCoroutine(TemporaryKnockback());
         StartCoroutine(InvulnerabilityRoutine());
         ApplyKnockback(knockbackDirection);
-
     }
+
 
     public void Kill(bool loseLife = true)
     {
         if (isDead) return;
-
-        isDead = true;
-        shouldLoseLife = loseLife;
-
-        if (playerHUD != null)
+        if (!isGodMode)
         {
-            playerHUD.UpdateHearts(0);
+
+            isDead = true;
+            shouldLoseLife = loseLife;
+
+            if (playerHUD != null)
+                playerHUD.UpdateHearts(0);
+
+            var playerScript = GetComponent<Player>();
+            playerScript.enabled = false;
+            playerScript.SetControlsEnabled(false);
+
+
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(Vector2.up * 110f);
+
+            if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
+
+            foreach (Collider2D col in GetComponents<Collider2D>())
+                col.enabled = false;
+
+            gameObject.layer = LayerMask.NameToLayer("IgnoreEverything");
+
+            StartCoroutine(FakeDeathEffect());
         }
-
-        // Désactiver le script de mouvement
-        GetComponent<Player>().enabled = false;
-
-        // Empêcher tout déclencheur ou interaction
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vector2.zero;
-        rb.AddForce(Vector2.up * 110f);
-
-        if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
-
-        // Désactive tous les colliders pour éviter triggers & collisions
-        foreach (Collider2D col in GetComponents<Collider2D>())
-            col.enabled = false;
-
-        // Optionnel : changer le layer du joueur temporairement pour l'exclure de tout (ex: "IgnoreEverything")
-        gameObject.layer = LayerMask.NameToLayer("IgnoreEverything");
-
-        StartCoroutine(FakeDeathEffect());
 
         Invoke(nameof(RestartLogic), 2f);
     }
+
 
 
     private void HandleDeath()
@@ -126,7 +147,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void RestartLogic()
     {
-        if (shouldLoseLife)
+        if (shouldLoseLife && !isGodMode)
         {
             healthSystem.LoseLife();
             playerHUD.UpdateLives(healthSystem.Lives);
@@ -173,7 +194,9 @@ public class PlayerCollision : MonoBehaviour
 
         gameObject.layer = LayerMask.NameToLayer("Default");
 
-        GetComponent<Player>().enabled = true;
+        var playerScript = GetComponent<Player>();
+        playerScript.enabled = true;
+        playerScript.SetControlsEnabled(true);
     }
 
 

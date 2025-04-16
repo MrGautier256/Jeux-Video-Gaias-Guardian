@@ -58,6 +58,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SpecialAttack",
+                    "type": "Button",
+                    "id": "5f0e8d44-f316-458a-bb07-c06b59f75ac0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WaterJetAttack",
+                    "type": "Button",
+                    "id": "64853044-ec4d-4aa1-bb5c-1885d0ca5560",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -316,11 +334,11 @@
                 },
                 {
                     "name": "",
-                    "id": "b0ef7432-c79f-4cd6-9af2-cef0850e20e7",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "0290981b-24c4-4151-8587-6a3787fd9b82",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -344,6 +362,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Grapple",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e788da62-ebf5-418e-a917-7e8b8aeda1d3",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c928e344-be9f-4f01-aae1-345dcc003d99",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0ef7432-c79f-4cd6-9af2-cef0850e20e7",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "WaterJetAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1125efde-7fb5-4c30-80c0-f3d0b9f8ee77",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "WaterJetAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

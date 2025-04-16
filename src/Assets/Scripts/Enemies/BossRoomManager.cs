@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Reflection;
 using System.Collections.Generic;
+using System;
 
 public class BossRoomManager : MonoBehaviour
 {
     [Header("Triggers à désactiver")]
-    public RoomTransitionTrigger[] triggersToDisable;
+    public MonoBehaviour[] triggersToDisableRaw;
+
+    private ITriggerDesactivable[] triggersToDisable;
 
     [Header("Colliders à activer pour bloquer le joueur")]
     public Collider2D[] playerBarriers;
@@ -31,19 +34,29 @@ public class BossRoomManager : MonoBehaviour
         Dash,
         DoubleJump,
         Grapple,
-        Sword
+        Sword,
+        PollenVortex,
+        WaterJet
     }
 
     private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
-{
-    { AbilityName.Dash, "hasDash" },
-    { AbilityName.DoubleJump, "hasDoubleJump" },
-    { AbilityName.Grapple, "hasGrapple" },
-    { AbilityName.Sword, "hasSword" }
-};
+    {
+        { AbilityName.Dash, "hasDash" },
+        { AbilityName.DoubleJump, "hasDoubleJump" },
+        { AbilityName.Grapple, "hasGrapple" },
+        { AbilityName.Sword, "hasSword" },
+        { AbilityName.PollenVortex, "hasPollenVortex" },
+        { AbilityName.WaterJet, "hasWaterJet" }
+
+    };
 
 
     private bool bossDefeated = false;
+
+    private void Awake()
+    {
+        triggersToDisable = Array.ConvertAll(triggersToDisableRaw, item => item as ITriggerDesactivable);
+    }
 
     private void Start()
     {
@@ -53,7 +66,7 @@ public class BossRoomManager : MonoBehaviour
         }
 
         foreach (var trigger in triggersToDisable)
-            trigger.enabled = true;
+            trigger?.SetEnabled(true);
     }
 
     public void ActivateBossRoom()
@@ -69,7 +82,7 @@ public class BossRoomManager : MonoBehaviour
     private void LockRoom()
     {
         foreach (var trigger in triggersToDisable)
-            trigger.enabled = false;
+            trigger?.SetEnabled(false);
 
         foreach (var barrier in playerBarriers)
             barrier.enabled = true;
@@ -78,7 +91,7 @@ public class BossRoomManager : MonoBehaviour
     private void UnlockRoom()
     {
         foreach (var trigger in triggersToDisable)
-            trigger.enabled = true;
+            trigger?.SetEnabled(true);
 
         foreach (var barrier in playerBarriers)
             barrier.enabled = false;

@@ -4,10 +4,10 @@ using System.Reflection;
 
 public class PowerCollectible : MonoBehaviour
 {
-    [Header("Capacité à débloquer")]
+    [Header("Capacite a debloquer")]
     public AbilityName abilityToUnlock = AbilityName.None;
 
-    [Header("Message de récompense"), TextArea(2, 4)]
+    [Header("Message de recompense"), TextArea(2, 4)]
     public string rewardMessage = "";
 
     [Header("Touches pour fermer le message")]
@@ -20,7 +20,9 @@ public class PowerCollectible : MonoBehaviour
         Dash,
         DoubleJump,
         Grapple,
-        Sword
+        Sword,
+        PollenVortex,
+        WaterJet
     }
 
     private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
@@ -28,7 +30,9 @@ public class PowerCollectible : MonoBehaviour
         { AbilityName.Dash, "hasDash" },
         { AbilityName.DoubleJump, "hasDoubleJump" },
         { AbilityName.Grapple, "hasGrapple" },
-        { AbilityName.Sword, "hasSword" }
+        { AbilityName.Sword, "hasSword" },
+        { AbilityName.PollenVortex, "hasPollenVortex" },
+        { AbilityName.WaterJet, "hasWaterJet" }
     };
 
     private bool collected = false;
@@ -44,12 +48,12 @@ public class PowerCollectible : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        //if (IsAbilityUnlocked(abilityToUnlock))
-        //{
-        //    Destroy(gameObject);
-        //    return;
+        if (IsAbilityUnlocked(abilityToUnlock))
+        {
+            Destroy(gameObject);
+            return;
 
-        //}
+        }
     }
 
     private void HandleMessageAndAbility()

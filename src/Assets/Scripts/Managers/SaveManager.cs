@@ -5,6 +5,7 @@ using System.IO;
 public class SaveData
 {
     public bool hasSave = false;
+    public int GuardianID = 2786264;
     public ProgressionData progression = new ProgressionData();
     public AbilityData abilities = new AbilityData();
 }
@@ -34,6 +35,7 @@ public class AbilityData
     public bool hasDash = false;
     public bool hasGrapple = false;
     public bool hasPollenVortex = false;
+    public bool hasWaterJet = false;
 }
 
 public class SaveManager : MonoBehaviour

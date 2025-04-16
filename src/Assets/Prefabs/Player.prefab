@@ -237,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68c67fb3ac6ab2648ada71992192ef97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStuckTime: 0.25
+  playerHUD: {fileID: 0}
+  maxStuckTime: 0.28
   rb: {fileID: 8212886553266885894}
   speed: 3.1
   jumpingPower: 4
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e309e9a5f6c839b419b20790a4584111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 4
   initialLives: 3
   apples: 0
   invulnerabilityDuration: 0.85

@@ -42,9 +42,13 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
     [Header("Portal FX")]
     public GameObject portalPrefab;
     public Vector3 portalOffset = new Vector3(0f, 0.5f, 0f);
-    public Vector3 portalScale = Vector3.one; // ← Taille personnalisable
-    public float exitPortalYOffsetCorrection = -0.5f; // dans tes headers si tu veux
+    public Vector3 portalScale = Vector3.one; 
+    public float exitPortalYOffsetCorrection = -0.5f;
 
+    [Header("Phase 2 Settings")]
+    public float phaseTwoTeleportInterval = 0.5f;
+    public float phaseTwoShootCooldown = 0.75f;
+    public Sprite phaseTwoSprite; 
 
 
     private float nextShootTime;
@@ -52,11 +56,22 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
     private bool isActivated = false;
     private int lastIndex = -1;
     private bool isTeleporting = false;
-
+    private Transform lastTeleportPoint;
+    private EnemyHealth enemyHealth;
+    private int lastKnownHP;
+    private bool isInPhaseTwo = false;
+    private GameObject exitPortal;
+    private GameObject entryPortal;
 
     protected override void Start()
     {
         base.Start();
+
+        enemyHealth = GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+            lastKnownHP = enemyHealth.MaxHealth;
+
+
         nextTeleportTime = Time.time + Random.Range(0, teleportDelayRandomRange);
         nextShootTime = Time.time + Random.Range(0, shootCooldown);
 
@@ -81,6 +96,13 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             TeleportToRandomPoint();
         }
 
+        if (!isInPhaseTwo && enemyHealth != null && enemyHealth.CurrentHealth <= enemyHealth.MaxHealth / 2)
+        {
+            EnterPhaseTwo();
+        }
+
+
+        CheckHealth();
         FacePlayer();
 
         if (canShoot && player != null && Time.time >= nextShootTime)
@@ -90,9 +112,34 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
         }
     }
 
+    private void EnterPhaseTwo()
+    {
+        isInPhaseTwo = true;
+        teleportInterval *= phaseTwoTeleportInterval;
+        shootCooldown *= phaseTwoShootCooldown;
+        if (phaseTwoSprite != null)
+            sr.sprite = phaseTwoSprite;
+        
+        sr.sortingOrder = 5;
+    }
 
-    private GameObject exitPortal; 
-    private GameObject entryPortal;
+
+    private void CheckHealth()
+    {
+        if (enemyHealth != null && !isTeleporting)
+        {
+            int currentHP = Mathf.Max(0, enemyHealth.CurrentHealth);
+            if (lastKnownHP - currentHP >= 2)
+            {
+                lastKnownHP = currentHP;
+                TeleportToRandomPoint();
+                return; 
+            }
+            lastKnownHP = currentHP;
+        }
+
+    }
+
 
     private void TeleportToRandomPoint()
     {
@@ -105,17 +152,15 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
 
         Vector3 targetPos = teleportPoints[index].position;
 
-
-        if (Vector3.SqrMagnitude(transform.position - targetPos) < 0.01f)
+        if (lastTeleportPoint == teleportPoints[index])
         {
-            Debug.Log("TP skipped!");
             nextTeleportTime = Time.time + teleportInterval;
             return;
         }
 
-
         lastIndex = index;
-        StartCoroutine(HandleTeleportSequence(transform.position, targetPos));
+        lastTeleportPoint = teleportPoints[index];
+        StartCoroutine(HandleTeleportSequence(transform.position, teleportPoints[index].position));
     }
 
 

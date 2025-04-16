@@ -92,7 +92,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
 
 
     private GameObject exitPortal; 
-    private GameObject entryPortal; 
+    private GameObject entryPortal;
 
     private void TeleportToRandomPoint()
     {
@@ -103,11 +103,22 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
         }
         while (teleportPoints.Count > 1 && index == lastIndex);
 
-        lastIndex = index;
-        Transform targetPoint = teleportPoints[index];
+        Vector3 targetPos = teleportPoints[index].position;
 
-        StartCoroutine(HandleTeleportSequence(transform.position, targetPoint.position));
+
+        if (Vector3.SqrMagnitude(transform.position - targetPos) < 0.01f)
+        {
+            Debug.Log("TP skipped!");
+            nextTeleportTime = Time.time + teleportInterval;
+            return;
+        }
+
+
+        lastIndex = index;
+        StartCoroutine(HandleTeleportSequence(transform.position, targetPos));
     }
+
+
 
 
     private IEnumerator HandleTeleportSequence(Vector3 from, Vector3 to)
@@ -156,7 +167,6 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             entryFx?.PlayClose();
             entryFx?.DeactivateAfter(1f);
         }
-        Debug.Log($"ExitPortal Y: {(from + portalOffset).y}, EntryPortal Y: {(to + portalOffset).y}");
 
         isTeleporting = false;
     }

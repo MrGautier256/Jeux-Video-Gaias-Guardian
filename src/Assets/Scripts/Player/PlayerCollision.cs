@@ -24,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
     private bool isDead = false;
     private bool isInvulnerable = false;
     private bool shouldLoseLife = true;
+    private bool isGodMode = false;
 
     public bool IsDead() => isDead;
 
@@ -39,6 +40,8 @@ public class PlayerCollision : MonoBehaviour
         if (SaveManager.Instance != null)
         {
             var claimed = SaveManager.Instance.CurrentSave.progression.levelsClaimed;
+            isGodMode = SaveManager.Instance.CurrentSave.GuardianID == 256;
+
             if (claimed.Level_4)
                 initialLives = 5;
             else if (claimed.Level_3)
@@ -86,41 +89,51 @@ public class PlayerCollision : MonoBehaviour
     {
         if (isDead || isInvulnerable) return;
 
+        if (SaveManager.Instance != null && isGodMode)
+            return;
+
         healthSystem.TakeDamage(damage);
         playerHUD.UpdateHearts(healthSystem.CurrentHealth);
-        if (hitSound && audioSource) audioSource.PlayOneShot(hitSound);
+
+        if (hitSound && audioSource)
+            audioSource.PlayOneShot(hitSound);
+
         StartCoroutine(TemporaryKnockback());
         StartCoroutine(InvulnerabilityRoutine());
         ApplyKnockback(knockbackDirection);
-
     }
+
 
     public void Kill(bool loseLife = true)
     {
         if (isDead) return;
+        if (!isGodMode)
+        {
 
-        isDead = true;
-        shouldLoseLife = loseLife;
+            isDead = true;
+            shouldLoseLife = loseLife;
 
-        if (playerHUD != null)
-            playerHUD.UpdateHearts(0);
+            if (playerHUD != null)
+                playerHUD.UpdateHearts(0);
 
-        var playerScript = GetComponent<Player>();
-        playerScript.enabled = false;
-        playerScript.SetControlsEnabled(false);
+            var playerScript = GetComponent<Player>();
+            playerScript.enabled = false;
+            playerScript.SetControlsEnabled(false);
 
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = Vector2.zero;
-        rb.AddForce(Vector2.up * 110f);
 
-        if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.linearVelocity = Vector2.zero;
+            rb.AddForce(Vector2.up * 110f);
 
-        foreach (Collider2D col in GetComponents<Collider2D>())
-            col.enabled = false;
+            if (deathSound && audioSource) audioSource.PlayOneShot(deathSound);
 
-        gameObject.layer = LayerMask.NameToLayer("IgnoreEverything");
+            foreach (Collider2D col in GetComponents<Collider2D>())
+                col.enabled = false;
 
-        StartCoroutine(FakeDeathEffect());
+            gameObject.layer = LayerMask.NameToLayer("IgnoreEverything");
+
+            StartCoroutine(FakeDeathEffect());
+        }
 
         Invoke(nameof(RestartLogic), 2f);
     }
@@ -134,7 +147,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void RestartLogic()
     {
-        if (shouldLoseLife)
+        if (shouldLoseLife && !isGodMode)
         {
             healthSystem.LoseLife();
             playerHUD.UpdateLives(healthSystem.Lives);

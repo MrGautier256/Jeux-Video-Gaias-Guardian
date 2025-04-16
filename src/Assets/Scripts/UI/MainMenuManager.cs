@@ -8,10 +8,6 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private GameObject continueButton;
     [SerializeField] private GameObject deleteSaveButton;
 
-    private void Start()
-    {
-       
-    }
 
     public void StartNewGame()
     {

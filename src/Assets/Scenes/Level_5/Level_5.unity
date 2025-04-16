@@ -7303,11 +7303,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 587201759}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
       value: AppleCollectible (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.499999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7315,7 +7319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.25
+      value: -2.2499995
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7729,7 +7733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: maxHealth
-      value: 8
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8490238263465302742, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_Name
@@ -12798,7 +12802,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1224889729}
+    m_TransformParent: {fileID: 1913946842}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
@@ -12806,15 +12810,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.499999
+      value: 2.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 60.21
+      value: 59.489998
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -12.520001
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14376,7 +14380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 102.62
+      value: 102.88
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15179,6 +15183,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1450265725}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &587201758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587201759}
+  m_Layer: 0
+  m_Name: AppleCollectibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &587201759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587201758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1288430862}
+  - {fileID: 1504005778}
+  - {fileID: 184141595}
+  m_Father: {fileID: 1457351343}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &587259461
 GameObject:
   m_ObjectHideFlags: 0
@@ -15228,7 +15266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.861
+      value: 98.03
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15348,11 +15386,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1089495950}
+    m_TransformParent: {fileID: 794330409}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
       value: AppleCollectible (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.499999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15360,7 +15402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.74
+      value: 5.7399993
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -15805,6 +15847,9 @@ MonoBehaviour:
   portalOffset: {x: 0, y: 0.6, z: 0}
   portalScale: {x: 0.7, y: 0.7, z: 1}
   exitPortalYOffsetCorrection: -0.5
+  phaseTwoTeleportInterval: 0.5
+  phaseTwoShootCooldown: 0.75
+  phaseTwoSprite: {fileID: 1990102543718251208, guid: b31b2f4c9885d274693ed1d3e1248b03, type: 3}
 --- !u!1 &764016735
 GameObject:
   m_ObjectHideFlags: 0
@@ -16143,6 +16188,40 @@ MonoBehaviour:
   targetRespawn: {fileID: 587259462}
   alternateTriggerRaw: {fileID: 1227256108}
   cooldown: 0.2
+--- !u!1 &794330408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 794330409}
+  m_Layer: 0
+  m_Name: AppleCollectibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &794330409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 794330408}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 929321956}
+  - {fileID: 2138410820}
+  - {fileID: 620591929}
+  m_Father: {fileID: 1089495950}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &796753730 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4172071568288124764, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
@@ -21147,11 +21226,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1089495950}
+    m_TransformParent: {fileID: 794330409}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
       value: AppleCollectible
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.499999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -21159,7 +21242,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.27
+      value: -2.2700002
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26935,7 +27018,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 94.41
+      value: 94.2
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -27391,13 +27474,11 @@ Transform:
   m_LocalScale: {x: 0.03125, y: 0.055555575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 929321956}
-  - {fileID: 2138410820}
-  - {fileID: 620591929}
   - {fileID: 1779491154}
   - {fileID: 1248112599}
   - {fileID: 440491029}
   - {fileID: 1034436480}
+  - {fileID: 794330409}
   m_Father: {fileID: 1357760299}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1089495951
@@ -42419,7 +42500,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1224889729}
+    m_TransformParent: {fileID: 1913946842}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
@@ -42427,15 +42508,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.499999
+      value: 2.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 57.32
+      value: 56.6
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.69
+      value: -7.8299985
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -43041,10 +43122,7 @@ Transform:
   m_LocalScale: {x: 0.03125, y: 0.055555575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 335413597}
-  - {fileID: 1933897387}
-  - {fileID: 1518209742}
-  - {fileID: 1153731392}
+  - {fileID: 1913946842}
   - {fileID: 1101758904}
   - {fileID: 764016737}
   - {fileID: 904757143}
@@ -43492,11 +43570,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 587201759}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
       value: AppleCollectible (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.499999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43504,7 +43586,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.18
+      value: 2.179999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50225,7 +50307,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 100.689
+      value: 100.52
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -50719,9 +50801,7 @@ Transform:
   m_LocalScale: {x: 0.03125, y: 0.055555575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1288430862}
-  - {fileID: 1504005778}
-  - {fileID: 184141595}
+  - {fileID: 587201759}
   - {fileID: 285919508}
   - {fileID: 1962482886}
   - {fileID: 431286493}
@@ -50782,11 +50862,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 587201759}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
       value: AppleCollectible (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.499999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50794,7 +50878,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.66
+      value: 1.6599989
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -50875,7 +50959,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1224889729}
+    m_TransformParent: {fileID: 1913946842}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
@@ -50883,15 +50967,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.499999
+      value: 2.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.82
+      value: 67.1
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.22
+      value: -9.299999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51174,7 +51258,7 @@ GameObject:
   - component: {fileID: 1621149651}
   m_Layer: 7
   m_Name: TilemapSolid_Room1
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -56615,7 +56699,7 @@ GameObject:
   - component: {fileID: 1742005564}
   m_Layer: 7
   m_Name: TilemapSolid_Room2
-  m_TagString: EditorOnly
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -70691,6 +70775,41 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &1913946841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913946842}
+  m_Layer: 0
+  m_Name: AppleCollectibles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1913946842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913946841}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.7200012, y: 11.519996, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 335413597}
+  - {fileID: 1933897387}
+  - {fileID: 1518209742}
+  - {fileID: 1153731392}
+  m_Father: {fileID: 1224889729}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1920668656
 GameObject:
   m_ObjectHideFlags: 0
@@ -70769,7 +70888,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1224889729}
+    m_TransformParent: {fileID: 1913946842}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
@@ -70777,15 +70896,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.499999
+      value: 2.4999995
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 61.64
+      value: 60.92
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.86
+      value: -8.660001
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -71584,11 +71703,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1089495950}
+    m_TransformParent: {fileID: 794330409}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
       value: AppleCollectible (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.499999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71596,7 +71719,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.44
+      value: 5.4400005
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z

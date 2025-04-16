@@ -263,6 +263,8 @@ MonoBehaviour:
   vortexProjectilePrefab: {fileID: 4985431919512007849, guid: 2382c3d36503885409dff32d1d7ecf22, type: 3}
   shootPoint: {fileID: 0}
   vortexCooldown: 3
+  waterJetProjectilePrefab: {fileID: 2163052242917633263, guid: 5e103421932a6b14cb228ae6d2a77f19, type: 3}
+  waterJetCooldown: 2
   attackRange: 1
   attackWidth: 0.5
   attackCooldown: 0.3
@@ -435,6 +437,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 5f0e8d44-f316-458a-bb07-c06b59f75ac0
     m_ActionName: 'Player/SpecialAttack[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7490964114590126065}
+        m_TargetAssemblyTypeName: Player, Game.Run
+        m_MethodName: WaterJetAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 64853044-ec4d-4aa1-bb5c-1885d0ca5560
+    m_ActionName: 'Player/WaterJetAttack[/Keyboard/t]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

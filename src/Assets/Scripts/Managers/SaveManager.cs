@@ -35,6 +35,7 @@ public class AbilityData
     public bool hasDash = false;
     public bool hasGrapple = false;
     public bool hasPollenVortex = false;
+    public bool hasWaterJet = false;
 }
 
 public class SaveManager : MonoBehaviour

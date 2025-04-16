@@ -58,6 +58,11 @@ public class EnemyHealth : MonoBehaviour
 
         isDead = true;
         CanDealDamage = false;
+
+        var ai = GetComponent<EnemyAI>();
+        if (ai != null)
+            ai.MarkAsDead();
+
         OnDeath?.Invoke();
 
         if (deathSound != null && audioSource != null)

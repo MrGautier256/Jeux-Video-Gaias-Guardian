@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 534341d0937112048a31c08da8ce928a
+<<<<<<<< HEAD:src/Assets/Sprites/Level 4/Back/Clear_Background1.png.meta
+guid: 343c69e6ca72b794f924625f2e25b901
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 73128904273339393
-    second: Clear_Background2_0
+      213: 2595777834394218505
+    second: Clear_Background1_0
+========
+guid: 178542deaf639a644a4f876126ecf4ee
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3154746786407438627
+    second: spritewater02_0
+>>>>>>>> develop:src/Assets/Sprites/Player/png/Objects/Water slide/spritewater02.png.meta
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +109,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Clear_Background2_0
+<<<<<<<< HEAD:src/Assets/Sprites/Level 4/Back/Clear_Background1.png.meta
+      name: Clear_Background1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 1536
         height: 1024
+========
+      name: spritewater02_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 32
+        height: 15
+>>>>>>>> develop:src/Assets/Sprites/Player/png/Objects/Water slide/spritewater02.png.meta
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +134,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 104a60ad95ec30100800000000000000
-      internalID: 73128904273339393
+<<<<<<<< HEAD:src/Assets/Sprites/Level 4/Back/Clear_Background1.png.meta
+      spriteID: 90076e6ff2e060420800000000000000
+      internalID: 2595777834394218505
+========
+      spriteID: dd621e723861834d0800000000000000
+      internalID: -3154746786407438627
+>>>>>>>> develop:src/Assets/Sprites/Player/png/Objects/Water slide/spritewater02.png.meta
       vertices: []
       indices: 
       edges: []
@@ -134,8 +158,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
+<<<<<<<< HEAD:src/Assets/Sprites/Level 4/Back/Clear_Background1.png.meta
+    nameFileIdTable: {}
+========
     nameFileIdTable:
-      Clear_Background2_0: 73128904273339393
+      spritewater02_0: -3154746786407438627
+>>>>>>>> develop:src/Assets/Sprites/Player/png/Objects/Water slide/spritewater02.png.meta
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

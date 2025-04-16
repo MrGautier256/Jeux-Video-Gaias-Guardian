@@ -237,7 +237,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -6984,7 +6984,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -10092,7 +10092,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -15086,7 +15086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: maxHealth
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8490238263465302742, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: m_Name
@@ -19097,7 +19097,7 @@ Transform:
   m_GameObject: {fileID: 1210868482}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.985, y: 1.77, z: 0}
+  m_LocalPosition: {x: 64.137, y: 1.77, z: 0}
   m_LocalScale: {x: 0.498, y: 0.41666982, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19316,7 +19316,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -20015,7 +20015,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -26029,6 +26029,10 @@ PrefabInstance:
         faire la diff\xE9rence ! Appuyez sur ENTREE pour continuer !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
+      propertyPath: abilityToUnlock
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: playerBarriers.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -26427,7 +26431,7 @@ Transform:
   m_GameObject: {fileID: 1747524608}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 78.725, y: 2.99, z: 0}
+  m_LocalPosition: {x: 78.578, y: 2.99, z: 0}
   m_LocalScale: {x: 0.498, y: 0.41666982, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26463,7 +26467,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -31109,6 +31113,10 @@ PrefabInstance:
     - target: {fileID: 1837572852638790415, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_Name
       value: Grappin pillard_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160190958263742488, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

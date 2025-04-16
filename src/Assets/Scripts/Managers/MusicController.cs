@@ -26,6 +26,7 @@ public class MusicController : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
+            audioSource.volume = AudioSettingsManager.Instance != null ? AudioSettingsManager.Instance.Volume : 1f;
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             // Convert list to dictionary

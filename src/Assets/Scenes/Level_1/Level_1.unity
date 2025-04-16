@@ -6652,7 +6652,6 @@ Transform:
   m_Children:
   - {fileID: 656063617}
   - {fileID: 538045924}
-  - {fileID: 2083495774}
   - {fileID: 1425485665}
   - {fileID: 563752174}
   - {fileID: 1494455168}
@@ -8589,6 +8588,10 @@ PrefabInstance:
     - target: {fileID: 1837572852638790415, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_Name
       value: Grappin pillard_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160190958263742488, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13537,6 +13540,10 @@ PrefabInstance:
     - target: {fileID: 1837572852638790415, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_Name
       value: Grappin pillard_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6160190958263742488, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -33677,76 +33684,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &2083495773
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 227214455}
-    m_Modifications:
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.34506285
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.26662698
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 25.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.14
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837572852638790415, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-      propertyPath: m_Name
-      value: Grappin pillard_0 (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
---- !u!4 &2083495774 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
-  m_PrefabInstance: {fileID: 2083495773}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2084753947
 GameObject:
   m_ObjectHideFlags: 0

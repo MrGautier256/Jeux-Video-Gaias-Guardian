@@ -67,6 +67,12 @@ public class Player : MonoBehaviour
     private float lastVortexTime = -999f;
 
 
+    [Header("Special Attack - Water Jet")]
+    public GameObject waterJetProjectilePrefab;
+    public float waterJetCooldown = 2f;
+    private float lastWaterJetTime = -999f;
+
+
     [Header("Attack")]
     public float attackRange = 1.5f;
     public float attackWidth = 0.8f;
@@ -220,6 +226,13 @@ public class Player : MonoBehaviour
         {
             facingDirection = (int)Mathf.Sign(horizontal);
             sr.flipX = horizontal < 0;
+
+            if (shootPoint != null)
+            {
+                Vector3 localPos = shootPoint.localPosition;
+                localPos.x = Mathf.Abs(localPos.x) * facingDirection;
+                shootPoint.localPosition = localPos;
+            }
         }
     }
 
@@ -263,10 +276,9 @@ public class Player : MonoBehaviour
 
     public void Grapple(InputAction.CallbackContext context)
     {
-        audioSource.PlayOneShot(grappleLaunchClip);
-
         if (!context.performed || !canGrapple || isGrappling || !abilities.CanGrapple) return;
 
+        audioSource.PlayOneShot(grappleLaunchClip);
         Vector2 direction = new Vector2(facingDirection, 0.5f).normalized;
         Vector2 endPoint = (Vector2)transform.position + direction * grappleRange;
 
@@ -304,6 +316,17 @@ public class Player : MonoBehaviour
         Vector2 shootDir = new Vector2(facingDirection, 0f);
         GameObject vortex = Instantiate(vortexProjectilePrefab, shootPoint.position, Quaternion.identity);
         vortex.GetComponent<PollenVortexProjectile>().Launch(shootDir);
+    }
+
+    public void WaterJetAttack(InputAction.CallbackContext context)
+    {
+        if (!context.performed || !abilities.CanUseWaterJet || Time.time < lastWaterJetTime + waterJetCooldown) return;
+
+        lastWaterJetTime = Time.time;
+
+        Vector2 shootDir = new Vector2(facingDirection, 0f);
+        GameObject jet = Instantiate(waterJetProjectilePrefab, shootPoint.position, Quaternion.identity);
+        jet.GetComponent<WaterJetProjectile>().Launch(shootDir);
     }
 
     public void Attack(InputAction.CallbackContext context)

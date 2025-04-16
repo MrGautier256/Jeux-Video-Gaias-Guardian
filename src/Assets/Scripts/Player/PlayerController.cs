@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Collider2D grappleTargetCollider;
 
     private Vector2 lastPosition;
+    public PlayerHUD playerHUD;
     private float stuckTimer = 0f;
     public float maxStuckTime = 0.25f;
     private bool isPlayingRetractSound = false;
@@ -62,14 +63,14 @@ public class Player : MonoBehaviour
     [Header("Special Attack - Pollen Vortex")]
     public GameObject vortexProjectilePrefab;
     public Transform shootPoint; // point d’apparition
-    public float vortexCooldown = 3f;
+    public float vortexCooldown = 10f;
 
     private float lastVortexTime = -999f;
 
 
     [Header("Special Attack - Water Jet")]
     public GameObject waterJetProjectilePrefab;
-    public float waterJetCooldown = 2f;
+    public float waterJetCooldown = 5f;
     private float lastWaterJetTime = -999f;
 
 
@@ -94,6 +95,7 @@ public class Player : MonoBehaviour
         abilities = GetComponent<PlayerAbilities>();
         animator = GetComponent<Animator>();
 
+        playerHUD = FindFirstObjectByType<PlayerHUD>();
         grappleLine = GetComponent<LineRenderer>();
         grappleLine.positionCount = 0;
 
@@ -111,6 +113,12 @@ public class Player : MonoBehaviour
         if (animator != null)
         {
             animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        }
+
+        if (playerHUD != null)
+        {
+            Debug.Log("Cooldown en cours");
+            playerHUD.UpdateCooldowns(lastVortexTime, lastWaterJetTime, Time.time);
         }
 
 
@@ -308,7 +316,6 @@ public class Player : MonoBehaviour
 
     public void SpecialAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("abilities.CanUsePollenVortex");
         if (!context.performed || !abilities.CanUsePollenVortex || Time.time < lastVortexTime + vortexCooldown) return;
 
         lastVortexTime = Time.time;

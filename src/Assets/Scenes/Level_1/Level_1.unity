@@ -19249,6 +19249,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1136849458}
     - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: vortexCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
+      propertyPath: waterJetCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490964114590126065, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: enemyLayer.m_Bits
       value: 512
       objectReference: {fileID: 0}

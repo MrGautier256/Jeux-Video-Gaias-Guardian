@@ -26270,8 +26270,9 @@ PrefabInstance:
       objectReference: {fileID: 1056774284}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
-      value: "Je sens son \xE9nergie se lier \xE0 moi... Une vie de plus, \xE7a pourrait
-        faire la diff\xE9rence ! Appuyez sur ENTREE pour continuer !"
+      value: "Je sens son \xE9nergie se lier \xE0 moi... Une vie de plus, et un jet
+        d'eau \xE7a pourrait faire la diff\xE9rence ! Appuyez sur ENTREE pour continuer
+        !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock

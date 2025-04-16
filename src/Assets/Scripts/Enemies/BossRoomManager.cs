@@ -35,8 +35,8 @@ public class BossRoomManager : MonoBehaviour
         DoubleJump,
         Grapple,
         Sword,
-        PollenVortex
-
+        PollenVortex,
+        WaterJet
     }
 
     private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
@@ -45,7 +45,9 @@ public class BossRoomManager : MonoBehaviour
         { AbilityName.DoubleJump, "hasDoubleJump" },
         { AbilityName.Grapple, "hasGrapple" },
         { AbilityName.Sword, "hasSword" },
-        { AbilityName.PollenVortex, "hasPollenVortex" }
+        { AbilityName.PollenVortex, "hasPollenVortex" },
+        { AbilityName.WaterJet, "hasWaterJet" }
+
     };
 
 

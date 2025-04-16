@@ -20,7 +20,9 @@ public class PowerCollectible : MonoBehaviour
         Dash,
         DoubleJump,
         Grapple,
-        Sword
+        Sword,
+        PollenVortex,
+        WaterJet
     }
 
     private static readonly Dictionary<AbilityName, string> abilityFieldMap = new()
@@ -28,7 +30,9 @@ public class PowerCollectible : MonoBehaviour
         { AbilityName.Dash, "hasDash" },
         { AbilityName.DoubleJump, "hasDoubleJump" },
         { AbilityName.Grapple, "hasGrapple" },
-        { AbilityName.Sword, "hasSword" }
+        { AbilityName.Sword, "hasSword" },
+        { AbilityName.PollenVortex, "hasPollenVortex" },
+        { AbilityName.WaterJet, "hasWaterJet" }
     };
 
     private bool collected = false;

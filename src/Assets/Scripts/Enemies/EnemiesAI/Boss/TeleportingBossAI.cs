@@ -91,8 +91,8 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
     }
 
 
-    private GameObject exitPortal; // pour le départ
-    private GameObject entryPortal; // pour l’arrivée
+    private GameObject exitPortal; 
+    private GameObject entryPortal; 
 
     private void TeleportToRandomPoint()
     {

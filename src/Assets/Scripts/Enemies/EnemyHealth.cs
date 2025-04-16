@@ -14,7 +14,8 @@ public class EnemyHealth : MonoBehaviour
     private bool isDead = false;
     public bool IsDead => isDead;
     public bool CanDealDamage { get; private set; } = true;
-
+    public int CurrentHealth => currentHealth;
+    public int MaxHealth => maxHealth;
 
 
     private void Start()

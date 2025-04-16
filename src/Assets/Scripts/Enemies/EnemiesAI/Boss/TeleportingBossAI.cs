@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class TeleportingBossAI : EnemyAI, IEnemySlowable
 {
@@ -38,9 +39,19 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
     private bool isSlowed = false;
     private SpriteRenderer sr;
 
+    [Header("Portal FX")]
+    public GameObject portalPrefab;
+    public Vector3 portalOffset = new Vector3(0f, 0.5f, 0f);
+    public Vector3 portalScale = Vector3.one; // ← Taille personnalisable
+    public float exitPortalYOffsetCorrection = -0.5f; // dans tes headers si tu veux
+
+
+
     private float nextShootTime;
     private Vector3 originalScale;
     private bool isActivated = false;
+    private int lastIndex = -1;
+    private bool isTeleporting = false;
 
 
     protected override void Start()
@@ -63,12 +74,11 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             isActivated = true;
         }
 
-        if (!isActivated) return;
+        if (!isActivated || isTeleporting) return;
 
         if (Time.time >= nextTeleportTime && teleportPoints.Count > 0)
         {
             TeleportToRandomPoint();
-            nextTeleportTime = Time.time + teleportInterval;
         }
 
         FacePlayer();
@@ -81,11 +91,119 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
     }
 
 
+    private GameObject exitPortal; // pour le départ
+    private GameObject entryPortal; // pour l’arrivée
+
     private void TeleportToRandomPoint()
     {
-        int index = Random.Range(0, teleportPoints.Count);
-        transform.position = teleportPoints[index].position;
+        int index;
+        do
+        {
+            index = Random.Range(0, teleportPoints.Count);
+        }
+        while (teleportPoints.Count > 1 && index == lastIndex);
+
+        lastIndex = index;
+        Transform targetPoint = teleportPoints[index];
+
+        StartCoroutine(HandleTeleportSequence(transform.position, targetPoint.position));
     }
+
+
+    private IEnumerator HandleTeleportSequence(Vector3 from, Vector3 to)
+    {
+        isTeleporting = true;
+
+        // === Portail de sortie (position actuelle)
+        if (portalPrefab != null)
+        {
+            exitPortal = Instantiate(portalPrefab, from + portalOffset + new Vector3(0f, exitPortalYOffsetCorrection, 0f), Quaternion.identity);
+            exitPortal.transform.localScale = portalScale;
+            exitPortal.GetComponent<PortalEffect>()?.PlayOpen();
+        }
+
+        // === Portail d'entrée (destination)
+        if (portalPrefab != null)
+        {
+            entryPortal = Instantiate(portalPrefab, to + portalOffset, Quaternion.identity);
+            entryPortal.transform.localScale = portalScale;
+            entryPortal.GetComponent<PortalEffect>()?.PlayOpen();
+        }
+
+        yield return new WaitForSeconds(0.5f); 
+
+        // === Disparition du boss avec fondu
+        yield return StartCoroutine(DisableBossTemporarily());
+
+        yield return new WaitForSeconds(0.5f); 
+
+        // === Réapparition avec fondu
+        yield return StartCoroutine(EnableBossWithFadeIn(to + Vector3.up * 0.5f));
+
+        nextTeleportTime = Time.time + teleportInterval;
+
+        // === Fermeture des portails
+        if (exitPortal != null)
+        {
+            var exitFx = exitPortal.GetComponent<PortalEffect>();
+            exitFx?.PlayClose();
+            exitFx?.DeactivateAfter(1f);
+        }
+
+        if (entryPortal != null)
+        {
+            var entryFx = entryPortal.GetComponent<PortalEffect>();
+            entryFx?.PlayClose();
+            entryFx?.DeactivateAfter(1f);
+        }
+        Debug.Log($"ExitPortal Y: {(from + portalOffset).y}, EntryPortal Y: {(to + portalOffset).y}");
+
+        isTeleporting = false;
+    }
+
+
+    private IEnumerator DisableBossTemporarily(float fadeDuration = 0.3f)
+    {
+        float elapsed = 0f;
+        Color originalColor = sr.color;
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        sr.enabled = false;
+
+        SetAllCollidersEnabled(false);
+        SetAllScriptsEnabled(false);
+    }
+
+    private IEnumerator EnableBossWithFadeIn(Vector3 newPosition, float fadeDuration = 0.3f)
+    {
+        transform.position = newPosition;
+
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0f);
+        sr.enabled = true;
+
+        SetAllCollidersEnabled(true);
+        SetAllScriptsEnabled(true);
+
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(0f, 1f, elapsed / fadeDuration);
+            sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+    }
+
 
     private void FacePlayer()
     {
@@ -94,7 +212,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
         float dirToPlayer = player.position.x - transform.position.x;
         if (Mathf.Abs(dirToPlayer) > 0.1f)
         {
-            ApplyFlip(-dirToPlayer);
+            ApplyFlip(dirToPlayer);
         }
     }
 
@@ -105,6 +223,23 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
         float flipFactor = spriteFacesLeftByDefault ? -1f : 1f;
         transform.localScale = new Vector3(sign * flipFactor * Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
     }
+
+    private void SetAllCollidersEnabled(bool value)
+    {
+        foreach (var col in GetComponentsInChildren<Collider2D>())
+            col.enabled = value;
+    }
+
+    private void SetAllScriptsEnabled(bool value)
+    {
+        foreach (var comp in GetComponents<MonoBehaviour>())
+        {
+            if (comp != this)
+                comp.enabled = value;
+        }
+    }
+
+
 
     private void ShootProjectiles()
     {
@@ -200,11 +335,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
 
     public void ApplySlow(float factor, float duration)
     {
-        Debug.Log("AVANT");
-
         if (isSlowed) return;
-        Debug.Log($"TeleportingBossAI: Slow applied. Shoot cooldown: {shootCooldown}, Teleport interval: {teleportInterval}");
-
         isSlowed = true;
         shootCooldown /= factor;
         teleportInterval *= factor;

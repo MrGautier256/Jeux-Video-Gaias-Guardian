@@ -6,7 +6,7 @@ using System.Collections;
 public class PlayerCollision : MonoBehaviour
 {
     [Header("Stats")]
-    public int maxHealth = 3;
+    public int maxHealth = 4;
     public int initialLives = 3;
     public int apples = 0;
 
@@ -52,7 +52,7 @@ public class PlayerCollision : MonoBehaviour
         healthSystem = new HealthSystem(maxHealth, initialLives);
         healthSystem.OnDeath += HandleDeath;
 
-
+        maxHealth = 4;
         if (playerHUD == null)
         {
             playerHUD = FindAnyObjectByType<PlayerHUD>();

@@ -8754,11 +8754,15 @@ PrefabInstance:
     - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: message
       value: "D\xE9placez-vous en utilisant les fl\xE8ches directionnelles du clavier
-        !"
+        ou le joystick gauche de la manette !"
       objectReference: {fileID: 0}
     - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 689270741113173075, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 273
       objectReference: {fileID: 0}
     - target: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Name
@@ -19327,7 +19331,7 @@ PrefabInstance:
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
       value: "Alors c\u2019\xE9tait \xE7a son secret... Un double saut ? Ca va m\u2019ouvrir
-        des portes."
+        des portes.Appuyer deux fois sur la touche de saut pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock
@@ -34984,8 +34988,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
-      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ? Appuyer sur A ou
-        Touche droite pour l'utiliser !"
+      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ? Appuyer sur A (Clavier)
+        ou B (XBox) / ROND (PS) pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock

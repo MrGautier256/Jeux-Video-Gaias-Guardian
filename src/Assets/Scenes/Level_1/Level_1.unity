@@ -18597,7 +18597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: levelID
-      value: Level_2
+      value: Level_1
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: bossHealth

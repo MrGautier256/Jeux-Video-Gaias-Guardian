@@ -28,12 +28,6 @@ public class PollenVortexProjectile : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             IEnemySlowable slowable = other.GetComponent<IEnemySlowable>();
-
-            if (slowable == null && other.transform.parent != null)
-            {
-                slowable = other.transform.parent.GetComponent<IEnemySlowable>();
-            }
-
             if (slowable != null)
             {
                 slowable.ApplySlow(slowFactor, slowDuration);
@@ -46,5 +40,4 @@ public class PollenVortexProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
 }

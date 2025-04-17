@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 3549c4acc4d07914ebb4476b287b840c
+guid: 2f2b721b4a60a0b4d8033e2d0131c80c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1495540352627343312
-    second: licwg2hqget61_0
-  - first:
-      213: -4275011800743425633
-    second: licwg2hqget61_1
+      213: 9158869527626003447
+    second: Level_4_clear_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: licwg2hqget61_0
+      name: Level_4_clear_0
       rect:
         serializedVersion: 2
-        x: 186
-        y: 546
-        width: 668
-        height: 935
+        x: 0
+        y: 0
+        width: 531
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0df7d99e60a31c410800000000000000
-      internalID: 1495540352627343312
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: licwg2hqget61_1
-      rect:
-        serializedVersion: 2
-        x: 1039
-        y: 546
-        width: 695
-        height: 962
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f99c51eca6b1ca4c0800000000000000
-      internalID: -4275011800743425633
+      spriteID: 7f33c424f47da1f70800000000000000
+      internalID: 9158869527626003447
       vertices: []
       indices: 
       edges: []
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      licwg2hqget61_0: 1495540352627343312
-      licwg2hqget61_1: -4275011800743425633
+      Level_4_clear_0: 9158869527626003447
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

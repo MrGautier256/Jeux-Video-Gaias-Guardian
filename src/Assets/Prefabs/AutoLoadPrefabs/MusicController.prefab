@@ -153,3 +153,5 @@ MonoBehaviour:
     musicClip: {fileID: 8300000, guid: 7a5613474078d6547a7bb3b02b949e93, type: 3}
   - sceneName: MainMenu
     musicClip: {fileID: 8300000, guid: fba799e31751305478c816057604e392, type: 3}
+  - sceneName: Credits
+    musicClip: {fileID: 8300000, guid: f4cdf38bf71167f47a8ee7c75a7e9295, type: 3}

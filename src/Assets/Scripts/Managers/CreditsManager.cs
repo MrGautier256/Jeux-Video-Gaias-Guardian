@@ -4,12 +4,29 @@ using UnityEngine.SceneManagement;
 public class CreditsManager : MonoBehaviour
 {
     [SerializeField] private string mainMenuScene = "MainMenu";
+    [SerializeField] private float creditsDuration = 20f; // durée en secondes du scroll
+
+    private void Start()
+    {
+        StartCoroutine(ReturnToMenuAfterDelay());
+    }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene(mainMenuScene);
+            LoadMainMenu();
         }
+    }
+
+    private System.Collections.IEnumerator ReturnToMenuAfterDelay()
+    {
+        yield return new WaitForSeconds(creditsDuration);
+        LoadMainMenu();
+    }
+
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
     }
 }

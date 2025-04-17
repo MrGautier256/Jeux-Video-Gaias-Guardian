@@ -11,6 +11,17 @@ public class CreditsManager : MonoBehaviour
         StartCoroutine(ReturnToMenuAfterDelay());
     }
 
+    private System.Collections.IEnumerator ReturnToMenuAfterDelay()
+    {
+        yield return new WaitForSeconds(creditsDuration);
+        LoadMainMenu();
+    }
+
+    private void LoadMainMenu()
+    {
+        SceneManager.LoadScene(mainMenuScene);
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))

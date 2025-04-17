@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class MessageUI : MonoBehaviour
 {
@@ -47,6 +48,14 @@ public class MessageUI : MonoBehaviour
             CloseMessage();
         }
     }
+
+    private void CloseMessage()
+    {
+        isAwaitingInput = false;
+        Time.timeScale = 1f;
+        Destroy(gameObject);
+    }
+
 
     private IEnumerator TypeMessage(string message)
     {

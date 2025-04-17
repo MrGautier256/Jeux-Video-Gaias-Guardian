@@ -1,6 +1,5 @@
 using UnityEngine;
 
-
 public class PortalEffect : MonoBehaviour
 {
     private Animator animator;

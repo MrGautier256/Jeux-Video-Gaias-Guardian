@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
 
 public class MessageUI : MonoBehaviour
 {
@@ -37,11 +35,10 @@ public class MessageUI : MonoBehaviour
         {
             foreach (var control in Gamepad.current.allControls)
             {
-                if (control is ButtonControl button && button.wasPressedThisFrame)
-                {
-                    CloseMessage();
-                    return;
-                }
+                isAwaitingInput = false;
+                Time.timeScale = 1f;
+                Destroy(gameObject);
+                break;
             }
         }
 
@@ -50,8 +47,6 @@ public class MessageUI : MonoBehaviour
             CloseMessage();
         }
     }
-
-
 
     private IEnumerator TypeMessage(string message)
     {
@@ -71,13 +66,6 @@ public class MessageUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(displayDuration);
         Destroy(gameObject);
     }
-    private void CloseMessage()
-    {
-        isAwaitingInput = false;
-        Time.timeScale = 1f;
-        Destroy(gameObject);
-    }
-
 
     public void Show(string message)
     {

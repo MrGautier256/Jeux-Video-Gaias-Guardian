@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     [Header("Special Attack - Pollen Vortex")]
     public GameObject vortexProjectilePrefab;
-    public Transform shootPoint; // point d’apparition
+    public Transform shootPoint; 
     public float vortexCooldown = 3f;
 
     private float lastVortexTime = -999f;
@@ -316,7 +316,6 @@ public class Player : MonoBehaviour
 
     public void SpecialAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("abilities.CanUsePollenVortex");
         if (!context.performed || !abilities.CanUsePollenVortex || Time.time < lastVortexTime + vortexCooldown) return;
 
         lastVortexTime = Time.time;

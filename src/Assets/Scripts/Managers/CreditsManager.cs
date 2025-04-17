@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class CreditsManager : MonoBehaviour
 {
     [SerializeField] private string mainMenuScene = "MainMenu";
-    [SerializeField] private float creditsDuration = 20f; // durée en secondes du scroll
+    [SerializeField] private float creditsDuration = 20f; 
 
     private void Start()
     {

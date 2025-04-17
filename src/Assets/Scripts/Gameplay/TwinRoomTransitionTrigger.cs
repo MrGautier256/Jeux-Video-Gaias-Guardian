@@ -8,8 +8,8 @@ public class TwinRoomTransitionTrigger : MonoBehaviour, ITriggerDesactivable
     public Transform targetRoom;
     public Transform targetRespawn;
 
-    [Header("Trigger jumeau à activer après passage")]
-    public MonoBehaviour alternateTriggerRaw; // Doit implémenter ITriggerDesactivable
+    [Header("Trigger jumeau a activer apres passage")]
+    public MonoBehaviour alternateTriggerRaw; 
     private ITriggerDesactivable alternateTrigger;
 
     [Header("Cooldown")]

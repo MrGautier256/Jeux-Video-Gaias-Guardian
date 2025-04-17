@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class MessageUI : MonoBehaviour
 {
@@ -25,17 +27,34 @@ public class MessageUI : MonoBehaviour
     {
         if (!isAwaitingInput) return;
 
-        foreach (KeyCode key in skipKeys)
+        // Clavier : n'importe quelle touche
+        if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
         {
-            if (Input.GetKeyDown(key))
+            CloseMessage();
+            return;
+        }
+
+        // Manette : vérifier chaque bouton
+        if (Gamepad.current != null)
+        {
+            foreach (var control in Gamepad.current.allControls)
             {
-                isAwaitingInput = false;
-                Time.timeScale = 1f;
-                Destroy(gameObject);
-                break;
+                if (control is ButtonControl button && button.wasPressedThisFrame)
+                {
+                    CloseMessage();
+                    return;
+                }
             }
         }
+
+        // Souris : clic gauche ou droit
+        if (Mouse.current != null && (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame))
+        {
+            CloseMessage();
+        }
     }
+
+
 
     private IEnumerator TypeMessage(string message)
     {
@@ -55,6 +74,13 @@ public class MessageUI : MonoBehaviour
         yield return new WaitForSecondsRealtime(displayDuration);
         Destroy(gameObject);
     }
+    private void CloseMessage()
+    {
+        isAwaitingInput = false;
+        Time.timeScale = 1f;
+        Destroy(gameObject);
+    }
+
 
     public void Show(string message)
     {

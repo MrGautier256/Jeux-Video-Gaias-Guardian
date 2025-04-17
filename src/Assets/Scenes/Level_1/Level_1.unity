@@ -20158,19 +20158,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9468095
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.32179472
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -20182,12 +20182,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 37.543
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
-      value: "Oh ! Une \xE9p\xE9e ! Ce monde serait-il hostile ? Appuyer sur A ou
-        Touche droite pour l'utiliser !"
+      value: "Merci beaucoup Rohan pour ces 2 ann\xE9es"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock
@@ -31239,7 +31238,7 @@ Transform:
   m_GameObject: {fileID: 1896331849}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.52, y: 1.15, z: 0.0806565}
+  m_LocalPosition: {x: 15.24, y: 6.32, z: 0.0806565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

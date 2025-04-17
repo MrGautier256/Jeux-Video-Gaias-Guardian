@@ -21,9 +21,16 @@ public class WaterJetProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
+        Transform target = other.transform;
+
+        if (other.CompareTag("Enemy") || (target.parent != null && target.parent.CompareTag("Enemy")))
         {
-            EnemyHealth enemy = other.GetComponent<EnemyHealth>();
+            EnemyHealth enemy = target.GetComponent<EnemyHealth>();
+            if (enemy == null && target.parent != null)
+            {
+                enemy = target.parent.GetComponent<EnemyHealth>();
+            }
+
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
@@ -36,4 +43,5 @@ public class WaterJetProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

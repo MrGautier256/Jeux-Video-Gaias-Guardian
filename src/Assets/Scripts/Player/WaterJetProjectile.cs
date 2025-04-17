@@ -5,6 +5,7 @@ public class WaterJetProjectile : MonoBehaviour
     public float speed = 5f;
     public int damage = 2;
     public float lifetime = 1.5f;
+    private bool hasHit = false;
 
     private Vector2 direction;
 
@@ -21,6 +22,8 @@ public class WaterJetProjectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (hasHit) return;
+
         Transform target = other.transform;
 
         if (other.CompareTag("Enemy") || (target.parent != null && target.parent.CompareTag("Enemy")))
@@ -33,6 +36,7 @@ public class WaterJetProjectile : MonoBehaviour
 
             if (enemy != null)
             {
+                hasHit = true; 
                 enemy.TakeDamage(damage);
             }
 
@@ -43,5 +47,6 @@ public class WaterJetProjectile : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 
 }

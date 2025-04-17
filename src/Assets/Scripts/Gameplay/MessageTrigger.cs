@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,6 +15,8 @@ public class MessageTrigger : MonoBehaviour
 
     [Header("Afficher même dans les niveaux clear (ex: level_1_clear)")]
     [SerializeField] private bool showOnClearLevel = false;
+
+    [SerializeField] private TMP_FontAsset overrideFont;
 
     private bool triggered = false;
 

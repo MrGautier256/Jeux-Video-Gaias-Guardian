@@ -66,7 +66,7 @@ public class PowerCollectible : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collected || abilityToUnlock == AbilityName.None) return;
+        if (collected) return;
 
         if (collision.CompareTag("Player"))
         {
@@ -77,13 +77,14 @@ public class PowerCollectible : MonoBehaviour
 
             if (audioSource != null && collectSound != null)
             {
-                audioSource.clip = collectSound; 
+                audioSource.clip = collectSound;
                 audioSource.Play();
                 Invoke(nameof(HandleMessageAndAbility), collectSound.length);
-                Destroy(gameObject, collectSound.length); 
+                Destroy(gameObject, collectSound.length);
             }
             else
             {
+                HandleMessageAndAbility();
                 Destroy(gameObject);
             }
         }

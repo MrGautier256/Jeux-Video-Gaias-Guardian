@@ -334,11 +334,11 @@
                 },
                 {
                     "name": "",
-                    "id": "b0ef7432-c79f-4cd6-9af2-cef0850e20e7",
-                    "path": "<Gamepad>/buttonWest",
+                    "id": "e0c7b66d-c5cc-4a6f-bc9d-6d997397d700",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": "",
                     "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -373,6 +373,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "SpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e5523eae-5a85-4261-b27b-0bdd06540507",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SpecialAttack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b0ef7432-c79f-4cd6-9af2-cef0850e20e7",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "WaterJetAttack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -25935,7 +25935,7 @@ MonoBehaviour:
   shootCooldown: 3
   shootMode: 0
   fireHorizontal: 1
-  followPlayerDirectionHorizontal: 1
+  followPlayerDirectionHorizontal: 0
   fireVertical: 0
   followPlayerDirectionVertical: 0
   fireDiagonal: 0

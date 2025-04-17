@@ -4723,7 +4723,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -9
   m_Sprite: {fileID: 2595777834394218505, guid: 343c69e6ca72b794f924625f2e25b901, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4884,6 +4884,89 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &680059225
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 816905068}
+    m_Modifications:
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0157
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.198
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.022663904
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: rewardMessage
+      value: "Avec ce grappin, je vais pouvoir explorer des zones que je pensais
+        hors d\u2019atteinte ! Appuyez sur E pour l'utiliser !"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: abilityToUnlock
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: 'skipKeys.Array.data[0]'
+      value: 101
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287393718354499823, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+      propertyPath: m_Name
+      value: PowerCollectible
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+--- !u!4 &680059226 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5313543978683365956, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
+  m_PrefabInstance: {fileID: 680059225}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &698071671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5232,6 +5315,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1224889729}
+  - {fileID: 680059226}
   m_Father: {fileID: 1924144426}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &816905070
@@ -25802,7 +25886,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
+  m_SortingOrder: -9
   m_Sprite: {fileID: 2595777834394218505, guid: 343c69e6ca72b794f924625f2e25b901, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -26671,11 +26755,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7962563123687537712, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 130.5
+      value: 52.1
       objectReference: {fileID: 0}
     - target: {fileID: 7962563123687537712, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.6
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7962563123687537712, guid: 106cd0ce8037a964686dc3ef5ef48691, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26920,7 +27004,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -5
   m_Sprite: {fileID: 6537089701838389941, guid: 4b26678b43e35a04bb2cbde982c5b21c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

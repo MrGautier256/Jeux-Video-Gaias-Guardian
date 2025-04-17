@@ -27085,8 +27085,10 @@ PrefabInstance:
       objectReference: {fileID: 1056774284}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: rewardMessage
-      value: "Je sens son \xE9nergie se lier \xE0 moi... Une vie de plus, \xE7a pourrait
-        faire la diff\xE9rence ! Appuyez sur ENTREE pour continuer !"
+      value: "Il devait utiliser ce jet d'eau pour contenir l'energie du volcan.
+        Je vais en faire une arme. OH!  Une vie de plus, \xE7a pourrait faire la
+        diff\xE9rence ! Appuyez sur T (Clavier), X (XBox) ou CARRE (PS)  pour continuer
+        !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock
@@ -31525,7 +31527,8 @@ PrefabInstance:
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
       value: "Avec ce grappin, je vais pouvoir explorer des zones que je pensais
-        hors d\u2019atteinte ! Appuyez sur E pour l'utiliser !"
+        hors d\u2019atteinte ! Appuyez sur E (Claiver), Y( XBox) ou TRIANGLE (PS) 
+        pour l'utiliser !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock

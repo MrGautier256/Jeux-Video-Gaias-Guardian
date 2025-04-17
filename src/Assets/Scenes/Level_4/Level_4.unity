@@ -67367,7 +67367,8 @@ PrefabInstance:
       propertyPath: rewardMessage
       value: "C'est donc ces produits chimiques qui lui permettent de faire cela,
         je pense que je peux m'adapter pour faire pareil. \nVous avez obtenu le vortex
-        de pollen, appuyer sur R pour l'utiliser !"
+        de pollen, appuyer sur R (Clavier), LB (XBox) ou L2 (PS)  pour l'utiliser
+        !"
       objectReference: {fileID: 0}
     - target: {fileID: 4588345301976128635, guid: c605acaea8e6e57459b5f495370134dd, type: 3}
       propertyPath: abilityToUnlock

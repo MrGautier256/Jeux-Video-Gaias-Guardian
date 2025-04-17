@@ -466,37 +466,6 @@ MonoBehaviour:
   rangeUp: 0.91
   rangeDown: 0.98
   detectionOffset: {x: 0, y: 0}
---- !u!1 &66097952
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 66097953}
-  m_Layer: 0
-  m_Name: Hazard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &66097953
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66097952}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6407159, y: -1.1754091, z: -4.4300613}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &69732430
 GameObject:
   m_ObjectHideFlags: 0
@@ -6792,7 +6761,7 @@ GameObject:
   - component: {fileID: 83352423}
   - component: {fileID: 83352422}
   m_Layer: 0
-  m_Name: Room_1_8
+  m_Name: Room_5_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7375,7 +7344,7 @@ GameObject:
   - component: {fileID: 193716108}
   - component: {fileID: 193716107}
   m_Layer: 0
-  m_Name: Room_1_2
+  m_Name: Room_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7690,7 +7659,7 @@ GameObject:
   - component: {fileID: 269433470}
   - component: {fileID: 269433469}
   m_Layer: 0
-  m_Name: RoomTransition_3_to_2
+  m_Name: RoomTransition_5_3_to_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13160,7 +13129,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 581263126}
+    m_TransformParent: {fileID: 1446407198}
     m_Modifications:
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.x
@@ -13168,7 +13137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4166698
+      value: 0.41666976
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -13176,7 +13145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.379
+      value: 1.3790013
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14198,6 +14167,39 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &396982740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 396982741}
+  m_Layer: 0
+  m_Name: AppleCollectible
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &396982741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 396982740}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1167212588}
+  - {fileID: 1060863698}
+  m_Father: {fileID: 1706222305}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &420655050
 GameObject:
   m_ObjectHideFlags: 0
@@ -14210,7 +14212,7 @@ GameObject:
   - component: {fileID: 420655053}
   - component: {fileID: 420655052}
   m_Layer: 0
-  m_Name: RoomTransition_6_to_6-A
+  m_Name: RoomTransition_5_6_to_5_6-A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14306,7 +14308,7 @@ GameObject:
   - component: {fileID: 428175544}
   - component: {fileID: 428175543}
   m_Layer: 0
-  m_Name: Room_1_6-A
+  m_Name: Room_5_6-A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14475,7 +14477,7 @@ GameObject:
   m_Component:
   - component: {fileID: 429651190}
   m_Layer: 0
-  m_Name: Respawn_Room_1_6-A
+  m_Name: Respawn_Room_5_6-A
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -14502,7 +14504,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 1847622136}
     m_Modifications:
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.x
@@ -14518,7 +14520,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.01
+      value: 2.010001
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -14665,7 +14667,7 @@ GameObject:
   - component: {fileID: 475109530}
   - component: {fileID: 475109529}
   m_Layer: 0
-  m_Name: RoomTransition_4_to_3
+  m_Name: RoomTransition_5_4_to_5_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14758,7 +14760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510141520}
   m_Layer: 0
-  m_Name: Respawn_Room_1_8
+  m_Name: Respawn_Room_5_8
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -14791,7 +14793,7 @@ GameObject:
   - component: {fileID: 511616914}
   - component: {fileID: 511616913}
   m_Layer: 0
-  m_Name: Room_1_6
+  m_Name: Room_5_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15211,11 +15213,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 954496413}
-  - {fileID: 1783938049}
-  - {fileID: 361472001}
   - {fileID: 1055387216}
   - {fileID: 141839482}
   - {fileID: 567261278}
+  - {fileID: 1446407198}
   m_Father: {fileID: 1109126997}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &581263127
@@ -15361,7 +15362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 587259462}
   m_Layer: 0
-  m_Name: Respawn_Room_1_2
+  m_Name: Respawn_Room_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -15388,7 +15389,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 1847622136}
     m_Modifications:
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.x
@@ -15404,7 +15405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.57
+      value: 4.5700016
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16153,7 +16154,7 @@ GameObject:
   - component: {fileID: 775896436}
   - component: {fileID: 775896435}
   m_Layer: 0
-  m_Name: RoomTransition_8_to_7
+  m_Name: RoomTransition_5_8_to_5_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16309,7 +16310,7 @@ GameObject:
   - component: {fileID: 780553201}
   - component: {fileID: 780553202}
   m_Layer: 0
-  m_Name: RoomTransition_1_to_2
+  m_Name: RoomTransition_5_1_to_5_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16533,7 +16534,7 @@ GameObject:
   - component: {fileID: 816905070}
   - component: {fileID: 816905071}
   m_Layer: 0
-  m_Name: Room_1_4
+  m_Name: Room_5_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16660,7 +16661,7 @@ GameObject:
   - component: {fileID: 817426715}
   - component: {fileID: 817426714}
   m_Layer: 0
-  m_Name: Room_1_1
+  m_Name: Room_5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17288,7 +17289,7 @@ GameObject:
   - component: {fileID: 842531256}
   - component: {fileID: 842531255}
   m_Layer: 0
-  m_Name: RoomTransition_7_to_6
+  m_Name: RoomTransition_5_7_to_5_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21340,7 +21341,7 @@ GameObject:
   - component: {fileID: 927869536}
   - component: {fileID: 927869535}
   m_Layer: 0
-  m_Name: RoomTransition_8_to_9
+  m_Name: RoomTransition_5_8_to_5_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27176,7 +27177,7 @@ GameObject:
   - component: {fileID: 978229454}
   - component: {fileID: 978229453}
   m_Layer: 0
-  m_Name: Room_1_9
+  m_Name: Room_5_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27297,7 +27298,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 1847622136}
     m_Modifications:
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.x
@@ -27313,7 +27314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.55
+      value: 2.549998
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27741,7 +27742,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1706222305}
+    m_TransformParent: {fileID: 396982741}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
@@ -27749,7 +27750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.4999995
+      value: 2.4999993
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -27757,7 +27758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.71
+      value: 3.709999
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -27960,8 +27961,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1779491154}
-  - {fileID: 1248112599}
   - {fileID: 440491029}
+  - {fileID: 1248112599}
   - {fileID: 1034436480}
   - {fileID: 794330409}
   m_Father: {fileID: 1357760299}
@@ -42702,7 +42703,7 @@ GameObject:
   - component: {fileID: 1109126999}
   - component: {fileID: 1109127000}
   m_Layer: 0
-  m_Name: Room_1_5
+  m_Name: Room_5_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42918,7 +42919,7 @@ GameObject:
   - component: {fileID: 1146262697}
   - component: {fileID: 1146262698}
   m_Layer: 0
-  m_Name: Room_1_3
+  m_Name: Room_5_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43105,7 +43106,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1706222305}
+    m_TransformParent: {fileID: 396982741}
     m_Modifications:
     - target: {fileID: 1470921702167779960, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_Name
@@ -43113,7 +43114,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.4999995
+      value: 2.4999993
       objectReference: {fileID: 0}
     - target: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -43206,7 +43207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1179412308}
   m_Layer: 0
-  m_Name: Respawn_Room_1_6
+  m_Name: Respawn_Room_5_6
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -43258,9 +43259,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1742005563}
-  - {fileID: 1248845549}
   - {fileID: 1387209785}
   - {fileID: 1772098145}
+  - {fileID: 1248845549}
   m_Father: {fileID: 193716106}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1185687975
@@ -43795,10 +43796,10 @@ Transform:
   m_LocalScale: {x: 0.03125, y: 0.055555575, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1913946842}
   - {fileID: 1101758904}
   - {fileID: 764016737}
   - {fileID: 904757143}
+  - {fileID: 1913946842}
   m_Father: {fileID: 816905068}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1224889730
@@ -43825,7 +43826,7 @@ GameObject:
   - component: {fileID: 1227256109}
   - component: {fileID: 1227256108}
   m_Layer: 0
-  m_Name: RoomTransition_2_to_1
+  m_Name: RoomTransition_5_2_to_5_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44288,7 +44289,7 @@ GameObject:
   - component: {fileID: 1272113883}
   - component: {fileID: 1272113882}
   m_Layer: 0
-  m_Name: RoomTransition_3_to_4
+  m_Name: RoomTransition_5_3_to_5_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50981,7 +50982,7 @@ GameObject:
   - component: {fileID: 1357760301}
   - component: {fileID: 1357760300}
   m_Layer: 0
-  m_Name: Room_1_7
+  m_Name: Room_5_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -51102,7 +51103,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1457351343}
+    m_TransformParent: {fileID: 1847622136}
     m_Modifications:
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.x
@@ -51118,7 +51119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.57
+      value: 4.5700016
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -51176,7 +51177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1384983221}
   m_Layer: 0
-  m_Name: Respawn_Room_1_4
+  m_Name: Respawn_Room_5_4
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -51330,7 +51331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1415237789}
   m_Layer: 0
-  m_Name: Respawn_Room_1_7
+  m_Name: Respawn_Room_5_7
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -51530,6 +51531,39 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1446407197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1446407198}
+  m_Layer: 0
+  m_Name: Deco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1446407198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446407197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1783938049}
+  - {fileID: 361472001}
+  m_Father: {fileID: 581263126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1450265723
 GameObject:
   m_ObjectHideFlags: 0
@@ -51573,9 +51607,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1621149648}
+  - {fileID: 586020197}
   - {fileID: 1250956325}
   - {fileID: 986230450}
-  - {fileID: 586020197}
   m_Father: {fileID: 817426713}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1457351342
@@ -51610,14 +51644,11 @@ Transform:
   m_Children:
   - {fileID: 587201759}
   - {fileID: 285919508}
-  - {fileID: 1962482886}
-  - {fileID: 431286493}
-  - {fileID: 589884712}
-  - {fileID: 1373069204}
   - {fileID: 18415014}
   - {fileID: 1211334039}
   - {fileID: 754574476}
   - {fileID: 956329332}
+  - {fileID: 1847622136}
   m_Father: {fileID: 83352421}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1457351344
@@ -51632,37 +51663,6 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
---- !u!1 &1491620008
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1491620009}
-  m_Layer: 0
-  m_Name: Deco
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1491620009
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1491620008}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6407159, y: -1.1754091, z: -4.4300613}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1504005777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51826,37 +51826,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6612172368217240185, guid: 075982e56aa164b4291a5a58f679716e, type: 3}
   m_PrefabInstance: {fileID: 1518209741}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1520756066
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1520756067}
-  m_Layer: 0
-  m_Name: Objects
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1520756067
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1520756066}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6407159, y: -1.1754091, z: -4.4300613}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1587963042
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -56928,7 +56897,7 @@ GameObject:
   - component: {fileID: 1654629395}
   - component: {fileID: 1654629394}
   m_Layer: 0
-  m_Name: RoomTransition_5_to_6
+  m_Name: RoomTransition_5_5_to_5_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57078,10 +57047,10 @@ Transform:
   m_Children:
   - {fileID: 395565246}
   - {fileID: 119891600}
+  - {fileID: 1762154675}
   - {fileID: 1846475057}
   - {fileID: 2016225298}
   - {fileID: 1884744667}
-  - {fileID: 1762154675}
   m_Father: {fileID: 428175542}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1684676600
@@ -57126,12 +57095,11 @@ Transform:
   m_LocalScale: {x: 0.03125, y: 0.05555556, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1167212588}
-  - {fileID: 1060863698}
   - {fileID: 1320022326}
-  - {fileID: 45706803}
   - {fileID: 1785960614}
+  - {fileID: 45706803}
   - {fileID: 658338067}
+  - {fileID: 396982741}
   m_Father: {fileID: 511616912}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &1706222306
@@ -57158,7 +57126,7 @@ GameObject:
   - component: {fileID: 1711028374}
   - component: {fileID: 1711028375}
   m_Layer: 0
-  m_Name: RoomTransition_2_to_3
+  m_Name: RoomTransition_5_2_to_5_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57251,7 +57219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1712735109}
   m_Layer: 0
-  m_Name: Respawn_Room_1_5
+  m_Name: Respawn_Room_5_5
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -64105,7 +64073,7 @@ GameObject:
   - component: {fileID: 1742573570}
   - component: {fileID: 1742573571}
   m_Layer: 0
-  m_Name: RoomTransition_6_to_7
+  m_Name: RoomTransition_5_6_to_5_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64200,7 +64168,7 @@ GameObject:
   - component: {fileID: 1761581089}
   - component: {fileID: 1761581088}
   m_Layer: 0
-  m_Name: RoomTransition_7_to_8
+  m_Name: RoomTransition_5_7_to_5_8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71283,7 +71251,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 581263126}
+    m_TransformParent: {fileID: 1446407198}
     m_Modifications:
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.x
@@ -71291,7 +71259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.4166698
+      value: 0.41666976
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71299,7 +71267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.37
+      value: 1.3699986
       objectReference: {fileID: 0}
     - target: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -71787,6 +71755,41 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 625115292196578044, guid: 8de2e2a9467bfac4da336b19044fd05c, type: 3}
   m_PrefabInstance: {fileID: 1846475056}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1847622135
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847622136}
+  m_Layer: 0
+  m_Name: Deco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847622136
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847622135}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1962482886}
+  - {fileID: 431286493}
+  - {fileID: 589884712}
+  - {fileID: 1373069204}
+  m_Father: {fileID: 1457351343}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856480693
 GameObject:
   m_ObjectHideFlags: 0
@@ -71910,7 +71913,7 @@ GameObject:
   - component: {fileID: 1893651121}
   - component: {fileID: 1893651120}
   m_Layer: 0
-  m_Name: RoomTransition_4_to_5
+  m_Name: RoomTransition_5_4_to_5_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72331,7 +72334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2002696522}
   m_Layer: 0
-  m_Name: Respawn_Room_1_3
+  m_Name: Respawn_Room_5_3
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -72530,9 +72533,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 70413111}
-  - {fileID: 1938025840}
   - {fileID: 1202163143}
   - {fileID: 943141704}
+  - {fileID: 1938025840}
   m_Father: {fileID: 1146262695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &2025735737
@@ -72720,7 +72723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2045166523}
   m_Layer: 0
-  m_Name: Respawn_Room_1_9
+  m_Name: Respawn_Room_5_9
   m_TagString: Untagged
   m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -73225,14 +73228,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 1924144426}
-  - {fileID: 1520756067}
-  - {fileID: 66097953}
-  - {fileID: 1491620009}
   - {fileID: 1737192409}
   - {fileID: 823478056}
-  - {fileID: 1856480694}
-  - {fileID: 1812976000}
   - {fileID: 1682474585}
+  - {fileID: 1856480694}
+  - {fileID: 1391841435}
   - {fileID: 69732433}
   - {fileID: 1185837874}
-  - {fileID: 1391841435}
+  - {fileID: 1812976000}

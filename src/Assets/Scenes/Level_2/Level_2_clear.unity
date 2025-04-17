@@ -21688,7 +21688,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: rewardMessage
-      value: 
+      value: "Connaissez-vous la barbeclette ? C'est une d\xE9licieuse fusion entre
+        le barbecue et la raclette, imaginez du fromage fondant coulant sur votre
+        pi\xE8ce de viande et m\xE9langant ses ar\xF4mes au go\xFBt de la viande.
+        R\xE9alisable en \xE9t\xE9 comme en hiver, Barbeclette, pour les gourmets
+        en qu\xEAte !"
       objectReference: {fileID: 0}
     - target: {fileID: 6120460953137424605, guid: 9da87f8ee95c2904f831da7affb75c31, type: 3}
       propertyPath: abilityToUnlock

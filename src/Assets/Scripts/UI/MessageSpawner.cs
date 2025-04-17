@@ -5,13 +5,13 @@ public class MessageSpawner : MonoBehaviour
 {
     public static MessageSpawner Instance;
 
-    [Header("Référence du prefab")]
+    [Header("Reference du prefab")]
     public GameObject messageUIPrefab;
 
     [Header("Canvas parent (UI)")]
     public Transform canvasParent;
 
-    [Header("Police par défaut")]
+    [Header("Police par defaut")]
     public TMP_FontAsset defaultFont;
 
     private void Awake()

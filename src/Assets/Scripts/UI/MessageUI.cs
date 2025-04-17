@@ -27,14 +27,12 @@ public class MessageUI : MonoBehaviour
     {
         if (!isAwaitingInput) return;
 
-        // Clavier : n'importe quelle touche
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
         {
             CloseMessage();
             return;
         }
 
-        // Manette : vérifier chaque bouton
         if (Gamepad.current != null)
         {
             foreach (var control in Gamepad.current.allControls)
@@ -47,7 +45,6 @@ public class MessageUI : MonoBehaviour
             }
         }
 
-        // Souris : clic gauche ou droit
         if (Mouse.current != null && (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame))
         {
             CloseMessage();
@@ -68,7 +65,7 @@ public class MessageUI : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(blipSound, Camera.main.transform.position, 0.2f);
             }
-            yield return new WaitForSeconds(0.05f); //
+            yield return new WaitForSeconds(0.05f); 
         }
 
         yield return new WaitForSecondsRealtime(displayDuration);

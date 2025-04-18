@@ -2,29 +2,39 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+
 
 public class MessageUI : MonoBehaviour
 {
     [SerializeField] private Text messageText;
     [SerializeField] private float displayDuration;
     [SerializeField] private AudioClip blipSound;
+    [SerializeField] private float minDisplayTime = 1f; 
+
+    private float timeSinceShown = 0f;
 
     private bool isAwaitingInput = false;
-    private KeyCode[] skipKeys = { KeyCode.Return }; 
+    private bool messageFullyDisplayed = false;
 
 
-    public void ShowWithPause(string message, KeyCode[] keysToSkip)
+
+    public void ShowWithPause(string message)
     {
+        messageFullyDisplayed = false;
         messageText.text = message;
-        skipKeys = keysToSkip;
         StartCoroutine(TypeMessage(message));
         gameObject.SetActive(true);
-
         isAwaitingInput = true;
+        timeSinceShown = 0f;
+        Time.timeScale = 0f;
     }
     private void Update()
     {
         if (!isAwaitingInput) return;
+
+        timeSinceShown += Time.unscaledDeltaTime;
+        if (timeSinceShown < minDisplayTime || !messageFullyDisplayed) return;
 
         if (Keyboard.current != null && Keyboard.current.anyKey.wasPressedThisFrame)
         {
@@ -36,18 +46,22 @@ public class MessageUI : MonoBehaviour
         {
             foreach (var control in Gamepad.current.allControls)
             {
-                isAwaitingInput = false;
-                Time.timeScale = 1f;
-                Destroy(gameObject);
-                break;
+                if (control is ButtonControl button && button.wasPressedThisFrame)
+                {
+                    CloseMessage();
+                    return;
+                }
             }
         }
 
-        if (Mouse.current != null && (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame))
+        if (Mouse.current != null &&
+            (Mouse.current.leftButton.wasPressedThisFrame || Mouse.current.rightButton.wasPressedThisFrame))
         {
             CloseMessage();
         }
     }
+
+
 
     private void CloseMessage()
     {
@@ -69,11 +83,10 @@ public class MessageUI : MonoBehaviour
             {
                 AudioSource.PlayClipAtPoint(blipSound, Camera.main.transform.position, 0.2f);
             }
-            yield return new WaitForSeconds(0.05f); 
-        }
+            yield return new WaitForSecondsRealtime(0.05f);
 
-        yield return new WaitForSecondsRealtime(displayDuration);
-        Destroy(gameObject);
+        }
+        messageFullyDisplayed = true;
     }
 
     public void Show(string message)

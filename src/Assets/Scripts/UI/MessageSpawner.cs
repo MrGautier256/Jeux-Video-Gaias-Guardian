@@ -36,15 +36,14 @@ public class MessageSpawner : MonoBehaviour
             messageUI.Show(message);
         }
     }
-
-    public void DisplayMessageWithPause(string message, KeyCode[] skipKeys, TMP_FontAsset customFont = null)
+    public void DisplayMessageWithPause(string message, TMP_FontAsset customFont = null)
     {
         GameObject instance = Instantiate(messageUIPrefab, canvasParent);
         MessageUI messageUI = instance.GetComponent<MessageUI>();
         if (messageUI != null)
         {
             ApplyFont(messageUI, customFont);
-            messageUI.ShowWithPause(message, skipKeys);
+            messageUI.ShowWithPause(message);
         }
     }
 

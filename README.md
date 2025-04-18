@@ -40,6 +40,11 @@ Download the latest build directly from the [Releases](https://github.com/MrGaut
 - 💾 Persistent saving of abilities and level claims
 - 🧪 Integrated CI with Unity tests and SonarCloud analysis
 
+## 🎬 Gameplay Trailer
+
+Watch the official gameplay trailer here:  
+▶️ [https://youtu.be/fQOJP8FXoZU](https://youtu.be/fQOJP8FXoZU)
+
 ## Screenshots
 
 ### 🌿 Level 1

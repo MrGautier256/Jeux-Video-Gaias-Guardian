@@ -42,13 +42,13 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
     [Header("Portal FX")]
     public GameObject portalPrefab;
     public Vector3 portalOffset = new Vector3(0f, 0.5f, 0f);
-    public Vector3 portalScale = Vector3.one; 
+    public Vector3 portalScale = Vector3.one;
     public float exitPortalYOffsetCorrection = -0.5f;
 
     [Header("Phase 2 Settings")]
     public float phaseTwoTeleportInterval = 0.5f;
     public float phaseTwoShootCooldown = 0.75f;
-    public Sprite phaseTwoSprite; 
+    public Sprite phaseTwoSprite;
 
 
     private float nextShootTime;
@@ -80,6 +80,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
 
         sr = GetComponent<SpriteRenderer>();
         originalScale = transform.localScale;
+        sr.sortingOrder = 5;
     }
 
     public override void Act()
@@ -125,7 +126,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
         shootCooldown *= phaseTwoShootCooldown;
         if (phaseTwoSprite != null)
             sr.sprite = phaseTwoSprite;
-        
+
         sr.sortingOrder = 5;
     }
 
@@ -139,7 +140,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             {
                 lastKnownHP = currentHP;
                 TeleportToRandomPoint();
-                return; 
+                return;
             }
             lastKnownHP = currentHP;
         }
@@ -192,12 +193,12 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             entryPortal.GetComponent<PortalEffect>()?.PlayOpen();
         }
 
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.5f);
 
         // === Disparition du boss avec fondu
         yield return StartCoroutine(DisableBossTemporarily());
 
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForSeconds(0.5f);
 
         // === Réapparition avec fondu
         yield return StartCoroutine(EnableBossWithFadeIn(to + Vector3.up * 0.5f));
@@ -236,7 +237,7 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             yield return null;
         }
 
-        sr.color = Color.white; 
+        sr.color = Color.white;
         sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         sr.enabled = false;
 

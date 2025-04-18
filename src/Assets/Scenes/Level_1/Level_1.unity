@@ -8733,6 +8733,10 @@ PrefabInstance:
       propertyPath: 'skipKeys.Array.data[0]'
       value: 273
       objectReference: {fileID: 0}
+    - target: {fileID: 714472965266482233, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4112664593854991191, guid: 7648e961f68fc8941b426c0c5cd082be, type: 3}
       propertyPath: m_Name
       value: MessageTrigger
@@ -24125,7 +24129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7376829202783564326, guid: cdfce593096a225408337ab6b300ef2f, type: 3}
       propertyPath: maxHealth
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

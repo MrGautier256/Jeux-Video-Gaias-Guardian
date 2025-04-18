@@ -15116,7 +15116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ccf4e2bc46de934f8ac97c7ee4eb926, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startRoom: {fileID: 83352421}
+  startRoom: {fileID: 817426713}
 --- !u!1 &567261277
 GameObject:
   m_ObjectHideFlags: 0
@@ -16055,7 +16055,7 @@ MonoBehaviour:
   exitPortalYOffsetCorrection: -0.5
   phaseTwoTeleportInterval: 0.5
   phaseTwoShootCooldown: 0.75
-  phaseTwoSprite: {fileID: 1990102543718251208, guid: b31b2f4c9885d274693ed1d3e1248b03, type: 3}
+  phaseTwoSprite: {fileID: 6876811452272124038, guid: 76264acb325eb7845a344532f4b5161f, type: 3}
 --- !u!1 &764016735
 GameObject:
   m_ObjectHideFlags: 0

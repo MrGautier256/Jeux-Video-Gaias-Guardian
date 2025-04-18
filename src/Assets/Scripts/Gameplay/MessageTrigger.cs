@@ -29,7 +29,7 @@ public class MessageTrigger : MonoBehaviour
 
         if (!showOnClearLevel && currentScene.Contains("_clear")) return;
 
-        MessageSpawner.Instance?.DisplayMessageWithPause(message, skipKeys);
+        MessageSpawner.Instance?.DisplayMessageWithPause(message);
 
         if (triggerOnce)
             triggered = true;

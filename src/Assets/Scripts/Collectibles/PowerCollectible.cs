@@ -59,7 +59,7 @@ public class PowerCollectible : MonoBehaviour
     private void HandleMessageAndAbility()
     {
         if (!string.IsNullOrWhiteSpace(rewardMessage))
-            MessageSpawner.Instance?.DisplayMessageWithPause(rewardMessage, skipKeys);
+            MessageSpawner.Instance?.DisplayMessageWithPause(rewardMessage);
 
         UnlockAbility();
     }

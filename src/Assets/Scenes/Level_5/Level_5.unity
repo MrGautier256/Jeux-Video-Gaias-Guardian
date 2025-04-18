@@ -15463,7 +15463,8 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 689270741113173075, guid: 5485b51439d59f6418f6272c9d25e37e, type: 3}
       propertyPath: message
-      value: "Lancement de la proc\xE9dure d'auto-destruction 3       2       1 .."
+      value: "Lancement de la proc\xE9dure d'auto-destruction 3       2       1 ..
+        Vite, sortez par la droite !"
       objectReference: {fileID: 0}
     - target: {fileID: 4112664593854991191, guid: 5485b51439d59f6418f6272c9d25e37e, type: 3}
       propertyPath: m_Name

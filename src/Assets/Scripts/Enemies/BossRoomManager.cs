@@ -129,7 +129,7 @@ public class BossRoomManager : MonoBehaviour
             SaveManager.Instance.TriggerLevelClaimed(levelID);
 
             if (!string.IsNullOrWhiteSpace(rewardMessage))
-                MessageSpawner.Instance?.DisplayMessageWithPause(rewardMessage, skipKeys);
+                MessageSpawner.Instance?.DisplayMessageWithPause(rewardMessage);
         }
     }
 }

@@ -16055,7 +16055,7 @@ MonoBehaviour:
   exitPortalYOffsetCorrection: -0.5
   phaseTwoTeleportInterval: 0.5
   phaseTwoShootCooldown: 0.75
-  phaseTwoSprite: {fileID: 1990102543718251208, guid: b31b2f4c9885d274693ed1d3e1248b03, type: 3}
+  phaseTwoSprite: {fileID: 6876811452272124038, guid: 76264acb325eb7845a344532f4b5161f, type: 3}
 --- !u!1 &764016735
 GameObject:
   m_ObjectHideFlags: 0
@@ -42907,7 +42907,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7459c88187121c40b0d3bc2b352368f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fallbackSpawn: {fileID: 1176299625}
+  fallbackSpawn: {fileID: 510141520}
 --- !u!1 &1146262694
 GameObject:
   m_ObjectHideFlags: 0

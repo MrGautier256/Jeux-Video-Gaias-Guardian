@@ -29149,8 +29149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5160d96dfc72c4047bb0c5f0938e848f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 1.5
-  dashSpeed: 2
+  walkSpeed: 1
+  dashSpeed: 4
   dashDuration: 3
   dashCooldown: 4
   pointA: {fileID: 1432688169}

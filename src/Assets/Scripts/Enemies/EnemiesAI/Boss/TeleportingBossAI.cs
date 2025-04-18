@@ -89,6 +89,12 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             isActivated = true;
         }
 
+        if (enemyHealth != null && enemyHealth.IsDead)
+        {
+            ForceDestroyPortals();
+            return;
+        }
+
         if (!isActivated || isTeleporting) return;
 
         if (Time.time >= nextTeleportTime && teleportPoints.Count > 0)
@@ -230,8 +236,10 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
             yield return null;
         }
 
+        sr.color = Color.white; 
         sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
         sr.enabled = false;
+
 
         SetAllCollidersEnabled(false);
         SetAllScriptsEnabled(false);
@@ -405,6 +413,22 @@ public class TeleportingBossAI : EnemyAI, IEnemySlowable
         sr.color = Color.white;
         isSlowed = false;
     }
+
+    private void ForceDestroyPortals()
+    {
+        if (exitPortal != null)
+        {
+            Destroy(exitPortal);
+            exitPortal = null;
+        }
+
+        if (entryPortal != null)
+        {
+            Destroy(entryPortal);
+            entryPortal = null;
+        }
+    }
+
 
     private void OnDrawGizmosSelected()
     {

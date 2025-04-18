@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: b31b2f4c9885d274693ed1d3e1248b03
+guid: 76264acb325eb7845a344532f4b5161f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1990102543718251208
-    second: Robot Idle Phase 2_0
+      213: 6876811452272124038
+    second: Robot_Idle_phase 2_0
   - first:
-      213: -4792005428226927560
-    second: Robot Idle Phase 2_1
+      213: -5173549830363987509
+    second: Robot_Idle_phase 2_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Robot Idle Phase 2_0
+      name: Robot_Idle_phase 2_0
       rect:
         serializedVersion: 2
-        x: 309
+        x: 305
         y: 0
-        width: 292
-        height: 651
+        width: 297
+        height: 653
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,19 +118,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8ca7de038b34e9b10800000000000000
-      internalID: 1990102543718251208
+      spriteID: 680a408b4975f6f50800000000000000
+      internalID: 6876811452272124038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Robot Idle Phase 2_1
+      name: Robot_Idle_phase 2_1
       rect:
         serializedVersion: 2
-        x: 1309
+        x: 1307
         y: 0
-        width: 292
+        width: 297
         height: 641
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8345ac0c3706f7db0800000000000000
-      internalID: -4792005428226927560
+      spriteID: bc14f5507dbd338b0800000000000000
+      internalID: -5173549830363987509
       vertices: []
       indices: 
       edges: []
@@ -159,9 +159,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Robot Idle Phase 2_0: 1990102543718251208
-      Robot Idle Phase 2_1: -4792005428226927560
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
